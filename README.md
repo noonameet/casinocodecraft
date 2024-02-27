@@ -1,2 +1,0 @@
-# casinocodecraft
-Desersion
