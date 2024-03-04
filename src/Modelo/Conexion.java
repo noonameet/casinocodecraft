@@ -21,7 +21,7 @@ public class Conexion {
 
     public Connection getConnection() {
         try {
-            String myBD = "jdbc:sqlite:C:\\Users\\Administrador\\ok";
+            String myBD = "jdbc:sqlite:C:\\SQLite\\gg";
             con = DriverManager.getConnection(myBD);
             return con;
         } catch (SQLException e) {

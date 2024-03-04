@@ -16,6 +16,7 @@ public class Proyecto {
         Vista vs = new Vista();
         Controlador ct = new Controlador(vs);
         
+        ct.mostrarCategorias();
         vs.setVisible(true);
     }
 }

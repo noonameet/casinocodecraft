@@ -19,7 +19,7 @@ public class PedidosDAO {
     Connection conex = con.getConnection();
     Pedidos ped = new Pedidos() {};
 
-    private void RegistrarPedido(int id_m, int id_e) {
+    private void registrarPedido(int id_m, int id_e) {
         String sql = "INSERT INTO tmp_pedidos(?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = conex.prepareStatement(sql);
