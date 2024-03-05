@@ -1,5 +1,5 @@
 --
--- Archivo generado con SQLiteStudio v3.4.4 el lun. mar. 4 14:22:23 2024
+-- Archivo generado con SQLiteStudio v3.4.4 el mar. mar. 5 15:03:31 2024
 --
 -- Codificación de texto usada: System
 --
@@ -17,6 +17,9 @@ CREATE TABLE IF NOT EXISTS emple_accion (id_desc_accion INTEGER PRIMARY KEY REFE
 
 -- Tabla: emple_rol
 CREATE TABLE IF NOT EXISTS emple_rol (id_rol INTEGER PRIMARY KEY, nom_rol TEXT);
+INSERT INTO emple_rol (id_rol, nom_rol) VALUES (1, 'Administrador');
+INSERT INTO emple_rol (id_rol, nom_rol) VALUES (2, 'Cajero');
+INSERT INTO emple_rol (id_rol, nom_rol) VALUES (3, 'Mesero');
 
 -- Tabla: fact_cabe
 CREATE TABLE IF NOT EXISTS fact_cabe (id_cab_fact INTEGER PRIMARY KEY REFERENCES reg_cliente (nom_cliente), num_fact TEXT, id_dle INTEGER, id_tipo_pago TEXT, id_mesero INTEGER, id_cajero INTEGER, descuento REAL, iva REAL, total REAL, hora_fact NUMERIC, fecha_fact NUMERIC, fact_detalle_id_det_fact INTEGER);
@@ -38,6 +41,9 @@ CREATE TABLE IF NOT EXISTS prod_categoria(
   id_cat_prod INTEGER primary key,
   cat_prod_nom TEXT
 );
+INSERT INTO prod_categoria (id_cat_prod, cat_prod_nom) VALUES (1, 'platos');
+INSERT INTO prod_categoria (id_cat_prod, cat_prod_nom) VALUES (2, 'porciones');
+INSERT INTO prod_categoria (id_cat_prod, cat_prod_nom) VALUES (3, 'bebidas');
 
 -- Tabla: prod_preparacion
 CREATE TABLE IF NOT EXISTS prod_preparacion (
@@ -55,12 +61,15 @@ CREATE TABLE IF NOT EXISTS productos (
   id_cat_prod INTEGER,
   foreign key (id_cat_prod) references prod_categoria(id_cat_prod)
 );
+INSERT INTO productos (id_producto, nombre, cantidad, precio, id_cat_prod) VALUES (99658, 'Hamburguesa', 100, 15000.0, 2);
 
 -- Tabla: reg_cliente
 CREATE TABLE IF NOT EXISTS reg_cliente (id_cliente INTEGER PRIMARY KEY UNIQUE NOT NULL, nom_cliente TEXT UNIQUE NOT NULL, ape_cliente TEXT UNIQUE NOT NULL, ced_cliente TEXT UNIQUE NOT NULL, direccion TEXT NOT NULL, telefono UNIQUE NOT NULL);
+INSERT INTO reg_cliente (id_cliente, nom_cliente, ape_cliente, ced_cliente, direccion, telefono) VALUES (0, 'John', 'Brandon', '932193182', 'djad838282', '030349943');
 
 -- Tabla: reg_empleados
-CREATE TABLE IF NOT EXISTS reg_empleados (id_empleados INTEGER UNIQUE PRIMARY KEY REFERENCES fact_cabe (id_cajero), nom_empleados TEXT NOT NULL, ced_empleados TEXT UNIQUE NOT NULL, tel_empleados TEXT UNIQUE NOT NULL, usuario TEXT UNIQUE NOT NULL, clave TEXT UNIQUE NOT NULL, rol INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS reg_empleados (id_empleados INTEGER UNIQUE PRIMARY KEY REFERENCES fact_cabe (id_cajero), nom_empleados TEXT NOT NULL, ape_empleados NOT NULL, ced_empleados TEXT UNIQUE NOT NULL, tel_empleados TEXT UNIQUE NOT NULL, usuario TEXT UNIQUE NOT NULL, clave TEXT UNIQUE NOT NULL, rol INTEGER NOT NULL);
+INSERT INTO reg_empleados (id_empleados, nom_empleados, ape_empleados, ced_empleados, tel_empleados, usuario, clave, rol) VALUES (0, 'dadada', 1, 'owiweiw', '3123123', '312414', 'Akaiugu', 3123123);
 
 -- Tabla: reg_mesa
 CREATE TABLE IF NOT EXISTS reg_mesa (id_mesa PRIMARY KEY UNIQUE NOT NULL, cant_sillas INTEGER NOT NULL, tipo TEXT, estado TEXT NOT NULL);
