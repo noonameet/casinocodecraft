@@ -36,6 +36,26 @@ public class MesaDAO {
             e.printStackTrace();
         }
     }
+    
+    private boolean verificarEstadoMesa(int id){
+        String sql = "SELECT estado FROM reg_mesa WHERE id_mesa=?";
+        boolean estado = false;
+        try {
+            PreparedStatement ps = conex.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                estado = rs.getBoolean("estado");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return estado;
+    }
+    
+    private void cambiarEstadoMesa(){
+        
+    }
 
     private int ultimoId() {
         int id = 0;
@@ -54,5 +74,9 @@ public class MesaDAO {
 
     public int devolverId() {
         return ultimoId();
+    }
+    
+    public int registrarMesa(int a){
+        return a;
     }
 }

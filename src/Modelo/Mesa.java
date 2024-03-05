@@ -30,7 +30,7 @@ public class Mesa extends Pedidos{
         return id_mesa;
     }
 
-    private void setId_mesa(int id_mesa) {
+    public void setId_mesa(int id_mesa) {
         this.id_mesa = id_mesa;
     }
 
@@ -38,7 +38,7 @@ public class Mesa extends Pedidos{
         return cant_sillas;
     }
 
-    private void setCant_sillas(int cant_sillas) {
+    public void setCant_sillas(int cant_sillas) {
         this.cant_sillas = cant_sillas;
     }
 
@@ -54,7 +54,7 @@ public class Mesa extends Pedidos{
         return tipo;
     }
 
-    private void setTipo(String tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 }

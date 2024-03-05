@@ -9,12 +9,12 @@ import java.sql.Time;
 public abstract class Reg_Empleados extends Gen_Factura {
 
     private int id_emple, rol;
-    private String nom_emple, ced_emple, tel_emple, usuario, clave;
+    private String nom_emple, ape_emple, ced_emple, tel_emple, usuario, clave;
 
     public Reg_Empleados() {
     }
 
-    public Reg_Empleados(int id_emple, int rol, String nom_emple, String ced_emple, String tel_emple, 
+    public Reg_Empleados(int id_emple, int rol, String nom_emple, String ape_emple, String ced_emple, String tel_emple, 
             String usuario, String clave, int id_cab, int id_cli, int id_mesero, 
             int fact_detalle_id_det_fact, float descuento, float iva, float total, 
             String num_fact, String id_tipoP, String id_cajero, Time hora_fact, 
@@ -24,10 +24,19 @@ public abstract class Reg_Empleados extends Gen_Factura {
         this.id_emple = id_emple;
         this.rol = rol;
         this.nom_emple = nom_emple;
+        this.ape_emple = ape_emple;
         this.ced_emple = ced_emple;
         this.tel_emple = tel_emple;
         this.usuario = usuario;
         this.clave = clave;
+    }
+
+    public String getApe_emple() {
+        return ape_emple;
+    }
+
+    public void setApe_emple(String ape_emple) {
+        this.ape_emple = ape_emple;
     }
 
     public int getId_emple() {

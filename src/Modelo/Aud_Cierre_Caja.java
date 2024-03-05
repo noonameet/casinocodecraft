@@ -23,7 +23,7 @@ public class Aud_Cierre_Caja extends Reg_Empleados {
             int id_cab, int id_cli, int id_mesero, int fact_detalle_id_det_fact,
             float descuento, float iva, float total, String num_fact, String id_tipoP,
             String id_cajero, Time hora_fact, java.sql.Date fecha_fact) {
-        super(id_emple, rol, nom_emple, ced_emple, tel_emple,
+        super(id_emple, rol, nom_emple, ape_emple, ced_emple, tel_emple,
                 usuario, clave, id_cab, id_cli, id_mesero, fact_detalle_id_det_fact,
                 descuento, iva, total, num_fact, id_tipoP, id_cajero, hora_fact, fecha_fact);
         this.id_cierre_caja = id_cierre_caja;

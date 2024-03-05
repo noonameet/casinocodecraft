@@ -29,18 +29,18 @@ public class Controlador implements ActionListener{
 
     public Controlador(Vista v){
         this.v = v;
-        this.v.btnRegistrarCliente.addActionListener(this);
+        //this.v.btnRegistrarCliente.addActionListener(this);
         this.v.btnRegistrarEmpleado.addActionListener(this);
-        this.v.btnRegistrarMesa.addActionListener(this);
-        this.v.btnRegistrarProducto.addActionListener(this);
-        this.v.btnAgregarPedido.addActionListener(this);
-        this.v.btnEliminarPedido.addActionListener(this);
-        this.v.btnModificarPedido.addActionListener(this);
-        this.v.btnListarPedido.addActionListener(this);
-        this.v.btnGenerarFactura.addActionListener(this);
+        //this.v.btnRegistrarMesa.addActionListener(this);
+        //this.v.btnRegistrarProducto.addActionListener(this);
+        //this.v.btnAgregarPedido.addActionListener(this);
+        //this.v.btnEliminarPedido.addActionListener(this);
+        //this.v.btnModificarPedido.addActionListener(this);
+        //this.v.btnListarPedido.addActionListener(this);
+        //this.v.btnGenerarFactura.addActionListener(this);
     }
 
-    public void registrarCliente() {
+    private void registrarCliente() {
         
         int id = modeloCli.devolverId() + 1;
         String nombre = v.txt.getText();
@@ -57,6 +57,34 @@ public class Controlador implements ActionListener{
         cliente.setTelef(telefono);
         
         int f = modeloCli.registrarCliente(cliente);
+        if(f == 1){
+            System.out.println("Registro exitoso");
+        }else{
+            System.out.println("NO se ha registrado correctamente");
+        }
+    }
+    
+    private void registrarEmpleado() {
+        
+        int id = modeloEmple.devolverId() + 1;
+        String nombre = v.jtxtNombreEmpleado.getText();
+        String apellido = v.jtxtApellidoEmpleado.getText();
+        String cedula = v.jtxtCedulaEmpleado.getText();
+        String telefono = v.jtxtTelefonoEmpleado.getText();
+        String usuario = v.jtxtUsuario.getText();
+        String contraseña = v.jtxtContraseña.getText();
+        int rol = v.jcomRoles.getSelectedIndex()+1;
+        
+        empleados.setId_emple(id);
+        empleados.setNom_emple(nombre);
+        empleados.setApe_emple(apellido);
+        empleados.setCed_emple(cedula);
+        empleados.setTel_emple(telefono);
+        empleados.setUsuario(usuario);
+        empleados.setClave(cedula);
+        empleados.setRol(rol);
+        
+        int f = modeloEmple.registrarEmpleados(empleados);
         if(f == 1){
             System.out.println("Registro exitoso");
         }else{
@@ -81,6 +109,19 @@ public class Controlador implements ActionListener{
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(v, "Por favor, ingrese datos válidos");
         }
+    }
+    
+    private void registrarMesa(){
+        int id = modeloMesa.devolverId() + 1;
+        int cantSillas = Integer.parseInt(v.txtCantidadSillas.getText());
+        String tipo = v.txtComboTipos.getSelectedIndex()+1;
+        String estado = v.txtComboEstado.getSelectedIndex()+1;
+        
+        mesa.setId(id); mesa.setCant_sillas(cantSillas);
+        mesa.setTipo(tipo); mesa.setEstado(estado);
+        
+        modeloMesa.
+        
     }
     
     public void mostrarCategorias() {
@@ -111,6 +152,9 @@ public class Controlador implements ActionListener{
             limpiar();
         }else if (e.getSource() == v.btnregister) {
             registrarProducto();
+            limpiar();
+        }else if(e.getSource() == v.btnRegistrarEmpleado){
+            registrarEmpleado();
             limpiar();
         }
     }
