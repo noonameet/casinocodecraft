@@ -5,7 +5,7 @@
 package Casino;
 
 import Vista.*;
-
+import Controlador.Controlador;
 
 /**
  *
@@ -13,7 +13,8 @@ import Vista.*;
  */
 public class Code {
     public static void main(String[] args) {
-        Log_in inicio = new Log_in();
-        inicio.setVisible(true);
+        Log_in log = new Log_in();
+        Controlador c = new Controlador(log);
+        log.setVisible(true);
     }
 }
