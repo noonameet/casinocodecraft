@@ -17,6 +17,7 @@ public class Proyecto {
         Controlador ct = new Controlador(vs);
         
         ct.mostrarCategorias();
+        ct.mostrarRoles();
         vs.setVisible(true);
     }
 }

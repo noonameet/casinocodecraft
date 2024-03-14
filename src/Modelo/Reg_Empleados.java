@@ -6,22 +6,15 @@ import java.sql.Time;
  *
  * @author Laderson Leon
  */
-public abstract class Reg_Empleados extends Gen_Factura {
+public class Reg_Empleados {
 
-    private int id_emple, rol;
+    private int rol;
     private String nom_emple, ape_emple, ced_emple, tel_emple, usuario, clave;
 
     public Reg_Empleados() {
     }
 
-    public Reg_Empleados(int id_emple, int rol, String nom_emple, String ape_emple, String ced_emple, String tel_emple, 
-            String usuario, String clave, int id_cab, int id_cli, int id_mesero, 
-            int fact_detalle_id_det_fact, float descuento, float iva, float total, 
-            String num_fact, String id_tipoP, String id_cajero, Time hora_fact, 
-            Date fecha_fact) {
-        super(id_cab, id_cli, id_mesero, fact_detalle_id_det_fact, descuento, 
-                iva, total, num_fact, id_tipoP, id_cajero, hora_fact, fecha_fact);
-        this.id_emple = id_emple;
+    public Reg_Empleados(String nom_emple, String ape_emple, String ced_emple, String tel_emple, String usuario, String clave, int rol) {
         this.rol = rol;
         this.nom_emple = nom_emple;
         this.ape_emple = ape_emple;
@@ -39,13 +32,13 @@ public abstract class Reg_Empleados extends Gen_Factura {
         this.ape_emple = ape_emple;
     }
 
-    public int getId_emple() {
+    /*public int getId_emple() {
         return id_emple;
-    }
+    }*/
 
-    public void setId_emple(int id_emple) {
+    /*public void setId_emple(int id_emple) {
         this.id_emple = id_emple;
-    }
+    }*/
 
     public int getRol() {
         return rol;

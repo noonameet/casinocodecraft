@@ -7,7 +7,7 @@ import java.sql.Date;
  *
  * @author Laderson Leon
  */
-public abstract class Gen_Factura {
+public class Gen_Factura {
 
     private int id_cab, id_cli, id_mesero, fact_detalle_id_det_fact;
     private float descuento, iva, total;

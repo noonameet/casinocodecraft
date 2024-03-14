@@ -17,6 +17,7 @@ public class Controlador implements ActionListener{
     Mesa mesa = new Mesa();
     
     Reg_ClienteDAO modeloCli = new Reg_ClienteDAO();
+    Emple_rolDAO modeloRol = new Emple_rolDAO();
     MesaDAO modeloMesa = new MesaDAO();
     Reg_EmpleadosDAO modeloEmple = new Reg_EmpleadosDAO();
     ProductoDAO modeloPro = new ProductoDAO();
@@ -29,7 +30,7 @@ public class Controlador implements ActionListener{
 
     public Controlador(Vista v){
         this.v = v;
-        //this.v.btnRegistrarCliente.addActionListener(this);
+        this.v.btnRegistrarCliente.addActionListener(this);
         this.v.btnRegistrarEmpleado.addActionListener(this);
         //this.v.btnRegistrarMesa.addActionListener(this);
         //this.v.btnRegistrarProducto.addActionListener(this);
@@ -42,54 +43,29 @@ public class Controlador implements ActionListener{
 
     private void registrarCliente() {
         
-        int id = modeloCli.devolverId() + 1;
         String nombre = v.txt.getText();
         String apellido = v.txt2.getText();
         String cedula = v.txt3.getText();
         String direccion = v.txt4.getText();
         String telefono = v.txt5.getText();
         
-        cliente.setId_clie(id);
-        cliente.setNom_cli(nombre);
-        cliente.setApe_cli(apellido);
-        cliente.setCed_cli(cedula);
-        cliente.setDireccion(direccion);
-        cliente.setTelef(telefono);
+        Reg_Cliente newClie = new Reg_Cliente(nombre, apellido, cedula, direccion, telefono);
         
-        int f = modeloCli.registrarCliente(cliente);
-        if(f == 1){
-            System.out.println("Registro exitoso");
-        }else{
-            System.out.println("NO se ha registrado correctamente");
-        }
+        modeloCli.registrarCliente(newClie);
     }
     
     private void registrarEmpleado() {
-        
-        int id = modeloEmple.devolverId() + 1;
         String nombre = v.jtxtNombreEmpleado.getText();
         String apellido = v.jtxtApellidoEmpleado.getText();
         String cedula = v.jtxtCedulaEmpleado.getText();
         String telefono = v.jtxtTelefonoEmpleado.getText();
         String usuario = v.jtxtUsuario.getText();
         String contraseña = v.jtxtContraseña.getText();
-        int rol = v.jcomRoles.getSelectedIndex()+1;
+        int rol = v.comboRoles.getSelectedIndex();
         
-        empleados.setId_emple(id);
-        empleados.setNom_emple(nombre);
-        empleados.setApe_emple(apellido);
-        empleados.setCed_emple(cedula);
-        empleados.setTel_emple(telefono);
-        empleados.setUsuario(usuario);
-        empleados.setClave(cedula);
-        empleados.setRol(rol);
+        Reg_Empleados newEmple = new Reg_Empleados(nombre, apellido, cedula, telefono, usuario, contraseña, rol);
         
-        int f = modeloEmple.registrarEmpleados(empleados);
-        if(f == 1){
-            System.out.println("Registro exitoso");
-        }else{
-            System.out.println("NO se ha registrado correctamente");
-        }
+        modeloEmple.registrarEmpleados(newEmple);
     }
     
     private void registrarProducto() {
@@ -111,7 +87,7 @@ public class Controlador implements ActionListener{
         }
     }
     
-    private void registrarMesa(){
+    /*private void registrarMesa(){
         int id = modeloMesa.devolverId() + 1;
         int cantSillas = Integer.parseInt(v.txtCantidadSillas.getText());
         String tipo = v.txtComboTipos.getSelectedIndex()+1;
@@ -122,6 +98,14 @@ public class Controlador implements ActionListener{
         
         modeloMesa.
         
+    }*/
+    
+    public void mostrarRoles(){
+        ArrayList<Emple_rol> listaR = modeloRol.obtenerRolesP();
+        v.comboRoles.addItem("Seleccionar");
+        for (int i = 0; i < listaR.size(); i++) {
+            v.comboRoles.addItem(listaR.get(i).getNom_rol());
+        }
     }
     
     public void mostrarCategorias() {
@@ -141,13 +125,9 @@ public class Controlador implements ActionListener{
         v.txt.requestFocus();
     }
     
-    private void agregarPedido(Mesa m, Empleado me){
-        
-    }
-    
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == v.btnRegistrar){
+        if(e.getSource() == v.btnRegistrarCliente){
             registrarCliente();
             limpiar();
         }else if (e.getSource() == v.btnregister) {

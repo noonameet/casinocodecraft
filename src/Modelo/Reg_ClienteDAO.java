@@ -17,18 +17,17 @@ public class Reg_ClienteDAO {
     private void registrar_cli(Reg_Cliente cliente) {
         try {
             // Tu lógica para insertar el cliente en la base de datos
-            String sql = "INSERT INTO reg_cliente VALUES(?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO reg_cliente(nom_cliente, ape_cliente, ced_cliente, direccion, telefono) VALUES(?, ?, ?, ?, ?)";
             try (PreparedStatement st = conex.prepareStatement(sql)) {
-                st.setInt(1, cliente.getId_cli());
-                st.setString(2, cliente.getNom_cli());
-                st.setString(3, cliente.getApe_cli());
-                st.setString(4, cliente.getCed_cli());
-                st.setString(5, cliente.getDireccion());
-                st.setString(6, cliente.getTelef());
+                st.setString(1, cliente.getNom_cli());
+                st.setString(2, cliente.getApe_cli());
+                st.setString(3, cliente.getCed_cli());
+                st.setString(4, cliente.getDireccion());
+                st.setString(5, cliente.getTelef());
                 int rows = st.executeUpdate();
                 if (rows > 0) {
                     System.out.println("Cliente registrado en la base de datos: "
-                            + cliente.getNom_cli() + " " + cliente.getApe_cli());
+                            + cliente.getNom_cli() + " y " + cliente.getApe_cli());
                 } else {
                     System.out.println("No se pudo insertar el cliente "
                             + "en la base de datos.");

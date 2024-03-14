@@ -7,7 +7,7 @@ import java.util.Date;
  *
  * @author Laderson Leon
  */
-public class Aud_Cierre_Caja extends Reg_Empleados {
+public class Aud_Cierre_Caja{
 
     private int id_cierre_caja, user;
     private float saldo_inicio, entrada, caja, valor_actual;
@@ -16,16 +16,7 @@ public class Aud_Cierre_Caja extends Reg_Empleados {
     public Aud_Cierre_Caja() {
     }
 
-    public Aud_Cierre_Caja(int id_cierre_caja, int user, float saldo_inicio,
-            float entrada, float caja, float valor_actual, Date hora_cierre,
-            Date fecha_cierre, int id_emple, int rol, String nom_emple, String ape_emple,
-            String ced_emple, String tel_emple, String usuario, String clave,
-            int id_cab, int id_cli, int id_mesero, int fact_detalle_id_det_fact,
-            float descuento, float iva, float total, String num_fact, String id_tipoP,
-            String id_cajero, Time hora_fact, java.sql.Date fecha_fact) {
-        super(id_emple, rol, nom_emple, ape_emple, ced_emple, tel_emple,
-                usuario, clave, id_cab, id_cli, id_mesero, fact_detalle_id_det_fact,
-                descuento, iva, total, num_fact, id_tipoP, id_cajero, hora_fact, fecha_fact);
+    public Aud_Cierre_Caja(int id_cierre_caja, int user, float saldo_inicio, float entrada, float caja, float valor_actual, Date hora_cierre, Date fecha_cierre) {
         this.id_cierre_caja = id_cierre_caja;
         this.user = user;
         this.saldo_inicio = saldo_inicio;

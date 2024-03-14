@@ -7,7 +7,7 @@ import java.util.Date;
  *
  * @author Laderson Leon
  */
-public abstract class Pedidos extends Reg_Empleados{
+public class Pedidos{
 
     private int id, num_mesa, mesero;
     private String producto, cantidad, estado;

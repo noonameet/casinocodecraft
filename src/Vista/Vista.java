@@ -31,7 +31,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btnRegistrar = new javax.swing.JButton();
+        btnRegistrarCliente = new javax.swing.JButton();
         txt = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btnregister = new javax.swing.JButton();
@@ -68,7 +68,7 @@ public class Vista extends javax.swing.JFrame {
         jtxtUsuario = new javax.swing.JTextField();
         jtxtContraseña = new javax.swing.JTextField();
         btnRegistrarEmpleado = new javax.swing.JButton();
-        jcomRoles = new javax.swing.JComboBox<>();
+        comboRoles = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 0));
@@ -101,15 +101,15 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel5.setText("Télefono:");
 
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.addItemListener(new java.awt.event.ItemListener() {
+        btnRegistrarCliente.setText("Registrar");
+        btnRegistrarCliente.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                btnRegistrarItemStateChanged(evt);
+                btnRegistrarClienteItemStateChanged(evt);
             }
         });
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                btnRegistrarClienteActionPerformed(evt);
             }
         });
 
@@ -126,7 +126,7 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(122, 122, 122)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRegistrar)
+                    .addComponent(btnRegistrarCliente)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
@@ -167,7 +167,7 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(txt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(57, 57, 57)
-                .addComponent(btnRegistrar)
+                .addComponent(btnRegistrarCliente)
                 .addGap(77, 77, 77))
         );
 
@@ -350,10 +350,9 @@ public class Vista extends javax.swing.JFrame {
 
         btnRegistrarEmpleado.setText("Registrar");
 
-        jcomRoles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cajero", "Administrador", "Mesero" }));
-        jcomRoles.addActionListener(new java.awt.event.ActionListener() {
+        comboRoles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcomRolesActionPerformed(evt);
+                comboRolesActionPerformed(evt);
             }
         });
 
@@ -364,7 +363,7 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(102, 102, 102)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcomRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnRegistrarEmpleado)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -374,7 +373,7 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(jtxtTelefonoEmpleado)
                             .addComponent(jtxtUsuario)
                             .addComponent(jtxtContraseña))))
-                .addContainerGap(598, Short.MAX_VALUE))
+                .addContainerGap(621, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,7 +391,7 @@ public class Vista extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtxtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jcomRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(btnRegistrarEmpleado)
                 .addContainerGap(109, Short.MAX_VALUE))
@@ -434,13 +433,13 @@ public class Vista extends javax.swing.JFrame {
         txt5.requestFocus();
     }//GEN-LAST:event_txt4ActionPerformed
     
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    private void btnRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarClienteActionPerformed
         
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    }//GEN-LAST:event_btnRegistrarClienteActionPerformed
 
-    private void btnRegistrarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnRegistrarItemStateChanged
+    private void btnRegistrarClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btnRegistrarClienteItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrarItemStateChanged
+    }//GEN-LAST:event_btnRegistrarClienteItemStateChanged
 
     private void btnregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregisterActionPerformed
 
@@ -450,14 +449,15 @@ public class Vista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jcomRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomRolesActionPerformed
+    private void comboRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboRolesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcomRolesActionPerformed
+    }//GEN-LAST:event_comboRolesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnRegistrar;
+    public javax.swing.JButton btnRegistrarCliente;
     public javax.swing.JButton btnRegistrarEmpleado;
     public javax.swing.JButton btnregister;
+    public javax.swing.JComboBox<String> comboRoles;
     public javax.swing.JComboBox<String> combocategorias;
     public javax.swing.JButton jButton1;
     public javax.swing.JButton jButton2;
@@ -488,7 +488,6 @@ public class Vista extends javax.swing.JFrame {
     public javax.swing.JTextField jTextField5;
     public javax.swing.JTextField jTextField6;
     public javax.swing.JTextField jTextField7;
-    public javax.swing.JComboBox<String> jcomRoles;
     public javax.swing.JTextField jtxtApellidoEmpleado;
     public javax.swing.JTextField jtxtCedulaEmpleado;
     public javax.swing.JTextField jtxtContraseña;
