@@ -96,9 +96,20 @@ public class Controlador implements ActionListener{
         }
     }
     
-    private void generarFactura(){
-        
-    }
+    /*private void generarFactura(){
+        try {
+            int id_cliente = Integer.parseInt(v.txtCliente.getText());
+            int tipoP = v.comboTipoP.getSelectedIndex();
+            int id_mesero = v.comboMesero.getSelectedIndex();
+            int id_cajero = v.comboCajero.getSelectedIndex();
+            int num_fact = 1;
+            double descuento = Double.parseDouble(v.txtDesc.getText());
+            double IVA = 0.19;
+            double total =  
+        }catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(v, "Por favor, ingrese datos válidos");
+        }
+    }*/
     
     /*private void registrarMesa(){
         int id = modeloMesa.devolverId() + 1;
@@ -182,7 +193,7 @@ public class Controlador implements ActionListener{
             registrarEmpleado();
             limpiar();
         }else if(e.getSource() == v.btnGenerarFactura){
-            generarFactura();
+            //generarFactura();
             limpiar();
         }
     }
