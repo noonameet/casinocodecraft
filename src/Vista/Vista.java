@@ -14,6 +14,7 @@ public class Vista extends javax.swing.JFrame {
      */
     public Vista() {
         initComponents();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -69,6 +70,19 @@ public class Vista extends javax.swing.JFrame {
         jtxtContraseña = new javax.swing.JTextField();
         btnRegistrarEmpleado = new javax.swing.JButton();
         comboRoles = new javax.swing.JComboBox<>();
+        jPanel5 = new javax.swing.JPanel();
+        btnGenerarFactura = new javax.swing.JButton();
+        txtTipoPago = new javax.swing.JTextField();
+        txtMesero = new javax.swing.JTextField();
+        txtCliente = new javax.swing.JTextField();
+        txtCajero = new javax.swing.JTextField();
+        lblTipoP = new javax.swing.JLabel();
+        lblCliente = new javax.swing.JLabel();
+        lblMesero = new javax.swing.JLabel();
+        lblCajero = new javax.swing.JLabel();
+        comboCajero = new javax.swing.JComboBox<>();
+        comboTipoP = new javax.swing.JComboBox<>();
+        comboMesero = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 0));
@@ -399,6 +413,105 @@ public class Vista extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab4", jPanel4);
 
+        btnGenerarFactura.setText("Generar Factura");
+
+        txtTipoPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoPagoActionPerformed(evt);
+            }
+        });
+
+        txtMesero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMeseroActionPerformed(evt);
+            }
+        });
+
+        txtCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClienteActionPerformed(evt);
+            }
+        });
+
+        txtCajero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCajeroActionPerformed(evt);
+            }
+        });
+
+        lblTipoP.setText("Tipo Pago");
+
+        lblCliente.setText("Cliente");
+
+        lblMesero.setText("Mesero");
+
+        lblCajero.setText("Cajero");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(btnGenerarFactura))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(lblCajero)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCajero, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(lblCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(lblTipoP)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTipoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(lblMesero)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(129, 129, 129)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboMesero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboTipoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboCajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(374, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTipoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTipoP)
+                    .addComponent(comboTipoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMesero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMesero)
+                    .addComponent(comboMesero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCliente)
+                    .addComponent(comboCajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCajero))
+                .addGap(74, 74, 74)
+                .addComponent(btnGenerarFactura)
+                .addContainerGap(143, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("tab5", jPanel5);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -453,11 +566,31 @@ public class Vista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboRolesActionPerformed
 
+    private void txtTipoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoPagoActionPerformed
+
+    private void txtMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMeseroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMeseroActionPerformed
+
+    private void txtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClienteActionPerformed
+
+    private void txtCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCajeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCajeroActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnGenerarFactura;
     public javax.swing.JButton btnRegistrarCliente;
     public javax.swing.JButton btnRegistrarEmpleado;
     public javax.swing.JButton btnregister;
+    public javax.swing.JComboBox<String> comboCajero;
+    public javax.swing.JComboBox<String> comboMesero;
     public javax.swing.JComboBox<String> comboRoles;
+    public javax.swing.JComboBox<String> comboTipoP;
     public javax.swing.JComboBox<String> combocategorias;
     public javax.swing.JButton jButton1;
     public javax.swing.JButton jButton2;
@@ -478,6 +611,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
@@ -494,11 +628,19 @@ public class Vista extends javax.swing.JFrame {
     public javax.swing.JTextField jtxtNombreEmpleado;
     public javax.swing.JTextField jtxtTelefonoEmpleado;
     public javax.swing.JTextField jtxtUsuario;
+    private javax.swing.JLabel lblCajero;
+    private javax.swing.JLabel lblCliente;
+    private javax.swing.JLabel lblMesero;
+    private javax.swing.JLabel lblTipoP;
     public javax.swing.JTextField txt;
     public javax.swing.JTextField txt2;
     public javax.swing.JTextField txt3;
     public javax.swing.JTextField txt4;
     public javax.swing.JTextField txt5;
+    private javax.swing.JTextField txtCajero;
+    private javax.swing.JTextField txtCliente;
+    private javax.swing.JTextField txtMesero;
+    private javax.swing.JTextField txtTipoPago;
     public javax.swing.JTextField txtcantidad;
     public javax.swing.JTextField txtcodigo;
     public javax.swing.JTextField txtnombre;

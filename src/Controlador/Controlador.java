@@ -13,15 +13,19 @@ import java.util.ArrayList;
 public class Controlador implements ActionListener{
     Reg_Cliente cliente = new Reg_Cliente(); 
     Categorias categoria = new Categorias();
-    Reg_Empleados empleados = new Reg_Empleados() {};
+    Reg_Empleados empleados = new Reg_Empleados();
+    Tipo_pago tipoP = new Tipo_pago();
     Mesa mesa = new Mesa();
+    Gen_Factura factura = new Gen_Factura();
     
     Reg_ClienteDAO modeloCli = new Reg_ClienteDAO();
     Emple_rolDAO modeloRol = new Emple_rolDAO();
     MesaDAO modeloMesa = new MesaDAO();
     Reg_EmpleadosDAO modeloEmple = new Reg_EmpleadosDAO();
+    Tipo_pagoDAO modeloTipoP = new Tipo_pagoDAO();
     ProductoDAO modeloPro = new ProductoDAO();
     CategoriasDAO modeloCat = new CategoriasDAO();
+    Gen_FacturaDAO modeloFac = new Gen_FacturaDAO();
     
 
     Vista v = new Vista();            
@@ -38,7 +42,12 @@ public class Controlador implements ActionListener{
         //this.v.btnEliminarPedido.addActionListener(this);
         //this.v.btnModificarPedido.addActionListener(this);
         //this.v.btnListarPedido.addActionListener(this);
-        //this.v.btnGenerarFactura.addActionListener(this);
+        this.v.btnGenerarFactura.addActionListener(this);
+        this.mostrarCategorias();
+        this.mostrarRoles();
+        this.mostrarTiposPago();
+        this.mostrarRolesMeseros();
+        this.mostrarRolesCajeros();
     }
 
     private void registrarCliente() {
@@ -87,6 +96,10 @@ public class Controlador implements ActionListener{
         }
     }
     
+    private void generarFactura(){
+        
+    }
+    
     /*private void registrarMesa(){
         int id = modeloMesa.devolverId() + 1;
         int cantSillas = Integer.parseInt(v.txtCantidadSillas.getText());
@@ -100,7 +113,7 @@ public class Controlador implements ActionListener{
         
     }*/
     
-    public void mostrarRoles(){
+    private void mostrarRoles(){
         ArrayList<Emple_rol> listaR = modeloRol.obtenerRolesP();
         v.comboRoles.addItem("Seleccionar");
         for (int i = 0; i < listaR.size(); i++) {
@@ -108,11 +121,43 @@ public class Controlador implements ActionListener{
         }
     }
     
-    public void mostrarCategorias() {
-        ArrayList<Categorias> lista = modeloCat.ObtenerCategorias();
+    private void mostrarRolesMeseros(){
+        ArrayList<Reg_Empleados> listaR = modeloEmple.obtenerEmpleados();
+        v.comboMesero.removeAllItems();
+        v.comboMesero.addItem("Seleccionar");
+        for (int i = 0; i < listaR.size(); i++) {
+            Reg_Empleados rol = listaR.get(i);
+            if (rol.getRol() == 3) { 
+                v.comboMesero.addItem(rol.getNom_emple());
+            }
+        }
+    }
+    
+    private void mostrarRolesCajeros(){
+        ArrayList<Reg_Empleados> listaR = modeloEmple.obtenerEmpleados();
+        v.comboCajero.removeAllItems();
+        v.comboCajero.addItem("Seleccionar");
+        for (int i = 0; i < listaR.size(); i++) {
+            Reg_Empleados rol = listaR.get(i);
+            if (rol.getRol() == 2) { 
+                v.comboCajero.addItem(rol.getNom_emple());
+            }
+        }
+    }
+    
+    private void mostrarCategorias() {
+        ArrayList<Categorias> listaC = modeloCat.ObtenerCategorias();
         v.combocategorias.addItem("Seleccionar");
-        for (int i = 0; i < lista.size(); i++) {
-            v.combocategorias.addItem(lista.get(i).getNombre());
+        for (int i = 0; i < listaC.size(); i++) {
+            v.combocategorias.addItem(listaC.get(i).getNombre());
+        }
+    }
+    
+    private void mostrarTiposPago(){
+        ArrayList<Tipo_pago> listaT = modeloTipoP.obtenerTiposPP();
+        v.comboTipoP.addItem("Seleccionar");
+        for (int i = 0; i < listaT.size(); i++) {
+            v.comboTipoP.addItem(listaT.get(i).getNom_tipoP());
         }
     }
     
@@ -135,6 +180,9 @@ public class Controlador implements ActionListener{
             limpiar();
         }else if(e.getSource() == v.btnRegistrarEmpleado){
             registrarEmpleado();
+            limpiar();
+        }else if(e.getSource() == v.btnGenerarFactura){
+            generarFactura();
             limpiar();
         }
     }

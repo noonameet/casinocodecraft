@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -57,23 +58,34 @@ public class Reg_EmpleadosDAO {
         }
     }
     
-    private int ultimoId() {
-        int id = 0;
-        try {
-            String sql = "SELECT MAX(id_empleados) FROM reg_empleados";
-            PreparedStatement st = conex.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();
-            if (rs.next()) {
-                id = rs.getInt(1);
+    private ArrayList<Reg_Empleados> obtenerRolesEmpleados() {
+        ArrayList<Reg_Empleados> listaE = new ArrayList<>();
+
+        String sql = "SELECT e.id_rol, r.nom_empleados " +
+                     "FROM emple_rol e " +
+                     "INNER JOIN reg_empleados r ON e.id_rol = r.rol";
+
+        try (Connection conex = con.getConnection();
+             PreparedStatement ps = conex.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while(rs.next()){
+                Reg_Empleados empleado = new Reg_Empleados();
+                empleado.setRol(rs.getInt("id_rol")); // Cambié "rol" a "id_rol"
+                empleado.setNom_emple(rs.getString("nom_empleados"));
+                listaE.add(empleado);
+                System.out.println("Empleado encontrado");
             }
+
+            System.out.println("Empleados listados");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return id;
+        return listaE;
     }
-
-    public int devolverId() {
-        return ultimoId();
+    
+    public ArrayList<Reg_Empleados> obtenerEmpleados() {
+        return obtenerRolesEmpleados();
     }
     
     public int registrarEmpleados(Reg_Empleados emple) {

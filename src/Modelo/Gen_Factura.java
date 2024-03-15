@@ -9,7 +9,7 @@ import java.sql.Date;
  */
 public class Gen_Factura {
 
-    private int id_cab, id_cli, id_mesero, fact_detalle_id_det_fact;
+    private int id_cab, id_cli, id_mesero;
     private float descuento, iva, total;
     private String num_fact, id_tipoP, id_cajero;
     private Time hora_fact;
@@ -18,11 +18,10 @@ public class Gen_Factura {
     public Gen_Factura() {
     }
 
-    public Gen_Factura(int id_cab, int id_cli, int id_mesero, int fact_detalle_id_det_fact, float descuento, float iva, float total, String num_fact, String id_tipoP, String id_cajero, Time hora_fact, Date fecha_fact) {
+    public Gen_Factura(int id_cab, int id_cli, int id_mesero, float descuento, float iva, float total, String num_fact, String id_tipoP, String id_cajero, Time hora_fact, Date fecha_fact) {
         this.id_cab = id_cab;
         this.id_cli = id_cli;
         this.id_mesero = id_mesero;
-        this.fact_detalle_id_det_fact = fact_detalle_id_det_fact;
         this.descuento = descuento;
         this.iva = iva;
         this.total = total;
@@ -32,7 +31,7 @@ public class Gen_Factura {
         this.hora_fact = hora_fact;
         this.fecha_fact = fecha_fact;
     }
-
+    
     public int getId_cab() {
         return id_cab;
     }
@@ -55,14 +54,6 @@ public class Gen_Factura {
 
     private void setId_mesero(int id_mesero) {
         this.id_mesero = id_mesero;
-    }
-
-    public int getFact_detalle_id_det_fact() {
-        return fact_detalle_id_det_fact;
-    }
-
-    private void setFact_detalle_id_det_fact(int fact_detalle_id_det_fact) {
-        this.fact_detalle_id_det_fact = fact_detalle_id_det_fact;
     }
 
     public float getDescuento() {
