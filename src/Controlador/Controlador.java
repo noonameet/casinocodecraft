@@ -115,7 +115,7 @@ public class Controlador implements ActionListener {
             Categorias categorias = new Categorias(id_categoria, "");
             Producto producto = new Producto(id_producto, nombre, precio, cantidad, categorias);
 
-            modeloPro.Registrar(producto);
+            modeloPro.registrarProducto(producto);
             JOptionPane.showMessageDialog(v, "Registro exitoso");
 
         } catch (NumberFormatException e) {
@@ -150,7 +150,7 @@ public class Controlador implements ActionListener {
         
     }*/
     private void cargarCategorias() {
-        ArrayList<Categorias> categorias = modeloCat.ObtenerCategorias();
+        ArrayList<Categorias> categorias = modeloCat.getObtenerCategorias();
         v.combocategorias.removeAllItems();
         v.ivcategoria.removeAllItems();
         v.combocategorias.addItem("Seleccionar");
@@ -162,7 +162,7 @@ public class Controlador implements ActionListener {
     }
 
     private void cargarinvactual() {
-        ArrayList<Ingredientes> invent = ingrediente.obtenerIngredientesDisponibles();
+        ArrayList<Ingredientes> invent = ingrediente.getIngredientesDisponibles();
         v.ivingrediente.removeAllItems();
         v.ivingrediente.addItem("Seleccionar");
         for (Ingredientes ingrediente : invent) {
@@ -171,7 +171,7 @@ public class Controlador implements ActionListener {
     }
 
     private void cargarProductosPorCategoria(String categoriaNombre) {
-        ArrayList<Producto> productos = modeloPro.obtenerProductosPorCategoria(categoriaNombre);
+        ArrayList<Producto> productos = modeloPro.getProductosPorCategoria(categoriaNombre);
         v.ivproducto.removeAllItems();
         v.ivproducto.addItem("Seleccionar");
         for (Producto producto : productos) {
@@ -181,7 +181,7 @@ public class Controlador implements ActionListener {
 
     private Ingredientes obtenerIdIngredientePorNombre(String nombreIngrediente) {
         Ingredientes Ingredientesencontrado = null;
-        ArrayList<Ingredientes> ingredientes = ingrediente.obtenerIngredientesDisponibles();
+        ArrayList<Ingredientes> ingredientes = ingrediente.getIngredientesDisponibles();
 
         for (Ingredientes ingrediente : ingredientes) {
             if (ingrediente.getNombre().equals(nombreIngrediente)) {
@@ -199,7 +199,7 @@ public class Controlador implements ActionListener {
 
     private Producto obtenerProductoPorNombre(String nombreProducto) {
         Producto productoEncontrado = null;
-        ArrayList<Producto> productos = modeloPro.obtenerTodosLosProductos(); // Método para obtener todos los productos disponibles
+        ArrayList<Producto> productos = modeloPro.getTodosLosProductos(); // Método para obtener todos los productos disponibles
 
         for (Producto producto : productos) {
             if (producto.getNombre().equals(nombreProducto)) {
@@ -226,7 +226,7 @@ public class Controlador implements ActionListener {
 
         int idIngrediente = Ingredientesencontrado.getId();
 
-        ingrediente.asociarProductoIngrediente(idProducto, idIngrediente);
+        ingrediente.asociarProductoConIngrediente(idProducto, idIngrediente);
     }
 
     private void mostrarRoles() {
@@ -277,7 +277,7 @@ public class Controlador implements ActionListener {
     }
 
     private void mostrarProductosAsociados() {
-        DefaultTableModel model = modeloPro.obtenerProductosAsociados();
+        DefaultTableModel model = modeloPro.getProductosAsociados();
         v.jTblasociados.setModel(model);
     }
 

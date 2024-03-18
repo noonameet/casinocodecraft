@@ -8,8 +8,7 @@ public class ProductoDAO {
 
     Conexion con = new Conexion();
 
-    
-    public DefaultTableModel obtenerProductosAsociados() {
+    private DefaultTableModel obtenerProductosAsociados() {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre Producto");
         model.addColumn("Nombre Ingrediente");
@@ -38,8 +37,17 @@ public class ProductoDAO {
 
         return model;
     }
-    
-    public ArrayList<Producto> obtenerTodosLosProductos() {
+
+    public DefaultTableModel getProductosAsociados() {
+        try {
+            return obtenerProductosAsociados();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new DefaultTableModel();
+        }
+    }
+
+    private ArrayList<Producto> obtenerTodosLosProductos() {
         ArrayList<Producto> productos = new ArrayList<>();
         String query = "SELECT id_producto, nombre FROM productos";
         try (Connection conex = con.getConnection(); PreparedStatement ps = conex.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
@@ -55,7 +63,16 @@ public class ProductoDAO {
         return productos;
     }
 
-    public void Registrar(Producto pro) {
+    public ArrayList<Producto> getTodosLosProductos() {
+        try {
+            return obtenerTodosLosProductos();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    private void Registrar(Producto pro) {
         String sql = "INSERT INTO productos(id_producto, nombre, cantidad, precio, id_cat_prod) VALUES(?, ?, ?, ?, ?)";
 
         try (Connection conex = con.getConnection(); PreparedStatement pr = conex.prepareStatement(sql)) {
@@ -72,10 +89,20 @@ public class ProductoDAO {
         }
     }
 
-    public ArrayList<Producto> obtenerProductosPorCategoria(String categoriaNombre) {
+    public boolean registrarProducto(Producto pro) {
+        try {
+            Registrar(pro);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private ArrayList<Producto> obtenerProductosPorCategoria(String categoriaNombre) {
         ArrayList<Producto> productos = new ArrayList<>();
         try {
-            Connection con = this.con.getConnection(); 
+            Connection con = this.con.getConnection();
             String query = "SELECT * FROM productos WHERE id_cat_prod = "
                     + "(SELECT id_cat_prod FROM prod_categoria WHERE cat_prod_nom = ?)";
             PreparedStatement ps = con.prepareStatement(query);
@@ -101,4 +128,12 @@ public class ProductoDAO {
         return productos;
     }
 
+    public ArrayList<Producto> getProductosPorCategoria(String categoriaNombre) {
+        try {
+            return obtenerProductosPorCategoria(categoriaNombre);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
 }

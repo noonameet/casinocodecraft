@@ -8,7 +8,7 @@ public class IngredientesDAO {
 
     Conexion con = new Conexion();
 
-    public ArrayList<Ingredientes> obtenerIngredientesDisponibles() {
+    private ArrayList<Ingredientes> obtenerIngredientesDisponibles() {
         ArrayList<Ingredientes> ingredientes = new ArrayList<>();
 
         String sql = "SELECT id_prod_ent, nombre FROM iv_prod_ent";
@@ -18,7 +18,7 @@ public class IngredientesDAO {
             while (rs.next()) {
                 int idingrediente = rs.getInt("id_prod_ent");
                 String nombreIngrediente = rs.getString("nombre");
-                Ingredientes ingrediente = new Ingredientes(idingrediente,nombreIngrediente);
+                Ingredientes ingrediente = new Ingredientes(idingrediente, nombreIngrediente);
                 ingredientes.add(ingrediente);
             }
 
@@ -29,7 +29,16 @@ public class IngredientesDAO {
         return ingredientes;
     }
 
-    public void asociarProductoIngrediente(int idProducto, int idIngrediente) {
+    public ArrayList<Ingredientes> getIngredientesDisponibles() {
+        try {
+            return obtenerIngredientesDisponibles();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    private void asociarProductoIngrediente(int idProducto, int idIngrediente) {
         String sql = "INSERT INTO Producto_Ingrediente (id_producto, id_ingrediente) VALUES (?, ?)";
 
         try (Connection cn = con.getConnection(); PreparedStatement pst = cn.prepareStatement(sql)) {
@@ -48,6 +57,16 @@ public class IngredientesDAO {
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al asociar el producto e ingrediente.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public boolean asociarProductoConIngrediente(int idProducto, int idIngrediente) {
+        try {
+            asociarProductoIngrediente(idProducto, idIngrediente);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 

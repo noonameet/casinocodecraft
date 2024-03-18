@@ -7,16 +7,14 @@ public class CategoriasDAO {
 
     Conexion con = new Conexion();
 
-    public ArrayList<Categorias> ObtenerCategorias() {
+    private ArrayList<Categorias> ObtenerCategorias() {
         ArrayList<Categorias> listacat = new ArrayList<>();
 
         String sql = "SELECT id_cat_prod, cat_prod_nom FROM prod_categoria";
 
-        try (Connection cn = con.getConnection();
-             PreparedStatement pst = cn.prepareStatement(sql);
-             ResultSet rs = pst.executeQuery()) {
+        try (Connection cn = con.getConnection(); PreparedStatement pst = cn.prepareStatement(sql); ResultSet rs = pst.executeQuery()) {
 
-            while(rs.next()){
+            while (rs.next()) {
                 Categorias cat = new Categorias();
                 cat.setId(rs.getInt("id_cat_prod"));
                 cat.setNombre(rs.getString("cat_prod_nom"));
@@ -31,5 +29,13 @@ public class CategoriasDAO {
 
         return listacat;
     }
-}
 
+    public ArrayList<Categorias> getObtenerCategorias() {
+        try {
+            return getObtenerCategorias();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+}
