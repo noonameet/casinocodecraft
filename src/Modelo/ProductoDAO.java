@@ -16,7 +16,8 @@ public class ProductoDAO {
         model.addColumn("Nombre Categoria");
 
         try (Connection conn = con.getConnection()) {
-            String sql = "SELECT p.nombre AS nombre_producto, i.nombre AS nombre_ingrediente, c.cat_prod_nom AS nombre_categoria "
+            String sql = "SELECT p.nombre AS nombre_producto, i.nombre AS nombre_ingrediente, "
+                    + "c.cat_prod_nom AS nombre_categoria "
                     + "FROM productos p "
                     + "JOIN Producto_Ingrediente pi ON p.id_producto = pi.id_producto "
                     + "JOIN iv_prod_ent i ON pi.id_ingrediente = i.id_prod_ent "
@@ -74,8 +75,9 @@ public class ProductoDAO {
     public ArrayList<Producto> obtenerProductosPorCategoria(String categoriaNombre) {
         ArrayList<Producto> productos = new ArrayList<>();
         try {
-            Connection con = this.con.getConnection(); // Obtener la conexión desde la instancia de Conexion
-            String query = "SELECT * FROM productos WHERE id_cat_prod = (SELECT id_cat_prod FROM prod_categoria WHERE cat_prod_nom = ?)";
+            Connection con = this.con.getConnection(); 
+            String query = "SELECT * FROM productos WHERE id_cat_prod = "
+                    + "(SELECT id_cat_prod FROM prod_categoria WHERE cat_prod_nom = ?)";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, categoriaNombre);
             ResultSet rs = ps.executeQuery();

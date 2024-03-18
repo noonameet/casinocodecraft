@@ -63,6 +63,7 @@ public class Controlador implements ActionListener {
         //this.v.btnListarPedido.addActionListener(this);
         this.v.btnGenerarFactura.addActionListener(this);
         this.v.btnAsociarProducto.addActionListener(this);
+        this.v.btnrefresh.addActionListener(this);
         this.cargarCategorias();
         this.cargarinvactual();
         this.mostrarRoles();
@@ -281,6 +282,9 @@ public class Controlador implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == v.btnrefresh){
+            mostrarProductosAsociados();
+        }
         if (e.getSource() == v.btnAsociarProducto) {
             guardarRelacionProductoIngrediente();
         }
