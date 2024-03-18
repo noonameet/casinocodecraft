@@ -33,15 +33,16 @@ public class LoginDao {
         return false;
     }
 
-    public boolean autenticarUsuarios(String pUser, String pClave) {
+    public boolean autenticarUsuarios(String pUser, String pClave, String prol) {
 
-        String sql = "SELECT usuario, contraseña FROM usuarios WHERE usuario=? and contraseña=?";
+        String sql = "SELECT usuario, contraseña, rol FROM usuarios WHERE usuario=? and contraseña=? and rol=?";
 
         try {
             cn = con.getConnection();
             ps = cn.prepareStatement(sql);
             ps.setString(1, pUser);
             ps.setString(2, pClave);
+            ps.setString(3, prol);
 
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -52,5 +53,4 @@ public class LoginDao {
         }
         return false;
     }
-
 }
