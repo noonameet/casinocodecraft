@@ -15,7 +15,7 @@ public class Proyecto {
         Reg_Cliente cliente = new Reg_Cliente();
         Vista vs = new Vista();
         Controlador ct = new Controlador(vs);
-        
+        vs.setResizable(false); 
         vs.setVisible(true);
     }
 }

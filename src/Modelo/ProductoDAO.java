@@ -1,10 +1,58 @@
 package Modelo;
 
 import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class ProductoDAO {
 
     Conexion con = new Conexion();
+
+    
+    public DefaultTableModel obtenerProductosAsociados() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Nombre Producto");
+        model.addColumn("Nombre Ingrediente");
+        model.addColumn("Nombre Categoria");
+
+        try (Connection conn = con.getConnection()) {
+            String sql = "SELECT p.nombre AS nombre_producto, i.nombre AS nombre_ingrediente, c.cat_prod_nom AS nombre_categoria "
+                    + "FROM productos p "
+                    + "JOIN Producto_Ingrediente pi ON p.id_producto = pi.id_producto "
+                    + "JOIN iv_prod_ent i ON pi.id_ingrediente = i.id_prod_ent "
+                    + "JOIN prod_categoria c ON p.id_cat_prod = c.id_cat_prod";
+
+            try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+                while (rs.next()) {
+                    String nombreProducto = rs.getString("nombre_producto");
+                    String nombreIngrediente = rs.getString("nombre_ingrediente");
+                    String nombreCategoria = rs.getString("nombre_categoria");
+                    model.addRow(new Object[]{nombreProducto, nombreIngrediente, nombreCategoria});
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            // Manejo de excepciones
+        }
+
+        return model;
+    }
+    
+    public ArrayList<Producto> obtenerTodosLosProductos() {
+        ArrayList<Producto> productos = new ArrayList<>();
+        String query = "SELECT id_producto, nombre FROM productos";
+        try (Connection conex = con.getConnection(); PreparedStatement ps = conex.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                int id_producto = rs.getInt("id_producto");
+                String nombre = rs.getString("nombre");
+                Producto producto = new Producto(id_producto, nombre);
+                productos.add(producto);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return productos;
+    }
 
     public void Registrar(Producto pro) {
         String sql = "INSERT INTO productos(id_producto, nombre, cantidad, precio, id_cat_prod) VALUES(?, ?, ?, ?, ?)";
@@ -22,4 +70,33 @@ public class ProductoDAO {
             e.printStackTrace();
         }
     }
+
+    public ArrayList<Producto> obtenerProductosPorCategoria(String categoriaNombre) {
+        ArrayList<Producto> productos = new ArrayList<>();
+        try {
+            Connection con = this.con.getConnection(); // Obtener la conexión desde la instancia de Conexion
+            String query = "SELECT * FROM productos WHERE id_cat_prod = (SELECT id_cat_prod FROM prod_categoria WHERE cat_prod_nom = ?)";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, categoriaNombre);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id_producto = rs.getInt("id_producto");
+                String nombre = rs.getString("nombre");
+                double precio = rs.getDouble("precio");
+                int cantidad = rs.getInt("cantidad");
+                int id_cat_prod = rs.getInt("id_cat_prod");
+
+                Categorias categoria = new Categorias(id_cat_prod, categoriaNombre);
+                Producto producto = new Producto(id_producto, nombre, precio, cantidad, categoria);
+                productos.add(producto);
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return productos;
+    }
+
 }
