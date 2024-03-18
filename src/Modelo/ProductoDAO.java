@@ -8,6 +8,10 @@ public class ProductoDAO {
 
     Conexion con = new Conexion();
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 9c52e335483e44580316b5b98f779e47823997a7
     private DefaultTableModel obtenerProductosAsociados() {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre Producto");
@@ -37,6 +41,7 @@ public class ProductoDAO {
 
         return model;
     }
+<<<<<<< HEAD
 
     public DefaultTableModel getProductosAsociados() {
         try {
@@ -47,6 +52,9 @@ public class ProductoDAO {
         }
     }
 
+=======
+    
+>>>>>>> 9c52e335483e44580316b5b98f779e47823997a7
     private ArrayList<Producto> obtenerTodosLosProductos() {
         ArrayList<Producto> productos = new ArrayList<>();
         String query = "SELECT id_producto, nombre FROM productos";
@@ -63,6 +71,7 @@ public class ProductoDAO {
         return productos;
     }
 
+<<<<<<< HEAD
     public ArrayList<Producto> getTodosLosProductos() {
         try {
             return obtenerTodosLosProductos();
@@ -72,6 +81,8 @@ public class ProductoDAO {
         }
     }
 
+=======
+>>>>>>> 9c52e335483e44580316b5b98f779e47823997a7
     private void Registrar(Producto pro) {
         String sql = "INSERT INTO productos(id_producto, nombre, cantidad, precio, id_cat_prod) VALUES(?, ?, ?, ?, ?)";
 
@@ -89,6 +100,7 @@ public class ProductoDAO {
         }
     }
 
+<<<<<<< HEAD
     public boolean registrarProducto(Producto pro) {
         try {
             Registrar(pro);
@@ -99,6 +111,8 @@ public class ProductoDAO {
         }
     }
 
+=======
+>>>>>>> 9c52e335483e44580316b5b98f779e47823997a7
     private ArrayList<Producto> obtenerProductosPorCategoria(String categoriaNombre) {
         ArrayList<Producto> productos = new ArrayList<>();
         try {
@@ -127,6 +141,8 @@ public class ProductoDAO {
         }
         return productos;
     }
+    
+    //Falta metodo público que devuelva los metodos privados
 
     public ArrayList<Producto> getProductosPorCategoria(String categoriaNombre) {
         try {
