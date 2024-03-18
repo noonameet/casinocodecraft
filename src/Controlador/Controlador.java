@@ -64,6 +64,7 @@ public class Controlador implements ActionListener {
         this.v.btnGenerarFactura.addActionListener(this);
         this.v.btnAsociarProducto.addActionListener(this);
         this.v.btnrefresh.addActionListener(this);
+        this.v.btnregister.addActionListener(this);
         this.cargarCategorias();
         this.cargarinvactual();
         this.mostrarRoles();
