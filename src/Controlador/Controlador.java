@@ -137,7 +137,8 @@ public class Controlador implements ActionListener {
             JOptionPane.showMessageDialog(v, "Por favor, ingrese datos válidos");
         }
     }*/
- /*private void registrarMesa(){
+    
+    /*private void registrarMesa(){
         int id = modeloMesa.devolverId() + 1;
         int cantSillas = Integer.parseInt(v.txtCantidadSillas.getText());
         String tipo = v.txtComboTipos.getSelectedIndex()+1;
@@ -263,6 +264,7 @@ public class Controlador implements ActionListener {
 
     private void mostrarTiposPago() {
         ArrayList<Tipo_pago> listaT = modeloTipoP.obtenerTiposPP();
+        v.comboTipoP.removeAllItems();
         v.comboTipoP.addItem("Seleccionar");
         for (int i = 0; i < listaT.size(); i++) {
             v.comboTipoP.addItem(listaT.get(i).getNom_tipoP());

@@ -9,7 +9,7 @@ public class ProductoDAO {
     Conexion con = new Conexion();
 
     
-    public DefaultTableModel obtenerProductosAsociados() {
+    private DefaultTableModel obtenerProductosAsociados() {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre Producto");
         model.addColumn("Nombre Ingrediente");
@@ -39,7 +39,7 @@ public class ProductoDAO {
         return model;
     }
     
-    public ArrayList<Producto> obtenerTodosLosProductos() {
+    private ArrayList<Producto> obtenerTodosLosProductos() {
         ArrayList<Producto> productos = new ArrayList<>();
         String query = "SELECT id_producto, nombre FROM productos";
         try (Connection conex = con.getConnection(); PreparedStatement ps = conex.prepareStatement(query); ResultSet rs = ps.executeQuery()) {
@@ -55,7 +55,7 @@ public class ProductoDAO {
         return productos;
     }
 
-    public void Registrar(Producto pro) {
+    private void Registrar(Producto pro) {
         String sql = "INSERT INTO productos(id_producto, nombre, cantidad, precio, id_cat_prod) VALUES(?, ?, ?, ?, ?)";
 
         try (Connection conex = con.getConnection(); PreparedStatement pr = conex.prepareStatement(sql)) {
@@ -72,7 +72,7 @@ public class ProductoDAO {
         }
     }
 
-    public ArrayList<Producto> obtenerProductosPorCategoria(String categoriaNombre) {
+    private ArrayList<Producto> obtenerProductosPorCategoria(String categoriaNombre) {
         ArrayList<Producto> productos = new ArrayList<>();
         try {
             Connection con = this.con.getConnection(); 
@@ -100,5 +100,7 @@ public class ProductoDAO {
         }
         return productos;
     }
+    
+    //Falta metodo público que devuelva los metodos privados
 
 }

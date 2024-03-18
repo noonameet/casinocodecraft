@@ -8,7 +8,7 @@ public class IngredientesDAO {
 
     Conexion con = new Conexion();
 
-    public ArrayList<Ingredientes> obtenerIngredientesDisponibles() {
+    private ArrayList<Ingredientes> obtenerIngredientesDisponibles() {
         ArrayList<Ingredientes> ingredientes = new ArrayList<>();
 
         String sql = "SELECT id_prod_ent, nombre FROM iv_prod_ent";
@@ -29,7 +29,7 @@ public class IngredientesDAO {
         return ingredientes;
     }
 
-    public void asociarProductoIngrediente(int idProducto, int idIngrediente) {
+    private void asociarProductoIngrediente(int idProducto, int idIngrediente) {
         String sql = "INSERT INTO Producto_Ingrediente (id_producto, id_ingrediente) VALUES (?, ?)";
 
         try (Connection cn = con.getConnection(); PreparedStatement pst = cn.prepareStatement(sql)) {
@@ -50,5 +50,7 @@ public class IngredientesDAO {
             JOptionPane.showMessageDialog(null, "Error al asociar el producto e ingrediente.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    
+    
+    //Falta metodo público que devuelva los metodos privados
 }
