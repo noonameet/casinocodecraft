@@ -84,6 +84,37 @@ public class Reg_EmpleadosDAO {
         return listaE;
     }
     
+    private ArrayList<Reg_Empleados> obtenerIDEmpleados(){
+        ArrayList<Reg_Empleados> listaE = new ArrayList<>();
+        String sql = "SELECT id_empleados, nom_empleados FROM reg_empleados";
+
+        try (Connection conex = con.getConnection();
+             PreparedStatement ps = conex.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while(rs.next()){
+                Reg_Empleados empleado = new Reg_Empleados();
+                empleado.setId_emple(rs.getInt("id_empleados"));
+                empleado.setNom_emple(rs.getString("nom_empleados"));
+                listaE.add(empleado);
+                System.out.println("Empleado encontrado");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listaE;
+        
+    }
+    
+    public ArrayList<Reg_Empleados> getEmpleados(){
+        try{
+            return obtenerIDEmpleados();
+        }catch(Exception e){
+            e.printStackTrace();
+            return new ArrayList <>();
+        }
+    }
+    
     public ArrayList<Reg_Empleados> obtenerEmpleados() {
         return obtenerRolesEmpleados();
     }

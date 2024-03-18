@@ -29,7 +29,6 @@ public class IngredientesDAO {
         return ingredientes;
     }
 
-<<<<<<< HEAD
     public ArrayList<Ingredientes> getIngredientesDisponibles() {
         try {
             return obtenerIngredientesDisponibles();
@@ -39,8 +38,6 @@ public class IngredientesDAO {
         }
     }
 
-=======
->>>>>>> 9c52e335483e44580316b5b98f779e47823997a7
     private void asociarProductoIngrediente(int idProducto, int idIngrediente) {
         String sql = "INSERT INTO Producto_Ingrediente (id_producto, id_ingrediente) VALUES (?, ?)";
 
@@ -62,7 +59,7 @@ public class IngredientesDAO {
             JOptionPane.showMessageDialog(null, "Error al asociar el producto e ingrediente.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-<<<<<<< HEAD
+
 
     public boolean asociarProductoConIngrediente(int idProducto, int idIngrediente) {
         try {
@@ -74,9 +71,4 @@ public class IngredientesDAO {
         }
     }
 
-=======
-    
-    
-    //Falta metodo público que devuelva los metodos privados
->>>>>>> 9c52e335483e44580316b5b98f779e47823997a7
 }

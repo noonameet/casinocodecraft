@@ -32,7 +32,7 @@ public class CategoriasDAO {
 
     public ArrayList<Categorias> getObtenerCategorias() {
         try {
-            return getObtenerCategorias();
+            return ObtenerCategorias();
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<>();

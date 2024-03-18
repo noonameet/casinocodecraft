@@ -10,7 +10,7 @@ import java.sql.Date;
 public class Gen_Factura {
 
     private int id_cab, id_cli, id_mesero, id_tipoP, id_cajero;
-    private float descuento, iva, total;
+    private double descuento, iva, total;
     private String num_fact;
     private Time hora_fact;
     private Date fecha_fact;
@@ -18,7 +18,7 @@ public class Gen_Factura {
     public Gen_Factura() {
     }
 
-    public Gen_Factura(int id_cli, int id_mesero, int id_tipoP, int id_cajero, float descuento, float iva, float total, String num_fact, Time hora_fact, Date fecha_fact) {
+    public Gen_Factura(int id_cli, int id_mesero, int id_tipoP, int id_cajero, double descuento, double iva, double total, String num_fact, Time hora_fact, Date fecha_fact) {
         this.id_cli = id_cli;
         this.id_mesero = id_mesero;
         this.id_tipoP = id_tipoP;
@@ -71,27 +71,27 @@ public class Gen_Factura {
         this.id_cajero = id_cajero;
     }
 
-    public float getDescuento() {
+    public double getDescuento() {
         return descuento;
     }
 
-    public void setDescuento(float descuento) {
+    public void setDescuento(double descuento) {
         this.descuento = descuento;
     }
 
-    public float getIva() {
+    public double getIva() {
         return iva;
     }
 
-    public void setIva(float iva) {
+    public void setIva(double iva) {
         this.iva = iva;
     }
 
-    public float getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(float total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
@@ -118,6 +118,8 @@ public class Gen_Factura {
     public void setFecha_fact(Date fecha_fact) {
         this.fecha_fact = fecha_fact;
     }
+
+    
     
     
     

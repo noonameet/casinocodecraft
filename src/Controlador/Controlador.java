@@ -20,6 +20,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
 import javax.swing.text.JTextComponent;
+import java.sql.Time;
+import java.sql.Date;
 
 /**
  *
@@ -33,8 +35,9 @@ public class Controlador implements ActionListener {
     Tipo_pago tipoP = new Tipo_pago();
     Mesa mesa = new Mesa();
     Gen_Factura factura = new Gen_Factura();
-    IngredientesDAO ingrediente = new IngredientesDAO();
     Ingredientes invent = new Ingredientes();
+    
+    IngredientesDAO ingrediente = new IngredientesDAO();
     Reg_ClienteDAO modeloCli = new Reg_ClienteDAO();
     Emple_rolDAO modeloRol = new Emple_rolDAO();
     MesaDAO modeloMesa = new MesaDAO();
@@ -123,20 +126,38 @@ public class Controlador implements ActionListener {
         }
     }
 
-    /*private void generarFactura(){
+    private void generarFactura(){
         try {
+            
+            String tpS = (String) v.comboTipoP.getSelectedItem();
+            String rEmpleado = (String) v.comboCajero.getSelectedItem();
+            String rEmpleado2 = (String) v.comboMesero.getSelectedItem();
+            Reg_Empleados emple;
+            
             int id_cliente = Integer.parseInt(v.txtCliente.getText());
-            int tipoP = v.comboTipoP.getSelectedIndex();
-            int id_mesero = v.comboMesero.getSelectedIndex();
-            int id_cajero = v.comboCajero.getSelectedIndex();
-            int num_fact = 1;
+            Tipo_pago tpE = obtenerID(tpS);
+            int tipoP = tpE.getId_tipoP();
+            
+            emple = obtenerIDEmpleados(rEmpleado2);
+            int id_mesero = emple.getId_emple();
+            emple = obtenerIDEmpleados(rEmpleado);
+            int id_cajero = emple.getId_emple();
+            String num_fact = "1";
             double descuento = Double.parseDouble(v.txtDesc.getText());
             double IVA = 0.19;
-            double total =  
+            double total = 2000;
+            Time time = new Time(System.currentTimeMillis());
+            System.out.println(time);
+            Date currentDate = new Date(System.currentTimeMillis());
+            System.out.println(currentDate);
+            
+            Gen_Factura factura = new Gen_Factura(id_cliente, id_mesero, tipoP, id_cajero, descuento, IVA, total, num_fact, time, currentDate);
+            modeloFac.getGenerarFact(factura);
+            
         }catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(v, "Por favor, ingrese datos válidos");
         }
-    }*/
+    }
     
     /*private void registrarMesa(){
         int id = modeloMesa.devolverId() + 1;
@@ -178,6 +199,38 @@ public class Controlador implements ActionListener {
         for (Producto producto : productos) {
             v.ivproducto.addItem(producto.getNombre());
         }
+    }
+    
+    private Reg_Empleados obtenerIDEmpleados(String nombreEmpleado) {
+        Reg_Empleados tipoEmple = null;
+        ArrayList<Reg_Empleados> ArrayEmpleados = modeloEmple.getEmpleados();
+        for (Reg_Empleados rEm : ArrayEmpleados) {
+            if (rEm.getNom_emple().equals(nombreEmpleado)) {
+                tipoEmple = rEm;
+                break;
+            }
+        }
+        if (tipoEmple == null) {
+            JOptionPane.showMessageDialog(null, "No se encontró el ID del tipo de pago.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return tipoEmple;
+    }
+    
+    private Tipo_pago obtenerID(String nombreTipoP) {
+        Tipo_pago tipoPE = null;
+        ArrayList<Tipo_pago> tp = modeloTipoP.obtenerTiposPP();
+        for (Tipo_pago tpa : tp) {
+            if (tpa.getNom_tipoP().equals(nombreTipoP)) {
+                tipoPE = tpa;
+                break;
+            }
+        }
+        if (tipoPE == null) {
+            JOptionPane.showMessageDialog(null, "No se encontró el ID del tipo de pago.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return tipoPE;
     }
 
     private Ingredientes obtenerIdIngredientePorNombre(String nombreIngrediente) {
@@ -319,8 +372,7 @@ public class Controlador implements ActionListener {
                 limpiar(v.jtxtNombreEmpleado, v.jtxtApellidoEmpleado, v.jtxtCedulaEmpleado, v.jtxtTelefonoEmpleado, v.jtxtUsuario, v.jtxtContraseña);
             }
         } else if (e.getSource() == v.btnGenerarFactura) {
-            // generarFactura(); // Esta parte está comentada, asegúrate de implementarla correctamente
-            limpiar();
+            generarFactura(); // Esta parte está comentada, asegúrate de implementarla correctamente
         }
     }
 

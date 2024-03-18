@@ -9,6 +9,7 @@ import java.sql.Time;
 public class Reg_Empleados {
 
     private int rol;
+    private int id_emple;
     private String nom_emple, ape_emple, ced_emple, tel_emple, usuario, clave;
 
     public Reg_Empleados() {
@@ -32,13 +33,13 @@ public class Reg_Empleados {
         this.ape_emple = ape_emple;
     }
 
-    /*public int getId_emple() {
+    public int getId_emple() {
         return id_emple;
-    }*/
+    }
 
-    /*public void setId_emple(int id_emple) {
+    public void setId_emple(int id_emple) {
         this.id_emple = id_emple;
-    }*/
+    }
 
     public int getRol() {
         return rol;
