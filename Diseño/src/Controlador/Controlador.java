@@ -40,25 +40,30 @@ public class Controlador implements ActionListener {
         String clave = new String(log.Pass.getPassword());
         if(dao.autenticarUsuarios(usuario,clave,"admi")){
             JOptionPane.showMessageDialog(null, "Bienvenidos al sistema");
-            V.OPC1.setVisible(false);
-            V.OPC2.setVisible(false);
-            V.OPC3.setVisible(false);
-            V.OPC4.setVisible(false);
-            V.OPC6.setVisible(false);
             //V.bienvenida.setText("Bienvenidos Usuario Adminitrador "+usuario);
             log.setVisible(false);
             V.setVisible(true);
-            }else 
-                if(dao.autenticarUsuarios(usuario,clave,"cajero")){
-                    JOptionPane.showMessageDialog(null, "Bienvenidos al sistema");
-                    V.OPC7.setVisible(false);
-                    log.setVisible(false);
-                    V.setVisible(true);                
-        }else{
+            }
+        else if(dao.autenticarUsuarios(usuario,clave,"cajero")){
+            JOptionPane.showMessageDialog(null, "Bienvenidos al sistema");
+            V.OPCIONES.setVisible(true);
+            log.setVisible(false);
+            V.setVisible(true);
+            V.AGREGARPRODUCTO.setVisible(false);
+            V.INGRESARPEDIDOS.setVisible(true);
+            V.GENERARFACTURA.setVisible(true);
+            V.REALIZARINFORME.setVisible(false);
+            V.ELEGIRMESA.setVisible(true);
+            V.REGISTRARCLIENTE.setVisible(true);
+            V.CONSULTARINVENTARIO.setVisible(false);
+            V.INICIO.setVisible(true);
+            V.CREARUSUARIO.setVisible(false);
+        }
+        else{
             JOptionPane.showMessageDialog(null, "Error, intente de nuevo");
             log.Usuario.requestFocus();
+            }
         }
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

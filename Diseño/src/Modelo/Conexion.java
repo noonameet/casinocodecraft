@@ -19,7 +19,7 @@ public class Conexion {
     
     public Connection getConnection(){
         try{
-            String myBD = "jdbc:sqlite:D:\\SQLite\\LoginP.db";
+            String myBD = "jdbc:sqlite:C:\\Users\\SENA\\Downloads\\SS\\LoginP.db";
             con = DriverManager.getConnection(myBD);
             return con;
         }catch(SQLException e){
