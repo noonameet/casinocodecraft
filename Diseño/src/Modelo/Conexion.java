@@ -8,7 +8,7 @@ import java.sql.SQLException;
  */
 public class Conexion {
 
-    Connection con;
+
 
     public Conexion() {
     }
