@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,6 +15,8 @@ public class Reg_EmpleadosDAO {
     
     Conexion con = new Conexion();
     Connection conex = con.getConnection();
+    PreparedStatement ps = null;
+    ResultSet rs = null;
     
     private void registrarEmpleado(Reg_Empleados emple) {
         try {
@@ -117,6 +120,26 @@ public class Reg_EmpleadosDAO {
     
     public ArrayList<Reg_Empleados> obtenerEmpleados() {
         return obtenerRolesEmpleados();
+    }
+    
+    public boolean autenticarUsuarios(String pUser, String pClave, int prol) {
+
+        String sql = "SELECT usuario, clave, rol FROM reg_empleados WHERE usuario=? and clave=? and rol=?";
+
+        try {
+            ps = conex.prepareStatement(sql);
+            ps.setString(1, pUser);
+            ps.setString(2, pClave);
+            ps.setInt(3, prol);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, " " + e.toString());
+        }
+        return false;
     }
     
     public int registrarEmpleados(Reg_Empleados emple) {

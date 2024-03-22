@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.*;
+import Vista.Log_in;
 import Vista.Vista;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -36,6 +37,7 @@ public class Controlador implements ActionListener {
     Mesa mesa = new Mesa();
     Gen_Factura factura = new Gen_Factura();
     Ingredientes invent = new Ingredientes();
+    Log_in log = new Log_in();
     
     IngredientesDAO ingrediente = new IngredientesDAO();
     Reg_ClienteDAO modeloCli = new Reg_ClienteDAO();
@@ -54,33 +56,56 @@ public class Controlador implements ActionListener {
     private static final int ROL_MESERO = 3;
     private static final int ROL_CAJERO = 2;
 
-    public Controlador(Vista v) {
+    public Controlador(Vista v, Log_in log) {
         this.v = v;
-        this.v.btnRegistrarCliente.addActionListener(this);
-        this.v.btnRegistrarEmpleado.addActionListener(this);
+        this.log = log;
+        this.log.ingresar.addActionListener(this);
+        //this.v.btnRegistrarCliente.addActionListener(this);
+        //this.v.btnRegistrarEmpleado.addActionListener(this);
         //this.v.btnRegistrarMesa.addActionListener(this);
         //this.v.btnRegistrarProducto.addActionListener(this);
         //this.v.btnAgregarPedido.addActionListener(this);
         //this.v.btnEliminarPedido.addActionListener(this);
         //this.v.btnModificarPedido.addActionListener(this);
         //this.v.btnListarPedido.addActionListener(this);
-        this.v.btnGenerarFactura.addActionListener(this);
-        this.v.btnAsociarProducto.addActionListener(this);
-        this.v.btnrefresh.addActionListener(this);
-        this.v.btnregister.addActionListener(this);
-        this.cargarCategorias();
-        this.cargarinvactual();
-        this.mostrarRoles();
-        this.mostrarTiposPago();
-        this.mostrarRolesMeseros();
-        this.mostrarProductosAsociados();
-        this.v.ivcategoria.addActionListener(this);
-        this.mostrarRoles(ROL_MESERO, v.comboMesero);
-        this.mostrarRoles(ROL_CAJERO, v.comboCajero);
+        //this.v.btnGenerarFactura.addActionListener(this);
+        //this.v.btnAsociarProducto.addActionListener(this);
+        //this.v.btnrefresh.addActionListener(this);
+        //this.v.btnregister.addActionListener(this);
+        //this.cargarCategorias();
+        //this.cargarinvactual();
+        //this.mostrarRoles();
+        //this.mostrarTiposPago();
+        //this.mostrarRolesMeseros();
+        //this.mostrarProductosAsociados();
+        //this.v.ivcategoria.addActionListener(this);
+        //this.mostrarRoles(ROL_MESERO, v.comboMesero);
+        //this.mostrarRoles(ROL_CAJERO, v.comboCajero);
 
     }
+    
+    private void autenticarUsuarios() {
 
-    private void registrarCliente() {
+        String usuario = log.Usuario.getText();
+        String clave = new String(log.Pass.getPassword());
+        if(modeloEmple.autenticarUsuarios(usuario,clave,1)){
+            JOptionPane.showMessageDialog(null, "Bienvenido/a al sistema "+usuario);
+            log.setVisible(false);
+            v.setVisible(true);
+        }else if(modeloEmple.autenticarUsuarios(usuario,clave,2)){
+            JOptionPane.showMessageDialog(null, "Bienvenido/a al sistema "+usuario);
+            log.setVisible(false);
+            v.setVisible(true);
+            v.opc6.setVisible(false);
+            v.opc7.setVisible(false);
+            v.opc8.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error, intente de nuevo");
+            log.Usuario.requestFocus();
+        }
+    }
+
+    /*private void registrarCliente() {
 
         String nombre = v.txt.getText();
         String apellido = v.txt2.getText();
@@ -170,7 +195,7 @@ public class Controlador implements ActionListener {
         
         modeloMesa.
         
-    }*/
+    }
     private void cargarCategorias() {
         ArrayList<Categorias> categorias = modeloCat.getObtenerCategorias();
         v.combocategorias.removeAllItems();
@@ -334,11 +359,14 @@ public class Controlador implements ActionListener {
     private void mostrarProductosAsociados() {
         DefaultTableModel model = modeloPro.getProductosAsociados();
         v.jTblasociados.setModel(model);
-    }
+    }*/
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == v.btnrefresh){
+        if (e.getSource() == log.ingresar) {
+            autenticarUsuarios();
+        }
+        /*if (e.getSource() == v.btnrefresh){
             mostrarProductosAsociados();
         }
         if (e.getSource() == v.btnAsociarProducto) {
@@ -373,7 +401,7 @@ public class Controlador implements ActionListener {
             }
         } else if (e.getSource() == v.btnGenerarFactura) {
             generarFactura(); // Esta parte está comentada, asegúrate de implementarla correctamente
-        }
+        }*/
     }
 
     private boolean camposVacios(JTextField... campos) {
