@@ -13,6 +13,7 @@ public class Proyecto {
         
         Controlador ct = new Controlador(vs, log);
         log.setResizable(false); 
-        log.setVisible(true);
+        //log.setVisible(true);
+        vs.setVisible(true);
     }
 }

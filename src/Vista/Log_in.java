@@ -19,7 +19,7 @@ public class Log_in extends javax.swing.JFrame {
      */
     public Log_in() {
         initComponents();
-        ImageIcon img = new ImageIcon(getClass().getResource("/Img/fuji-mountain.png"));
+        ImageIcon img = new ImageIcon(getClass().getResource("/Imagenes/fuji-mountain.png"));
         this.setIconImage(img.getImage());
         setLocationRelativeTo(null);
         setResizable(false);
@@ -110,9 +110,9 @@ public class Log_in extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/person.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/person.png"))); // NOI18N
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/key.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/key.png"))); // NOI18N
 
         jButton1.setForeground(new java.awt.Color(102, 102, 102));
         jButton1.setText("Forgot your Password?");
@@ -232,7 +232,7 @@ public class Log_in extends javax.swing.JFrame {
 
         BackGround.setBackground(new java.awt.Color(164, 196, 181));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/PYh.gif"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PYh.gif"))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Fira Code Light", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -337,6 +337,7 @@ public class Log_in extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

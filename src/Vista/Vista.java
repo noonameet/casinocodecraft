@@ -1,17 +1,24 @@
 package Vista;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.LayoutManager;
-import java.awt.RenderingHints;
-import javax.swing.JPanel;
 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+
+/**
+ *
+ * @author SENA
+ */
 public class Vista extends javax.swing.JFrame {
 
+    /**
+     * Creates new form ExperimentoV2
+     */
     public Vista() {
         initComponents();
+        //ocultar menus
         this.setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         AGREGARPRODUCTO.setVisible(false);
@@ -22,9 +29,15 @@ public class Vista extends javax.swing.JFrame {
         CONSULTARINVENTARIO.setVisible(false);
         INICIO.setVisible(true);
         CREARUSUARIO.setVisible(false);
-        
-        
-        
+        //ocultar labels titulos
+        LABELREGPROD.setVisible(false);
+        LABINGREPEDI.setVisible(false);
+        LABGENFACT.setVisible(false);
+        LABELEGMESA.setVisible(false);
+        LABREGISCLIE.setVisible(false);
+        LABELINICI.setVisible(true);
+        LABECONSUINV.setVisible(false);
+        LABREGIUSU.setVisible(false);
         
     }
 
@@ -37,9 +50,22 @@ public class Vista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BackGround = new javax.swing.JPanel();
-        OPCIONES = new javax.swing.JPanel();
+        Back = new javax.swing.JPanel();
+        PanelSuperior = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        LABELREGPROD = new javax.swing.JLabel();
+        LABGENFACT = new javax.swing.JLabel();
+        LABINGREPEDI = new javax.swing.JLabel();
+        LABELEGMESA = new javax.swing.JLabel();
+        LABREGISCLIE = new javax.swing.JLabel();
+        LABECONSUINV = new javax.swing.JLabel();
+        LABELINICI = new javax.swing.JLabel();
+        LABREGIUSU = new javax.swing.JLabel();
+        OPCIONES = new javax.swing.JPanel();
         opc1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         opc2 = new javax.swing.JPanel();
@@ -58,38 +84,30 @@ public class Vista extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         MENUS = new javax.swing.JPanel();
         AGREGARPRODUCTO = new javax.swing.JPanel();
-        panelRedondo18 = new Modelo.PanelRedondo();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         panelRedondo19 = new Modelo.PanelRedondo();
         jLabel54 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
         jLabel66 = new javax.swing.JLabel();
         jLabel67 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         jTextField14 = new javax.swing.JTextField();
         jComboBox5 = new javax.swing.JComboBox<>();
         jButton6 = new javax.swing.JButton();
         jTextField15 = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         INGRESARPEDIDOS = new javax.swing.JPanel();
         panelRedondo22 = new Modelo.PanelRedondo();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
         panelRedondo5 = new Modelo.PanelRedondo();
-        jLabel36 = new javax.swing.JLabel();
         jLabel62 = new javax.swing.JLabel();
         jTextField18 = new javax.swing.JTextField();
         jLabel63 = new javax.swing.JLabel();
         jComboBox9 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
-        jSeparator4 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         GENERARFACTURA = new javax.swing.JPanel();
         panelRedondo21 = new Modelo.PanelRedondo();
@@ -104,30 +122,44 @@ public class Vista extends javax.swing.JFrame {
         panelRedondo23 = new Modelo.PanelRedondo();
         jLabel59 = new javax.swing.JLabel();
         jTextField13 = new javax.swing.JTextField();
-        jLabel27 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
+        jLabel36 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         ELEGIRMESA = new javax.swing.JPanel();
+        jLabel50 = new javax.swing.JLabel();
+        panelRedondo24 = new Modelo.PanelRedondo();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTable7 = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        panelRedondo25 = new Modelo.PanelRedondo();
+        jLabel46 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
         REGISTRARCLIENTE = new javax.swing.JPanel();
         panelRedondo1 = new Modelo.PanelRedondo();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtNombreC = new javax.swing.JTextField();
+        txtApellidoC = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtCedulaC = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtTelefonoC = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel37 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        txtDireccionC = new javax.swing.JTextField();
+        btnRegistrarCliente = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         CONSULTARINVENTARIO = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable6 = new javax.swing.JTable();
+        jLabel51 = new javax.swing.JLabel();
         INICIO = new javax.swing.JPanel();
         panelRedondo2 = new Modelo.PanelRedondo();
         jLabel20 = new javax.swing.JLabel();
@@ -144,25 +176,96 @@ public class Vista extends javax.swing.JFrame {
         panelRedondo6 = new Modelo.PanelRedondo();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
-        jTextField19 = new javax.swing.JTextField();
-        jTextField20 = new javax.swing.JTextField();
+        txtNombreEmpleadoE = new javax.swing.JTextField();
+        txtApellidoEmpleadoE = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
-        jTextField21 = new javax.swing.JTextField();
+        txtCedulaEmpleadoE = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
-        jTextField22 = new javax.swing.JTextField();
+        txtTelefonoEmpleadoE = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
-        jTextField23 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        btnRegistrarEmpleado = new javax.swing.JButton();
         jLabel43 = new javax.swing.JLabel();
-        jTextField24 = new javax.swing.JTextField();
+        txtUsuarioE = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        txtContraseñaE = new javax.swing.JPasswordField();
+        comboRoles = new javax.swing.JComboBox<>();
         jLabel35 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        BackGround.setBackground(new java.awt.Color(255, 255, 255));
-        BackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Back.setBackground(new java.awt.Color(204, 255, 204));
+        Back.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PanelSuperior.setBackground(new java.awt.Color(153, 153, 153));
+        PanelSuperior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-linea-vertical-50.png"))); // NOI18N
+        PanelSuperior.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/SenaLogo.png"))); // NOI18N
+        PanelSuperior.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 60, 70));
+
+        jLabel33.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel33.setText("CasinoCraft");
+        PanelSuperior.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
+
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-usuario-64.png"))); // NOI18N
+        PanelSuperior.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 10, -1, -1));
+
+        jLabel52.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        jLabel52.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel52.setText("HELLO, ADMIN");
+        PanelSuperior.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(1680, 30, -1, -1));
+
+        LABELREGPROD.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        LABELREGPROD.setForeground(new java.awt.Color(255, 255, 255));
+        LABELREGPROD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-comida-96.png"))); // NOI18N
+        LABELREGPROD.setText("REGISTRO DE PRODUCTOS");
+        PanelSuperior.add(LABELREGPROD, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 410, 60));
+
+        LABGENFACT.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        LABGENFACT.setForeground(new java.awt.Color(255, 255, 255));
+        LABGENFACT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-buscar-cliente-96.png"))); // NOI18N
+        LABGENFACT.setText("GENERAR FACTURA");
+        PanelSuperior.add(LABGENFACT, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 10, 370, 70));
+
+        LABINGREPEDI.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        LABINGREPEDI.setForeground(new java.awt.Color(255, 255, 255));
+        LABINGREPEDI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/INGRESAR.png"))); // NOI18N
+        LABINGREPEDI.setText("INGRESAR PEDIDO");
+        PanelSuperior.add(LABINGREPEDI, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, 390, 70));
+
+        LABELEGMESA.setFont(new java.awt.Font("Roboto Medium", 0, 36)); // NOI18N
+        LABELEGMESA.setForeground(new java.awt.Color(255, 255, 255));
+        LABELEGMESA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-mesa-64.png"))); // NOI18N
+        LABELEGMESA.setText("ELEGIR MESA");
+        PanelSuperior.add(LABELEGMESA, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, 380, 70));
+
+        LABREGISCLIE.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        LABREGISCLIE.setForeground(new java.awt.Color(255, 255, 255));
+        LABREGISCLIE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-persona-de-sexo-masculino-64.png"))); // NOI18N
+        LABREGISCLIE.setText("REGISTRAR CLIENTE");
+        PanelSuperior.add(LABREGISCLIE, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 470, 70));
+
+        LABECONSUINV.setFont(new java.awt.Font("Roboto Medium", 0, 36)); // NOI18N
+        LABECONSUINV.setForeground(new java.awt.Color(255, 255, 255));
+        LABECONSUINV.setText("CONSULTAR INVENTARIO");
+        PanelSuperior.add(LABECONSUINV, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 470, 40));
+
+        LABELINICI.setFont(new java.awt.Font("Roboto Medium", 0, 36)); // NOI18N
+        LABELINICI.setForeground(new java.awt.Color(255, 255, 255));
+        LABELINICI.setText("INICIO");
+        PanelSuperior.add(LABELINICI, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 20, -1, 50));
+
+        LABREGIUSU.setFont(new java.awt.Font("Roboto Medium", 0, 36)); // NOI18N
+        LABREGIUSU.setForeground(new java.awt.Color(255, 255, 255));
+        LABREGIUSU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-register-64.png"))); // NOI18N
+        LABREGIUSU.setText("REGISTRAR USUARIO");
+        PanelSuperior.add(LABREGIUSU, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 420, 30));
+
+        Back.add(PanelSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1940, 80));
 
         OPCIONES.setBackground(new java.awt.Color(0, 0, 0));
         OPCIONES.setPreferredSize(new java.awt.Dimension(310, 1090));
@@ -172,10 +275,6 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        jLabel34.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setText("rol user");
-
         opc1.setBackground(new java.awt.Color(0, 0, 0));
         opc1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         opc1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -184,25 +283,25 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("INICIO");
+        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout opc1Layout = new javax.swing.GroupLayout(opc1);
         opc1.setLayout(opc1Layout);
         opc1Layout.setHorizontalGroup(
             opc1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(opc1Layout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opc1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         opc1Layout.setVerticalGroup(
             opc1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(opc1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel7)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         opc2.setBackground(new java.awt.Color(0, 0, 0));
@@ -216,6 +315,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("ELEGIR MESA");
+        jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout opc2Layout = new javax.swing.GroupLayout(opc2);
         opc2.setLayout(opc2Layout);
@@ -229,7 +329,7 @@ public class Vista extends javax.swing.JFrame {
         opc2Layout.setVerticalGroup(
             opc2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opc2Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13)
                 .addGap(24, 24, 24))
         );
@@ -245,6 +345,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("INGRESAR PEDIDO");
+        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout opc3Layout = new javax.swing.GroupLayout(opc3);
         opc3.setLayout(opc3Layout);
@@ -258,7 +359,7 @@ public class Vista extends javax.swing.JFrame {
         opc3Layout.setVerticalGroup(
             opc3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opc3Layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(29, 29, 29))
         );
@@ -274,6 +375,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("REGISTRAR CLIENTE");
+        jLabel14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout opc4Layout = new javax.swing.GroupLayout(opc4);
         opc4.setLayout(opc4Layout);
@@ -289,7 +391,7 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(opc4Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel14)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         opc5.setBackground(new java.awt.Color(0, 0, 0));
@@ -303,6 +405,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("GENERAR FACTURA");
+        jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout opc5Layout = new javax.swing.GroupLayout(opc5);
         opc5.setLayout(opc5Layout);
@@ -318,7 +421,7 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(opc5Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel15)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         opc6.setBackground(new java.awt.Color(0, 0, 0));
@@ -333,6 +436,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel29.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setText("AGREGAR PRODUCTO");
+        jLabel29.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout opc6Layout = new javax.swing.GroupLayout(opc6);
         opc6.setLayout(opc6Layout);
@@ -341,12 +445,12 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(opc6Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(jLabel29)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         opc6Layout.setVerticalGroup(
             opc6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opc6Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel29)
                 .addGap(24, 24, 24))
         );
@@ -363,6 +467,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setText("CONSULTAR INVENTARIO");
+        jLabel32.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout opc7Layout = new javax.swing.GroupLayout(opc7);
         opc7.setLayout(opc7Layout);
@@ -371,12 +476,12 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(opc7Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel32)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         opc7Layout.setVerticalGroup(
             opc7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opc7Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(jLabel32)
                 .addGap(22, 22, 22))
         );
@@ -393,6 +498,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel28.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("REGISTRAR CUENTA");
+        jLabel28.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout opc8Layout = new javax.swing.GroupLayout(opc8);
         opc8.setLayout(opc8Layout);
@@ -401,12 +507,12 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(opc8Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(jLabel28)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         opc8Layout.setVerticalGroup(
             opc8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, opc8Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(jLabel28)
                 .addGap(21, 21, 21))
         );
@@ -417,10 +523,6 @@ public class Vista extends javax.swing.JFrame {
             OPCIONESLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(opc6, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
             .addComponent(opc7, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
-            .addGroup(OPCIONESLayout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(jLabel34)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(opc1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(opc2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(opc4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -434,82 +536,29 @@ public class Vista extends javax.swing.JFrame {
         OPCIONESLayout.setVerticalGroup(
             OPCIONESLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(OPCIONESLayout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jLabel34)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
-                .addComponent(opc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155)
+                .addComponent(opc1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(opc2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opc2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(opc3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opc3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(opc4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opc4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(opc5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opc5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(opc6, 63, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opc6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(opc7, 63, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opc7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opc8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(143, 143, 143))
+                .addComponent(opc8, 63, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(340, Short.MAX_VALUE))
         );
 
-        BackGround.add(OPCIONES, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        Back.add(OPCIONES, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, -1, 1010));
 
         AGREGARPRODUCTO.setBackground(new java.awt.Color(102, 102, 0));
         AGREGARPRODUCTO.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        panelRedondo18.setBackground(new java.awt.Color(255, 255, 255, 30));
-        panelRedondo18.setRoundBottomLeft(50);
-        panelRedondo18.setRoundBottomRight(50);
-        panelRedondo18.setRoundTopLeft(50);
-        panelRedondo18.setRoundTopRight(50);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "NOMBRE", "CATEGORIA", "CANTIDAD", "PRECIO"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jLabel3.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-trolley-64.png"))); // NOI18N
-        jLabel3.setText("CONSULTAR PRODUCTOS");
-
-        javax.swing.GroupLayout panelRedondo18Layout = new javax.swing.GroupLayout(panelRedondo18);
-        panelRedondo18.setLayout(panelRedondo18Layout);
-        panelRedondo18Layout.setHorizontalGroup(
-            panelRedondo18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondo18Layout.createSequentialGroup()
-                .addGroup(panelRedondo18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRedondo18Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(panelRedondo18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelRedondo18Layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(jLabel3)))
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-        panelRedondo18Layout.setVerticalGroup(
-            panelRedondo18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo18Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
-        );
-
-        AGREGARPRODUCTO.add(panelRedondo18, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, 620, 850));
 
         panelRedondo19.setBackground(new java.awt.Color(255, 255, 255, 30));
         panelRedondo19.setRoundBottomLeft(50);
@@ -519,28 +568,23 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel54.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-instacart-64.png"))); // NOI18N
-        jLabel54.setText("NAME");
+        jLabel54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-instacart-64.png"))); // NOI18N
+        jLabel54.setText("NOMBRE DEL PRODUCTO");
 
         jLabel65.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel65.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-diversidad-64.png"))); // NOI18N
+        jLabel65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-diversidad-64.png"))); // NOI18N
         jLabel65.setText("CATEGORIA");
 
         jLabel66.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel66.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel66.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cantidad.png"))); // NOI18N
+        jLabel66.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cantidad.png"))); // NOI18N
         jLabel66.setText("CANTIDAD");
 
         jLabel67.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel67.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel67.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/precio.png"))); // NOI18N
+        jLabel67.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/precio.png"))); // NOI18N
         jLabel67.setText("PRECIO");
-
-        jLabel49.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-comida-96.png"))); // NOI18N
-        jLabel49.setText("REGISTRO DE PRODUCTOS");
 
         jTextField10.setForeground(new java.awt.Color(204, 204, 204));
         jTextField10.setText("jTextField8");
@@ -565,57 +609,62 @@ public class Vista extends javax.swing.JFrame {
         panelRedondo19Layout.setHorizontalGroup(
             panelRedondo19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondo19Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
                 .addGroup(panelRedondo19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRedondo19Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(panelRedondo19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel54)
-                            .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel65)
-                            .addComponent(jLabel66)
-                            .addComponent(jLabel67)
-                            .addComponent(jTextField15)
-                            .addComponent(jTextField14)
-                            .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField10)
-                            .addComponent(jSeparator3)))
-                    .addGroup(panelRedondo19Layout.createSequentialGroup()
-                        .addGap(178, 178, 178)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel54)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel66)
+                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel65)
+                    .addComponent(jLabel67))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo19Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(156, 156, 156))
         );
         panelRedondo19Layout.setVerticalGroup(
             panelRedondo19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondo19Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabel49)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel54)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jLabel65)
+                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
                 .addComponent(jLabel66)
-                .addGap(26, 26, 26)
-                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel65)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel67)
-                .addGap(27, 27, 27)
-                .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton6)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        AGREGARPRODUCTO.add(panelRedondo19, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 139, -1, -1));
+        AGREGARPRODUCTO.add(panelRedondo19, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 430, 640));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/WallpapersBackground/pexels-erike-fusiki-8150317.jpg"))); // NOI18N
-        AGREGARPRODUCTO.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1640, 1080));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "NOMBRE", "CATEGORIA", "CANTIDAD", "PRECIO"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        AGREGARPRODUCTO.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 340, 520, 630));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nebulosa-rosa-en-el-universo_2560x1440_xtrafondos.com.jpg"))); // NOI18N
+        AGREGARPRODUCTO.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1660, 1080));
 
         INGRESARPEDIDOS.setBackground(new java.awt.Color(51, 51, 255));
         INGRESARPEDIDOS.setPreferredSize(new java.awt.Dimension(1633, 1091));
@@ -626,10 +675,6 @@ public class Vista extends javax.swing.JFrame {
         panelRedondo22.setRoundBottomRight(50);
         panelRedondo22.setRoundTopLeft(50);
         panelRedondo22.setRoundTopRight(50);
-
-        jLabel4.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("LISTA DE PEDIDOS");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -650,31 +695,26 @@ public class Vista extends javax.swing.JFrame {
         panelRedondo22Layout.setHorizontalGroup(
             panelRedondo22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondo22Layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addGroup(panelRedondo22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo22Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))
+                        .addGap(44, 44, 44))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo22Layout.createSequentialGroup()
                         .addComponent(jButton4)
-                        .addGap(157, 157, 157))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo22Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(158, 158, 158))))
+                        .addGap(168, 168, 168))))
         );
         panelRedondo22Layout.setVerticalGroup(
             panelRedondo22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondo22Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        INGRESARPEDIDOS.add(panelRedondo22, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 160, 550, 620));
+        INGRESARPEDIDOS.add(panelRedondo22, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 270, 550, 540));
 
         panelRedondo5.setBackground(new java.awt.Color(255, 255, 255, 50));
         panelRedondo5.setRoundBottomLeft(50);
@@ -682,14 +722,9 @@ public class Vista extends javax.swing.JFrame {
         panelRedondo5.setRoundTopLeft(50);
         panelRedondo5.setRoundTopRight(50);
 
-        jLabel36.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/INGRESAR.png"))); // NOI18N
-        jLabel36.setText("INGRESAR PEDIDO");
-
         jLabel62.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel62.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel62.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cantidad.png"))); // NOI18N
+        jLabel62.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cantidad.png"))); // NOI18N
         jLabel62.setText("CANTIDAD");
 
         jTextField18.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
@@ -698,8 +733,8 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel63.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel63.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel63.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-trabajador-de-sexo-masculino-64.png"))); // NOI18N
-        jLabel63.setText("MESERO ASIGNADO");
+        jLabel63.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-trolley-64.png"))); // NOI18N
+        jLabel63.setText("PRODUCTO");
 
         jComboBox9.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jComboBox9.setForeground(new java.awt.Color(102, 102, 102));
@@ -716,47 +751,37 @@ public class Vista extends javax.swing.JFrame {
         panelRedondo5Layout.setHorizontalGroup(
             panelRedondo5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondo5Layout.createSequentialGroup()
-                .addGroup(panelRedondo5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelRedondo5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRedondo5Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(panelRedondo5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel63)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel62)
-                            .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addGroup(panelRedondo5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel63)
+                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel62)
+                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addGap(177, 177, 177))
+                .addGap(107, 107, 107))
         );
         panelRedondo5Layout.setVerticalGroup(
             panelRedondo5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondo5Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel36)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(66, 66, 66)
                 .addComponent(jLabel63)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jLabel62)
                 .addGap(18, 18, 18)
+                .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel62)
+                .addGap(33, 33, 33)
                 .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addGap(49, 49, 49)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
-        INGRESARPEDIDOS.add(panelRedondo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 490, 630));
+        INGRESARPEDIDOS.add(panelRedondo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 340, 530));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/WallpapersBackground/haris-korovesis-iS2dlzcANHY-unsplash.jpg"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nebulosa-rosa-en-el-universo_2560x1440_xtrafondos.com.jpg"))); // NOI18N
         INGRESARPEDIDOS.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1640, 1090));
 
         GENERARFACTURA.setBackground(new java.awt.Color(255, 0, 0));
@@ -771,12 +796,12 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel58.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel58.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-mesa-64.png"))); // NOI18N
+        jLabel58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-mesa-64.png"))); // NOI18N
         jLabel58.setText("MESA");
 
         jLabel16.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-buscar-96.png"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-buscar-96.png"))); // NOI18N
         jLabel16.setText("CONSULTAR MESA");
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
@@ -799,11 +824,7 @@ public class Vista extends javax.swing.JFrame {
         panelRedondo21Layout.setHorizontalGroup(
             panelRedondo21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondo21Layout.createSequentialGroup()
-                .addGap(173, 173, 173)
-                .addComponent(jLabel58)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo21Layout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(panelRedondo21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo21Layout.createSequentialGroup()
                         .addGroup(panelRedondo21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -813,11 +834,15 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(81, 81, 81))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo21Layout.createSequentialGroup()
-                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(128, 128, 128))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo21Layout.createSequentialGroup()
                         .addComponent(jButton5)
-                        .addGap(170, 170, 170))))
+                        .addGap(170, 170, 170))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo21Layout.createSequentialGroup()
+                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(126, 126, 126))))
+            .addGroup(panelRedondo21Layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(jLabel58)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelRedondo21Layout.setVerticalGroup(
             panelRedondo21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -826,11 +851,11 @@ public class Vista extends javax.swing.JFrame {
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel58)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -849,13 +874,8 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel59.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel59.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel59.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-usuario-64.png"))); // NOI18N
+        jLabel59.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-usuario-64.png"))); // NOI18N
         jLabel59.setText("CLIENTE");
-
-        jLabel27.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-buscar-cliente-96.png"))); // NOI18N
-        jLabel27.setText("CONSULTAR CLIENTE");
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -867,69 +887,215 @@ public class Vista extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
+        jLabel36.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-buscar-cliente-96.png"))); // NOI18N
+        jLabel36.setText("CONSULTAR CLIENTE");
+
         javax.swing.GroupLayout panelRedondo23Layout = new javax.swing.GroupLayout(panelRedondo23);
         panelRedondo23.setLayout(panelRedondo23Layout);
         panelRedondo23Layout.setHorizontalGroup(
             panelRedondo23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(panelRedondo23Layout.createSequentialGroup()
                 .addGroup(panelRedondo23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRedondo23Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
                     .addGroup(panelRedondo23Layout.createSequentialGroup()
-                        .addGroup(panelRedondo23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelRedondo23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(panelRedondo23Layout.createSequentialGroup()
-                                    .addGap(151, 151, 151)
-                                    .addComponent(jLabel59))
-                                .addGroup(panelRedondo23Layout.createSequentialGroup()
-                                    .addGap(65, 65, 65)
-                                    .addComponent(jLabel27))))
+                        .addGroup(panelRedondo23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRedondo23Layout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRedondo23Layout.createSequentialGroup()
+                                .addGap(159, 159, 159)
+                                .addComponent(jLabel59)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(panelRedondo23Layout.createSequentialGroup()
-                .addGap(126, 126, 126)
+                .addGap(133, 133, 133)
                 .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(panelRedondo23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRedondo23Layout.createSequentialGroup()
+                    .addGap(75, 75, 75)
+                    .addComponent(jLabel36)
+                    .addContainerGap(84, Short.MAX_VALUE)))
         );
         panelRedondo23Layout.setVerticalGroup(
             panelRedondo23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondo23Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(148, 148, 148)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel59)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
+                .addGap(24, 24, 24)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(53, Short.MAX_VALUE))
+            .addGroup(panelRedondo23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelRedondo23Layout.createSequentialGroup()
+                    .addGap(56, 56, 56)
+                    .addComponent(jLabel36)
+                    .addContainerGap(368, Short.MAX_VALUE)))
         );
 
         GENERARFACTURA.add(panelRedondo23, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 500, 520));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/WallpapersBackground/david-werbrouck-5GwLlb-_UYk-unsplash.jpg"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nebulosa-rosa-en-el-universo_2560x1440_xtrafondos.com.jpg"))); // NOI18N
         GENERARFACTURA.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1630, 1090));
 
         ELEGIRMESA.setBackground(new java.awt.Color(153, 0, 0));
         ELEGIRMESA.setPreferredSize(new java.awt.Dimension(1633, 1091));
+        ELEGIRMESA.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout ELEGIRMESALayout = new javax.swing.GroupLayout(ELEGIRMESA);
-        ELEGIRMESA.setLayout(ELEGIRMESALayout);
-        ELEGIRMESALayout.setHorizontalGroup(
-            ELEGIRMESALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1633, Short.MAX_VALUE)
+        jLabel50.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel50.setText("<html>Hola, Verifica El Estado Actual de la Mesa, Primero, asegúrate de que la mesa esté actualmente desocupada. <br><br> Presiona el Boton \"Ocupar Mesa\" Si la mesa está desocupada, para cambiar su estado a “Ocupada”. <br><br> Una vez la Mesa Vuelva a descoparse Presione el boton \"Desocupar\". <br> <html>");
+        jLabel50.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabel50.setInheritsPopupMenu(false);
+        ELEGIRMESA.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 1160, 294));
+
+        panelRedondo24.setBackground(new java.awt.Color(255, 255, 255, 30));
+        panelRedondo24.setRoundBottomLeft(50);
+        panelRedondo24.setRoundBottomRight(50);
+        panelRedondo24.setRoundTopLeft(50);
+        panelRedondo24.setRoundTopRight(50);
+
+        jScrollPane7.setBackground(new java.awt.Color(153, 255, 51));
+
+        jTable7.setAutoCreateRowSorter(true);
+        jTable7.setForeground(new java.awt.Color(255, 255, 255));
+        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"sdadsa", "dsasdasda"},
+                {"sdasda", "sdadsasda"},
+                {"sdasdasda", "sdasdasda"},
+                {"sdasdasdasda", "sdadsasdasda"},
+                {"sdasadsda", "sdasdasda"},
+                {"sdadas", null},
+                {null, null}
+            },
+            new String [] {
+                "Id Mesa", "Estado"
+            }
+        ));
+        jTable7.setFillsViewportHeight(true);
+        jTable7.setFocusable(false);
+        jTable7.setGridColor(new java.awt.Color(204, 204, 204));
+        jTable7.setRowHeight(25);
+        jTable7.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        jTable7.setShowGrid(true);
+        jTable7.getTableHeader().setReorderingAllowed(false);
+        jScrollPane7.setViewportView(jTable7);
+
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel47.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel47.setText("NUMERO DE MESA");
+
+        jLabel53.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel53.setText("SELECCIONAR MESA");
+
+        javax.swing.GroupLayout panelRedondo24Layout = new javax.swing.GroupLayout(panelRedondo24);
+        panelRedondo24.setLayout(panelRedondo24Layout);
+        panelRedondo24Layout.setHorizontalGroup(
+            panelRedondo24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRedondo24Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(panelRedondo24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelRedondo24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel53)
+                        .addGroup(panelRedondo24Layout.createSequentialGroup()
+                            .addComponent(jLabel47)
+                            .addGap(63, 63, 63)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
-        ELEGIRMESALayout.setVerticalGroup(
-            ELEGIRMESALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1091, Short.MAX_VALUE)
+        panelRedondo24Layout.setVerticalGroup(
+            panelRedondo24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo24Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(jLabel53)
+                .addGap(30, 30, 30)
+                .addGroup(panelRedondo24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
+
+        ELEGIRMESA.add(panelRedondo24, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 580, 550));
+
+        panelRedondo25.setBackground(new java.awt.Color(255, 255, 255, 30));
+        panelRedondo25.setRoundBottomLeft(50);
+        panelRedondo25.setRoundBottomRight(50);
+        panelRedondo25.setRoundTopLeft(50);
+        panelRedondo25.setRoundTopRight(50);
+
+        jLabel46.setFont(new java.awt.Font("Roboto Medium", 0, 36)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel46.setText("ACTUALIZAR MESA");
+
+        jButton9.setText("OCUPAR MESA");
+
+        jButton10.setText("DESOCUPAR MESA");
+
+        jLabel55.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        jLabel55.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel55.setText("<html>RECUERDA Verificar El Estado Actual de la Mesa, <br><br>Si la mesa esta desocupada pasara a \"Ocupada\",<br><br> Caso contrario Pasara a estar \"Desocupada\" <br> <html>");
+
+        javax.swing.GroupLayout panelRedondo25Layout = new javax.swing.GroupLayout(panelRedondo25);
+        panelRedondo25.setLayout(panelRedondo25Layout);
+        panelRedondo25Layout.setHorizontalGroup(
+            panelRedondo25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRedondo25Layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo25Layout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addGroup(panelRedondo25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo25Layout.createSequentialGroup()
+                        .addComponent(jLabel46)
+                        .addGap(125, 125, 125))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo25Layout.createSequentialGroup()
+                        .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))))
+        );
+        panelRedondo25Layout.setVerticalGroup(
+            panelRedondo25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRedondo25Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel46)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addGroup(panelRedondo25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+
+        ELEGIRMESA.add(panelRedondo25, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 400, 580, 550));
+
+        jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nebulosa-rosa-en-el-universo_2560x1440_xtrafondos.com.jpg"))); // NOI18N
+        ELEGIRMESA.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1940, 1090));
 
         REGISTRARCLIENTE.setBackground(new java.awt.Color(102, 255, 204));
         REGISTRARCLIENTE.setPreferredSize(new java.awt.Dimension(1633, 1091));
@@ -941,147 +1107,142 @@ public class Vista extends javax.swing.JFrame {
         panelRedondo1.setRoundTopLeft(50);
         panelRedondo1.setRoundTopRight(50);
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-usuario-masculino-en-círculo-96.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-usuario-masculino-en-círculo-96.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-usuario-64.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-usuario-64.png"))); // NOI18N
         jLabel1.setText("FULL USERNAME");
 
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setText("NAME");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreC.setForeground(new java.awt.Color(204, 204, 204));
+        txtNombreC.setText("NAME");
+        txtNombreC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtNombreCActionPerformed(evt);
             }
         });
 
-        jTextField2.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField2.setText("LAST NAME");
+        txtApellidoC.setForeground(new java.awt.Color(204, 204, 204));
+        txtApellidoC.setText("LAST NAME");
 
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-tarjeta-de-identificación-64.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-tarjeta-de-identificación-64.png"))); // NOI18N
         jLabel10.setText("IDENTIFCATION");
 
-        jTextField3.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField3.setText("CEDULA");
+        txtCedulaC.setForeground(new java.awt.Color(204, 204, 204));
+        txtCedulaC.setText("CEDULA");
 
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-teléfono-64.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-teléfono-64.png"))); // NOI18N
         jLabel11.setText("CELLPHONE");
 
-        jTextField4.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField4.setText("NUMBER");
+        txtTelefonoC.setForeground(new java.awt.Color(204, 204, 204));
+        txtTelefonoC.setText("NUMBER");
 
         jLabel12.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-geo-cerca-64.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-geo-cerca-64.png"))); // NOI18N
         jLabel12.setText("ADDRESS");
 
-        jTextField5.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField5.setText("ADDRESS");
+        txtDireccionC.setForeground(new java.awt.Color(204, 204, 204));
+        txtDireccionC.setText("ADDRESS");
 
-        jButton1.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("GUARDAR");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabel37.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel37.setText("REGISTRAR CLIENTE");
+        btnRegistrarCliente.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        btnRegistrarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarCliente.setText("GUARDAR");
+        btnRegistrarCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegistrarCliente.setContentAreaFilled(false);
+        btnRegistrarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout panelRedondo1Layout = new javax.swing.GroupLayout(panelRedondo1);
         panelRedondo1.setLayout(panelRedondo1Layout);
         panelRedondo1Layout.setHorizontalGroup(
             panelRedondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondo1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(panelRedondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRedondo1Layout.createSequentialGroup()
-                        .addGroup(panelRedondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField2)
-                        .addGap(55, 55, 55))
-                    .addGroup(panelRedondo1Layout.createSequentialGroup()
-                        .addGroup(panelRedondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel10)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 55, Short.MAX_VALUE))))
-            .addGroup(panelRedondo1Layout.createSequentialGroup()
-                .addGroup(panelRedondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRedondo1Layout.createSequentialGroup()
-                        .addGap(243, 243, 243)
-                        .addComponent(jLabel9))
-                    .addGroup(panelRedondo1Layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(jLabel37)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(199, 199, 199))
+                .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(219, 219, 219))
+            .addGroup(panelRedondo1Layout.createSequentialGroup()
+                .addGroup(panelRedondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRedondo1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(panelRedondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRedondo1Layout.createSequentialGroup()
+                                .addGroup(panelRedondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtDireccionC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTelefonoC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCedulaC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNombreC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtApellidoC, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10)))
+                    .addGroup(panelRedondo1Layout.createSequentialGroup()
+                        .addGap(252, 252, 252)
+                        .addComponent(jLabel9)))
+                .addGap(0, 65, Short.MAX_VALUE))
         );
         panelRedondo1Layout.setVerticalGroup(
             panelRedondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondo1Layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel37)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(panelRedondo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreC, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellidoC, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCedulaC, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel11)
                 .addGap(26, 26, 26)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTelefonoC, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel12)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addComponent(txtDireccionC, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
 
-        REGISTRARCLIENTE.add(panelRedondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 600, 880));
+        REGISTRARCLIENTE.add(panelRedondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 610, 800));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/backGround Gradient blue and red.jpg"))); // NOI18N
-        REGISTRARCLIENTE.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1630, 1100));
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nebulosa-rosa-en-el-universo_2560x1440_xtrafondos.com.jpg"))); // NOI18N
+        REGISTRARCLIENTE.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1630, 1110));
 
         CONSULTARINVENTARIO.setBackground(new java.awt.Color(204, 204, 0));
         CONSULTARINVENTARIO.setPreferredSize(new java.awt.Dimension(1633, 1091));
+        CONSULTARINVENTARIO.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout CONSULTARINVENTARIOLayout = new javax.swing.GroupLayout(CONSULTARINVENTARIO);
-        CONSULTARINVENTARIO.setLayout(CONSULTARINVENTARIOLayout);
-        CONSULTARINVENTARIOLayout.setHorizontalGroup(
-            CONSULTARINVENTARIOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1633, Short.MAX_VALUE)
-        );
-        CONSULTARINVENTARIOLayout.setVerticalGroup(
-            CONSULTARINVENTARIOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1091, Short.MAX_VALUE)
-        );
+        jScrollPane6.setBackground(new java.awt.Color(51, 255, 51));
+
+        jTable6.setBackground(new java.awt.Color(51, 255, 0));
+        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(jTable6);
+
+        CONSULTARINVENTARIO.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
+
+        jLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nebulosa-rosa-en-el-universo_2560x1440_xtrafondos.com.jpg"))); // NOI18N
+        CONSULTARINVENTARIO.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1630, 1090));
 
         INICIO.setBackground(new java.awt.Color(102, 0, 153));
         INICIO.setPreferredSize(new java.awt.Dimension(1633, 1091));
@@ -1100,48 +1261,46 @@ public class Vista extends javax.swing.JFrame {
         jLabel21.setText("ROL");
 
         jLabel22.setFont(new java.awt.Font("Roboto Light", 0, 36)); // NOI18N
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/CHECK.png"))); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CHECK.png"))); // NOI18N
         jLabel22.setText("ONLINE");
         jLabel22.setToolTipText("");
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/userLog.png"))); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/userLog.png"))); // NOI18N
 
         javax.swing.GroupLayout panelRedondo2Layout = new javax.swing.GroupLayout(panelRedondo2);
         panelRedondo2.setLayout(panelRedondo2Layout);
         panelRedondo2Layout.setHorizontalGroup(
             panelRedondo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondo2Layout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(jLabel21)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo2Layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
                 .addGroup(panelRedondo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo2Layout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addGap(133, 133, 133))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo2Layout.createSequentialGroup()
-                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo2Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addGap(129, 129, 129))))
+                    .addGroup(panelRedondo2Layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addGroup(panelRedondo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel19)))
+                    .addGroup(panelRedondo2Layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(jLabel21))
+                    .addGroup(panelRedondo2Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         panelRedondo2Layout.setVerticalGroup(
             panelRedondo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondo2Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jLabel20)
-                .addGap(58, 58, 58)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(jLabel22)
-                .addGap(47, 47, 47)
+                .addGap(55, 55, 55)
                 .addComponent(jLabel19)
-                .addGap(75, 75, 75)
+                .addGap(72, 72, 72)
+                .addComponent(jLabel20)
+                .addGap(67, 67, 67)
                 .addComponent(jLabel21)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addGap(85, 85, 85))
         );
 
-        INICIO.add(panelRedondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, 640));
+        INICIO.add(panelRedondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, 640));
 
         panelRedondo3.setBackground(new java.awt.Color(255, 255, 255, 50));
         panelRedondo3.setRoundBottomLeft(50);
@@ -1150,19 +1309,19 @@ public class Vista extends javax.swing.JFrame {
         panelRedondo3.setRoundTopRight(50);
 
         jLabel18.setFont(new java.awt.Font("Roboto", 0, 48)); // NOI18N
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/icons8-información-150.png"))); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-información-150.png"))); // NOI18N
         jLabel18.setText("INFO USER");
 
         jLabel24.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/user.png"))); // NOI18N
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/user.png"))); // NOI18N
         jLabel24.setText("NAME");
 
         jLabel25.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/pin.png"))); // NOI18N
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pin.png"))); // NOI18N
         jLabel25.setText("ID");
 
         jLabel26.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/phone-ringing.png"))); // NOI18N
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/phone-ringing.png"))); // NOI18N
         jLabel26.setText("NUMBER PHONE");
 
         javax.swing.GroupLayout panelRedondo3Layout = new javax.swing.GroupLayout(panelRedondo3);
@@ -1187,18 +1346,18 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(panelRedondo3Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel18)
-                .addGap(49, 49, 49)
+                .addGap(64, 64, 64)
                 .addComponent(jLabel24)
-                .addGap(43, 43, 43)
+                .addGap(47, 47, 47)
                 .addComponent(jLabel25)
-                .addGap(41, 41, 41)
+                .addGap(53, 53, 53)
                 .addComponent(jLabel26)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        INICIO.add(panelRedondo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 140, 950, 640));
+        INICIO.add(panelRedondo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 950, 640));
 
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/wallpaperflare.com_wallpaper (1).jpg"))); // NOI18N
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/wallpaperflare.com_wallpaper (1).jpg"))); // NOI18N
         INICIO.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1630, 1090));
 
         CREARUSUARIO.setBackground(new java.awt.Color(102, 255, 204));
@@ -1211,81 +1370,84 @@ public class Vista extends javax.swing.JFrame {
         panelRedondo6.setRoundTopLeft(50);
         panelRedondo6.setRoundTopRight(50);
 
-        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-usuario-masculino-en-círculo-96.png"))); // NOI18N
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-usuario-masculino-en-círculo-96.png"))); // NOI18N
 
         jLabel39.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-usuario-64.png"))); // NOI18N
+        jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-usuario-64.png"))); // NOI18N
         jLabel39.setText("FULL USERNAME");
 
-        jTextField19.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField19.setText("NAME");
-        jTextField19.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreEmpleadoE.setForeground(new java.awt.Color(204, 204, 204));
+        txtNombreEmpleadoE.setText("NAME");
+        txtNombreEmpleadoE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField19ActionPerformed(evt);
+                txtNombreEmpleadoEActionPerformed(evt);
             }
         });
 
-        jTextField20.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField20.setText("LAST NAME");
+        txtApellidoEmpleadoE.setForeground(new java.awt.Color(204, 204, 204));
+        txtApellidoEmpleadoE.setText("LAST NAME");
 
         jLabel40.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-tarjeta-de-identificación-64.png"))); // NOI18N
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-tarjeta-de-identificación-64.png"))); // NOI18N
         jLabel40.setText("IDENTIFCATION");
 
-        jTextField21.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField21.setText("CEDULA");
+        txtCedulaEmpleadoE.setForeground(new java.awt.Color(204, 204, 204));
+        txtCedulaEmpleadoE.setText("CEDULA");
 
         jLabel41.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-teléfono-64.png"))); // NOI18N
+        jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-teléfono-64.png"))); // NOI18N
         jLabel41.setText("CELLPHONE");
 
-        jTextField22.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField22.setText("NUMBER");
+        txtTelefonoEmpleadoE.setForeground(new java.awt.Color(204, 204, 204));
+        txtTelefonoEmpleadoE.setText("NUMBER");
 
         jLabel42.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-escudo-de-usuario-64.png"))); // NOI18N
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-escudo-de-usuario-64.png"))); // NOI18N
         jLabel42.setText("ROL");
 
-        jTextField23.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField23.setText("ROl");
-
-        jButton3.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("CREATE");
-        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarEmpleado.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        btnRegistrarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarEmpleado.setText("CREATE");
+        btnRegistrarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegistrarEmpleado.setContentAreaFilled(false);
+        btnRegistrarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel43.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-persona-de-sexo-masculino-64.png"))); // NOI18N
+        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-persona-de-sexo-masculino-64.png"))); // NOI18N
         jLabel43.setText("USER");
 
-        jTextField24.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField24.setText("jTextField17");
+        txtUsuarioE.setForeground(new java.awt.Color(204, 204, 204));
+        txtUsuarioE.setText("jTextField17");
 
         jLabel44.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-bloquear-64.png"))); // NOI18N
+        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-bloquear-64.png"))); // NOI18N
         jLabel44.setText("PASSWORD");
 
-        jPasswordField2.setForeground(new java.awt.Color(204, 204, 204));
-        jPasswordField2.setText("jPasswordField1");
+        txtContraseñaE.setForeground(new java.awt.Color(204, 204, 204));
+        txtContraseñaE.setText("jPasswordField1");
 
         javax.swing.GroupLayout panelRedondo6Layout = new javax.swing.GroupLayout(panelRedondo6);
         panelRedondo6.setLayout(panelRedondo6Layout);
         panelRedondo6Layout.setHorizontalGroup(
             panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondo6Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
                 .addGroup(panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRedondo6Layout.createSequentialGroup()
-                        .addComponent(jLabel42)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(274, 274, 274)
+                        .addComponent(jLabel38))
+                    .addGroup(panelRedondo6Layout.createSequentialGroup()
+                        .addGap(251, 251, 251)
+                        .addComponent(btnRegistrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelRedondo6Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondo6Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1296,67 +1458,64 @@ public class Vista extends javax.swing.JFrame {
                         .addGap(197, 197, 197))
                     .addGroup(panelRedondo6Layout.createSequentialGroup()
                         .addGroup(panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField23, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField22, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField21, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTelefonoEmpleadoE, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCedulaEmpleadoE, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNombreEmpleadoE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(70, 70, 70)
                         .addGroup(panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                            .addComponent(txtContraseñaE, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                             .addComponent(jLabel44, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField24, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField20))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(panelRedondo6Layout.createSequentialGroup()
-                .addGroup(panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtUsuarioE, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtApellidoEmpleadoE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelRedondo6Layout.createSequentialGroup()
-                        .addGap(252, 252, 252)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelRedondo6Layout.createSequentialGroup()
-                        .addGap(279, 279, 279)
-                        .addComponent(jLabel38)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRedondo6Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(comboRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel42))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         panelRedondo6Layout.setVerticalGroup(
             panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondo6Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(54, 54, 54)
                 .addComponent(jLabel38)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel39)
                 .addGap(18, 18, 18)
                 .addGroup(panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreEmpleadoE, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellidoEmpleadoE, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
                     .addComponent(jLabel43))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField24)
-                    .addComponent(jTextField21, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                    .addComponent(txtUsuarioE)
+                    .addComponent(txtCedulaEmpleadoE, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
                 .addGroup(panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel41)
                     .addComponent(jLabel44))
                 .addGap(18, 18, 18)
                 .addGroup(panelRedondo6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPasswordField2)
-                    .addComponent(jTextField22, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                    .addComponent(txtContraseñaE)
+                    .addComponent(txtTelefonoEmpleadoE, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel42)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(btnRegistrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        CREARUSUARIO.add(panelRedondo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 660, 830));
+        CREARUSUARIO.add(panelRedondo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 660, 780));
 
-        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/WallpapersBackground/cai-carney-deaqEVtdSgk-unsplash.jpg"))); // NOI18N
+        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nebulosa-rosa-en-el-universo_2560x1440_xtrafondos.com.jpg"))); // NOI18N
         CREARUSUARIO.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1640, 1120));
 
         javax.swing.GroupLayout MENUSLayout = new javax.swing.GroupLayout(MENUS);
@@ -1365,13 +1524,13 @@ public class Vista extends javax.swing.JFrame {
             MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MENUSLayout.createSequentialGroup()
                 .addGroup(MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(REGISTRARCLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(REGISTRARCLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 1636, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CONSULTARINVENTARIO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ELEGIRMESA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ELEGIRMESA, javax.swing.GroupLayout.PREFERRED_SIZE, 2560, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MENUSLayout.createSequentialGroup()
-                    .addComponent(INICIO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(MENUSLayout.createSequentialGroup()
+                    .addComponent(INICIO, javax.swing.GroupLayout.DEFAULT_SIZE, 2560, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MENUSLayout.createSequentialGroup()
@@ -1380,149 +1539,75 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MENUSLayout.createSequentialGroup()
                     .addComponent(INGRESARPEDIDOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 933, Short.MAX_VALUE)))
             .addGroup(MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MENUSLayout.createSequentialGroup()
                     .addComponent(GENERARFACTURA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 933, Short.MAX_VALUE)))
             .addGroup(MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MENUSLayout.createSequentialGroup()
                     .addComponent(CREARUSUARIO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 7, Short.MAX_VALUE)))
+                    .addGap(0, 933, Short.MAX_VALUE)))
         );
         MENUSLayout.setVerticalGroup(
             MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MENUSLayout.createSequentialGroup()
-                .addGroup(MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ELEGIRMESA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(REGISTRARCLIENTE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CONSULTARINVENTARIO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(CONSULTARINVENTARIO, javax.swing.GroupLayout.PREFERRED_SIZE, 1092, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(REGISTRARCLIENTE, javax.swing.GroupLayout.PREFERRED_SIZE, 1092, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ELEGIRMESA, javax.swing.GroupLayout.PREFERRED_SIZE, 1092, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MENUSLayout.createSequentialGroup()
-                    .addComponent(INICIO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(INICIO, javax.swing.GroupLayout.PREFERRED_SIZE, 1091, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 2203, Short.MAX_VALUE)))
             .addGroup(MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MENUSLayout.createSequentialGroup()
-                    .addComponent(AGREGARPRODUCTO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 20, Short.MAX_VALUE)))
+                    .addComponent(AGREGARPRODUCTO, javax.swing.GroupLayout.PREFERRED_SIZE, 1090, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 2204, Short.MAX_VALUE)))
             .addGroup(MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MENUSLayout.createSequentialGroup()
-                    .addComponent(INGRESARPEDIDOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 9, Short.MAX_VALUE)))
+                    .addComponent(INGRESARPEDIDOS, javax.swing.GroupLayout.PREFERRED_SIZE, 1091, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 2203, Short.MAX_VALUE)))
             .addGroup(MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MENUSLayout.createSequentialGroup()
-                    .addComponent(GENERARFACTURA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(GENERARFACTURA, javax.swing.GroupLayout.PREFERRED_SIZE, 1091, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 2203, Short.MAX_VALUE)))
             .addGroup(MENUSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(MENUSLayout.createSequentialGroup()
-                    .addComponent(CREARUSUARIO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 9, Short.MAX_VALUE)))
+                    .addComponent(CREARUSUARIO, javax.swing.GroupLayout.PREFERRED_SIZE, 1091, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 2203, Short.MAX_VALUE)))
         );
 
-        BackGround.add(MENUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 1630, 1090));
+        Back.add(MENUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 1630, 1010));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void opc8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc8MouseClicked
-        // TDO add your handling code here
-        AGREGARPRODUCTO.setVisible(false);
-        INGRESARPEDIDOS.setVisible(false);
-        GENERARFACTURA.setVisible(false);
-        
-        ELEGIRMESA.setVisible(false);
-        REGISTRARCLIENTE.setVisible(false);
-        CONSULTARINVENTARIO.setVisible(false);
-        INICIO.setVisible(false);
-        CREARUSUARIO.setVisible(true);
-        
-        //color al seleccionar X boton
-        opc1.setBackground(new Color(0,0,0));
-        opc2.setBackground(new Color(0,0,0));
-        opc3.setBackground(new Color(0,0,0));
-        opc4.setBackground(new Color(0,0,0));
-        opc5.setBackground(new Color(0,0,0));
-        opc6.setBackground(new Color(0,0,0));
-        opc7.setBackground(new Color(0,0,0));
-        opc8.setBackground(Color.CYAN);
-    }//GEN-LAST:event_opc8MouseClicked
-
-    private void opc6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc6MouseClicked
-        // TODO add your handling code here:
-        AGREGARPRODUCTO.setVisible(true);
-        INGRESARPEDIDOS.setVisible(false);
-        GENERARFACTURA.setVisible(false);
-        
-        ELEGIRMESA.setVisible(false);
-        REGISTRARCLIENTE.setVisible(false);
-        CONSULTARINVENTARIO.setVisible(false);
-        INICIO.setVisible(false);
-        CREARUSUARIO.setVisible(false);
-        
-        //color al seleccionar X boton
-        opc1.setBackground(new Color(0,0,0));
-        opc2.setBackground(new Color(0,0,0));
-        opc3.setBackground(new Color(0,0,0));
-        opc4.setBackground(new Color(0,0,0));
-        opc5.setBackground(new Color(0,0,0));
-        opc6.setBackground(Color.CYAN);
-        opc7.setBackground(new Color(0,0,0));
-        opc8.setBackground(new Color(0,0,0));
-       
-    }//GEN-LAST:event_opc6MouseClicked
-
-    private void opc7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc7MouseClicked
-        // TODO add your handling code here:
-        AGREGARPRODUCTO.setVisible(false);
-        INGRESARPEDIDOS.setVisible(false);
-        GENERARFACTURA.setVisible(false);
-        
-        ELEGIRMESA.setVisible(false);
-        REGISTRARCLIENTE.setVisible(false);
-        CONSULTARINVENTARIO.setVisible(true);
-        INICIO.setVisible(false);
-        CREARUSUARIO.setVisible(false);
-        
-        //color al seleccionar X boton
-        opc1.setBackground(new Color(0,0,0));
-        opc2.setBackground(new Color(0,0,0));
-        opc3.setBackground(new Color(0,0,0));
-        opc4.setBackground(new Color(0,0,0));
-        opc5.setBackground(new Color(0,0,0));
-        opc6.setBackground(new Color(0,0,0));
-        opc7.setBackground(Color.CYAN);
-        opc8.setBackground(new Color(0,0,0));
-        
-    }//GEN-LAST:event_opc7MouseClicked
 
     private void opc1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc1MouseClicked
         // TODO add your handling code here:
         AGREGARPRODUCTO.setVisible(false);
         INGRESARPEDIDOS.setVisible(false);
         GENERARFACTURA.setVisible(false);
-        
+
         ELEGIRMESA.setVisible(false);
         REGISTRARCLIENTE.setVisible(false);
         CONSULTARINVENTARIO.setVisible(false);
         INICIO.setVisible(true);
         CREARUSUARIO.setVisible(false);
-        
+
         //color al seleccionar X boton
         opc1.setBackground(Color.CYAN);
         opc2.setBackground(new Color(0,0,0));
@@ -1532,7 +1617,18 @@ public class Vista extends javax.swing.JFrame {
         opc6.setBackground(new Color(0,0,0));
         opc7.setBackground(new Color(0,0,0));
         opc8.setBackground(new Color(0,0,0));
-       
+        
+        //OCULTAR LABEL
+        LABELREGPROD.setVisible(false);
+        LABINGREPEDI.setVisible(false);
+        LABGENFACT.setVisible(false);
+        LABELEGMESA.setVisible(false);
+        LABREGISCLIE.setVisible(false);
+        LABELINICI.setVisible(true);
+        LABECONSUINV.setVisible(false);
+        LABREGIUSU.setVisible(false);
+        
+
     }//GEN-LAST:event_opc1MouseClicked
 
     private void opc2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc2MouseClicked
@@ -1540,13 +1636,13 @@ public class Vista extends javax.swing.JFrame {
         AGREGARPRODUCTO.setVisible(false);
         INGRESARPEDIDOS.setVisible(false);
         GENERARFACTURA.setVisible(false);
-        
+
         ELEGIRMESA.setVisible(true);
         REGISTRARCLIENTE.setVisible(false);
         CONSULTARINVENTARIO.setVisible(false);
         INICIO.setVisible(false);
         CREARUSUARIO.setVisible(false);
-        
+
         //color al seleccionar X boton
         opc1.setBackground(new Color(0,0,0));
         opc2.setBackground(Color.CYAN);
@@ -1557,60 +1653,17 @@ public class Vista extends javax.swing.JFrame {
         opc7.setBackground(new Color(0,0,0));
         opc8.setBackground(new Color(0,0,0));
         
+        //OCULTAR LABEL
+        LABELREGPROD.setVisible(false);
+        LABINGREPEDI.setVisible(false);
+        LABGENFACT.setVisible(false);
+        LABELEGMESA.setVisible(true);
+        LABREGISCLIE.setVisible(false);
+        LABELINICI.setVisible(false);
+        LABECONSUINV.setVisible(false);
+        LABREGIUSU.setVisible(false);
+
     }//GEN-LAST:event_opc2MouseClicked
-
-    private void opc4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc4MouseClicked
-        // TODO add your handling code here:
-        AGREGARPRODUCTO.setVisible(false);
-        INGRESARPEDIDOS.setVisible(false);
-        GENERARFACTURA.setVisible(false);
-        
-        ELEGIRMESA.setVisible(false);
-        REGISTRARCLIENTE.setVisible(true);
-        CONSULTARINVENTARIO.setVisible(false);
-        INICIO.setVisible(false);
-        CREARUSUARIO.setVisible(false);
-        
-        //color al seleccionar X boton
-        opc1.setBackground(new Color(0,0,0));
-        opc2.setBackground(new Color(0,0,0));
-        opc3.setBackground(new Color(0,0,0));
-        opc4.setBackground(Color.CYAN);
-        opc5.setBackground(new Color(0,0,0));
-        opc6.setBackground(new Color(0,0,0));
-        opc7.setBackground(new Color(0,0,0));
-        opc8.setBackground(new Color(0,0,0));
-       
-    }//GEN-LAST:event_opc4MouseClicked
-
-    private void opc5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc5MouseClicked
-        // TODO add your handling code here:
-        AGREGARPRODUCTO.setVisible(false);
-        INGRESARPEDIDOS.setVisible(false);
-        GENERARFACTURA.setVisible(true);
-        
-        ELEGIRMESA.setVisible(false);
-        REGISTRARCLIENTE.setVisible(false);
-        CONSULTARINVENTARIO.setVisible(false);
-        INICIO.setVisible(false);
-        CREARUSUARIO.setVisible(false);
-        
-        //color al seleccionar X boton
-        opc1.setBackground(new Color(0,0,0));
-        opc2.setBackground(new Color(0,0,0));
-        opc3.setBackground(new Color(0,0,0));
-        opc4.setBackground(new Color(0,0,0));
-        opc5.setBackground(Color.CYAN);
-        opc6.setBackground(new Color(0,0,0));
-        opc7.setBackground(new Color(0,0,0));
-        opc8.setBackground(new Color(0,0,0));
-        
-    }//GEN-LAST:event_opc5MouseClicked
-
-    private void OPCIONESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OPCIONESMouseClicked
-        // TODO add your handling code here:
-        //no hacer nada aqui xd
-    }//GEN-LAST:event_OPCIONESMouseClicked
 
     private void opc3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc3MouseClicked
         // TODO add your handling code here:
@@ -1618,13 +1671,13 @@ public class Vista extends javax.swing.JFrame {
         AGREGARPRODUCTO.setVisible(false);
         INGRESARPEDIDOS.setVisible(true);
         GENERARFACTURA.setVisible(false);
-        
+
         ELEGIRMESA.setVisible(false);
         REGISTRARCLIENTE.setVisible(false);
         CONSULTARINVENTARIO.setVisible(false);
         INICIO.setVisible(false);
         CREARUSUARIO.setVisible(false);
-        
+
         //color al seleccionar X boton
         opc1.setBackground(new Color(0,0,0));
         opc2.setBackground(new Color(0,0,0));
@@ -1635,82 +1688,238 @@ public class Vista extends javax.swing.JFrame {
         opc7.setBackground(new Color(0,0,0));
         opc8.setBackground(new Color(0,0,0));
         
-        
-        
+        //OCULTAR LABEL
+        LABELREGPROD.setVisible(false);
+        LABINGREPEDI.setVisible(true);
+        LABGENFACT.setVisible(false);
+        LABELEGMESA.setVisible(false);
+        LABREGISCLIE.setVisible(false);
+        LABELINICI.setVisible(false);
+        LABECONSUINV.setVisible(false);
+        LABREGIUSU.setVisible(false);
+
     }//GEN-LAST:event_opc3MouseClicked
 
-    private void jTextField19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField19ActionPerformed
+    private void opc4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc4MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField19ActionPerformed
+        AGREGARPRODUCTO.setVisible(false);
+        INGRESARPEDIDOS.setVisible(false);
+        GENERARFACTURA.setVisible(false);
 
-    
-    class RoundedPanel extends JPanel
-    {
-        private Color backgroundColor;
-        private int cornerRadius = 15;
-        public RoundedPanel(LayoutManager layout, int radius) {
-            super(layout);
-            cornerRadius = radius;
-        }
-        public RoundedPanel(LayoutManager layout, int radius, Color bgColor) {
-            super(layout);
-            cornerRadius = radius;
-            backgroundColor = bgColor;
-        }
-        public RoundedPanel(int radius) {
-            super();
-            cornerRadius = radius;
-            
-        }
-        public RoundedPanel(int radius, Color bgColor) {
-            super();
-            cornerRadius = radius;
-            backgroundColor = bgColor;
-        }
+        ELEGIRMESA.setVisible(false);
+        REGISTRARCLIENTE.setVisible(true);
+        CONSULTARINVENTARIO.setVisible(false);
+        INICIO.setVisible(false);
+        CREARUSUARIO.setVisible(false);
+
+        //color al seleccionar X boton
+        opc1.setBackground(new Color(0,0,0));
+        opc2.setBackground(new Color(0,0,0));
+        opc3.setBackground(new Color(0,0,0));
+        opc4.setBackground(Color.CYAN);
+        opc5.setBackground(new Color(0,0,0));
+        opc6.setBackground(new Color(0,0,0));
+        opc7.setBackground(new Color(0,0,0));
+        opc8.setBackground(new Color(0,0,0));
         
+        //OCULTAR LABEL
+        LABELREGPROD.setVisible(false);
+        LABINGREPEDI.setVisible(false);
+        LABGENFACT.setVisible(false);
+        LABELEGMESA.setVisible(false);
+        LABREGISCLIE.setVisible(true);
+        LABELINICI.setVisible(false);
+        LABECONSUINV.setVisible(false);
+        LABREGIUSU.setVisible(false);
+
+    }//GEN-LAST:event_opc4MouseClicked
+
+    private void opc5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc5MouseClicked
+        // TODO add your handling code here:
+        AGREGARPRODUCTO.setVisible(false);
+        INGRESARPEDIDOS.setVisible(false);
+        GENERARFACTURA.setVisible(true);
+
+        ELEGIRMESA.setVisible(false);
+        REGISTRARCLIENTE.setVisible(false);
+        CONSULTARINVENTARIO.setVisible(false);
+        INICIO.setVisible(false);
+        CREARUSUARIO.setVisible(false);
+
+        //color al seleccionar X boton
+        opc1.setBackground(new Color(0,0,0));
+        opc2.setBackground(new Color(0,0,0));
+        opc3.setBackground(new Color(0,0,0));
+        opc4.setBackground(new Color(0,0,0));
+        opc5.setBackground(Color.CYAN);
+        opc6.setBackground(new Color(0,0,0));
+        opc7.setBackground(new Color(0,0,0));
+        opc8.setBackground(new Color(0,0,0));
         
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            Dimension arcs = new Dimension(cornerRadius, cornerRadius);
-            int width = getWidth();
-            int height = getHeight();
-            Graphics2D graphics = (Graphics2D) g;
-            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            //Draws the rounded panel with borders.
-            if (backgroundColor != null) {
-                graphics.setColor(backgroundColor);
-            } else {
-                graphics.setColor(getBackground());
-            }
-            graphics.fillRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint background
-            graphics.setColor(getForeground());
-//            graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
-//             
-        }
+        //OCULTAR LABEL
+        LABELREGPROD.setVisible(false);
+        LABINGREPEDI.setVisible(false);
+        LABGENFACT.setVisible(true);
+        LABELEGMESA.setVisible(false);
+        LABREGISCLIE.setVisible(false);
+        LABELINICI.setVisible(false);
+        LABECONSUINV.setVisible(false);
+        LABREGIUSU.setVisible(false);
+
+    }//GEN-LAST:event_opc5MouseClicked
+
+    private void opc6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc6MouseClicked
+        // TODO add your handling code here:
+        AGREGARPRODUCTO.setVisible(true);
+        INGRESARPEDIDOS.setVisible(false);
+        GENERARFACTURA.setVisible(false);
+
+        ELEGIRMESA.setVisible(false);
+        REGISTRARCLIENTE.setVisible(false);
+        CONSULTARINVENTARIO.setVisible(false);
+        INICIO.setVisible(false);
+        CREARUSUARIO.setVisible(false);
+
+        //color al seleccionar X boton
+        opc1.setBackground(new Color(0,0,0));
+        opc2.setBackground(new Color(0,0,0));
+        opc3.setBackground(new Color(0,0,0));
+        opc4.setBackground(new Color(0,0,0));
+        opc5.setBackground(new Color(0,0,0));
+        opc6.setBackground(Color.CYAN);
+        opc7.setBackground(new Color(0,0,0));
+        opc8.setBackground(new Color(0,0,0));
         
-    }
+        //OCULTAR LABEL
+        LABELREGPROD.setVisible(true);
+        LABINGREPEDI.setVisible(false);
+        LABGENFACT.setVisible(false);
+        LABELEGMESA.setVisible(false);
+        LABREGISCLIE.setVisible(false);
+        LABELINICI.setVisible(false);
+        LABECONSUINV.setVisible(false);
+        LABREGIUSU.setVisible(false);
+
+    }//GEN-LAST:event_opc6MouseClicked
+
+    private void opc7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc7MouseClicked
+        // TODO add your handling code here:
+        AGREGARPRODUCTO.setVisible(false);
+        INGRESARPEDIDOS.setVisible(false);
+        GENERARFACTURA.setVisible(false);
+
+        ELEGIRMESA.setVisible(false);
+        REGISTRARCLIENTE.setVisible(false);
+        CONSULTARINVENTARIO.setVisible(true);
+        INICIO.setVisible(false);
+        CREARUSUARIO.setVisible(false);
+
+        //color al seleccionar X boton
+        opc1.setBackground(new Color(0,0,0));
+        opc2.setBackground(new Color(0,0,0));
+        opc3.setBackground(new Color(0,0,0));
+        opc4.setBackground(new Color(0,0,0));
+        opc5.setBackground(new Color(0,0,0));
+        opc6.setBackground(new Color(0,0,0));
+        opc7.setBackground(Color.CYAN);
+        opc8.setBackground(new Color(0,0,0));
+        
+        //OCULTAR LABEL
+        LABELREGPROD.setVisible(false);
+        LABINGREPEDI.setVisible(false);
+        LABGENFACT.setVisible(false);
+        LABELEGMESA.setVisible(false);
+        LABREGISCLIE.setVisible(false);
+        LABELINICI.setVisible(false);
+        LABECONSUINV.setVisible(true);
+        LABREGIUSU.setVisible(false);
+
+    }//GEN-LAST:event_opc7MouseClicked
+
+    private void opc8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc8MouseClicked
+        // TDO add your handling code here
+        AGREGARPRODUCTO.setVisible(false);
+        INGRESARPEDIDOS.setVisible(false);
+        GENERARFACTURA.setVisible(false);
+
+        ELEGIRMESA.setVisible(false);
+        REGISTRARCLIENTE.setVisible(false);
+        CONSULTARINVENTARIO.setVisible(false);
+        INICIO.setVisible(false);
+        CREARUSUARIO.setVisible(true);
+
+        //color al seleccionar X boton
+        opc1.setBackground(new Color(0,0,0));
+        opc2.setBackground(new Color(0,0,0));
+        opc3.setBackground(new Color(0,0,0));
+        opc4.setBackground(new Color(0,0,0));
+        opc5.setBackground(new Color(0,0,0));
+        opc6.setBackground(new Color(0,0,0));
+        opc7.setBackground(new Color(0,0,0));
+        opc8.setBackground(Color.CYAN);
+        
+        //OCULTAR LABEL
+        LABELREGPROD.setVisible(false);
+        LABINGREPEDI.setVisible(false);
+        LABGENFACT.setVisible(false);
+        LABELEGMESA.setVisible(false);
+        LABREGISCLIE.setVisible(false);
+        LABELINICI.setVisible(false);
+        LABECONSUINV.setVisible(false);
+        LABREGIUSU.setVisible(true);
+    }//GEN-LAST:event_opc8MouseClicked
+
+    private void OPCIONESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OPCIONESMouseClicked
+        // TODO add your handling code here:
+        //no hacer nada aqui xd
+    }//GEN-LAST:event_OPCIONESMouseClicked
+
+    private void txtNombreCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreCActionPerformed
+
+    private void txtNombreEmpleadoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEmpleadoEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEmpleadoEActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel AGREGARPRODUCTO;
-    private javax.swing.JPanel BackGround;
+    private javax.swing.JPanel Back;
     public javax.swing.JPanel CONSULTARINVENTARIO;
     public javax.swing.JPanel CREARUSUARIO;
     public javax.swing.JPanel ELEGIRMESA;
     public javax.swing.JPanel GENERARFACTURA;
     public javax.swing.JPanel INGRESARPEDIDOS;
     public javax.swing.JPanel INICIO;
+    private javax.swing.JLabel LABECONSUINV;
+    private javax.swing.JLabel LABELEGMESA;
+    private javax.swing.JLabel LABELINICI;
+    private javax.swing.JLabel LABELREGPROD;
+    private javax.swing.JLabel LABGENFACT;
+    private javax.swing.JLabel LABINGREPEDI;
+    private javax.swing.JLabel LABREGISCLIE;
+    private javax.swing.JLabel LABREGIUSU;
     private javax.swing.JPanel MENUS;
     public javax.swing.JPanel OPCIONES;
+    private javax.swing.JPanel PanelSuperior;
     public javax.swing.JPanel REGISTRARCLIENTE;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox9;
+    public javax.swing.JButton btnRegistrarCliente;
+    public javax.swing.JButton btnRegistrarEmpleado;
+    public javax.swing.JComboBox<String> comboRoles;
+    public javax.swing.JButton jButton10;
+    public javax.swing.JButton jButton2;
+    public javax.swing.JButton jButton4;
+    public javax.swing.JButton jButton5;
+    public javax.swing.JButton jButton6;
+    public javax.swing.JButton jButton9;
+    public javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JComboBox<String> jComboBox5;
+    public javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1730,26 +1939,32 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    public javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
@@ -1761,15 +1976,12 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
@@ -1778,23 +1990,14 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTable jTable6;
+    private javax.swing.JTable jTable7;
+    public javax.swing.JTextField jTextField10;
+    public javax.swing.JTextField jTextField12;
+    public javax.swing.JTextField jTextField13;
+    public javax.swing.JTextField jTextField14;
+    public javax.swing.JTextField jTextField15;
+    public javax.swing.JTextField jTextField18;
     public javax.swing.JPanel opc1;
     public javax.swing.JPanel opc2;
     private javax.swing.JPanel opc3;
@@ -1804,14 +2007,26 @@ public class Vista extends javax.swing.JFrame {
     public javax.swing.JPanel opc7;
     public javax.swing.JPanel opc8;
     private Modelo.PanelRedondo panelRedondo1;
-    private Modelo.PanelRedondo panelRedondo18;
     private Modelo.PanelRedondo panelRedondo19;
     private Modelo.PanelRedondo panelRedondo2;
     private Modelo.PanelRedondo panelRedondo21;
     private Modelo.PanelRedondo panelRedondo22;
     private Modelo.PanelRedondo panelRedondo23;
+    private Modelo.PanelRedondo panelRedondo24;
+    private Modelo.PanelRedondo panelRedondo25;
     private Modelo.PanelRedondo panelRedondo3;
     private Modelo.PanelRedondo panelRedondo5;
     private Modelo.PanelRedondo panelRedondo6;
+    public javax.swing.JTextField txtApellidoC;
+    public javax.swing.JTextField txtApellidoEmpleadoE;
+    public javax.swing.JTextField txtCedulaC;
+    public javax.swing.JTextField txtCedulaEmpleadoE;
+    public javax.swing.JPasswordField txtContraseñaE;
+    public javax.swing.JTextField txtDireccionC;
+    public javax.swing.JTextField txtNombreC;
+    public javax.swing.JTextField txtNombreEmpleadoE;
+    public javax.swing.JTextField txtTelefonoC;
+    public javax.swing.JTextField txtTelefonoEmpleadoE;
+    public javax.swing.JTextField txtUsuarioE;
     // End of variables declaration//GEN-END:variables
 }

@@ -124,9 +124,8 @@ public class Reg_EmpleadosDAO {
     
     public boolean autenticarUsuarios(String pUser, String pClave, int prol) {
 
-        String sql = "SELECT usuario, clave, rol FROM reg_empleados WHERE usuario=? and clave=? and rol=?";
-
         try {
+            String sql = "SELECT usuario, clave, rol FROM reg_empleados WHERE usuario=? and clave=? and rol=?";
             ps = conex.prepareStatement(sql);
             ps.setString(1, pUser);
             ps.setString(2, pClave);

@@ -232,14 +232,14 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Img/person.png"/>
+                  <Image iconType="3" name="/Imagenes/person.png"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Img/key.png"/>
+                  <Image iconType="3" name="/Imagenes/key.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -370,7 +370,7 @@
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Img/PYh.gif"/>
+                  <Image iconType="3" name="/Imagenes/PYh.gif"/>
                 </Property>
               </Properties>
             </Component>

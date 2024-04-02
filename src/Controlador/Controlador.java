@@ -60,8 +60,8 @@ public class Controlador implements ActionListener {
         this.v = v;
         this.log = log;
         this.log.ingresar.addActionListener(this);
-        //this.v.btnRegistrarCliente.addActionListener(this);
-        //this.v.btnRegistrarEmpleado.addActionListener(this);
+        this.v.btnRegistrarCliente.addActionListener(this);
+        this.v.btnRegistrarEmpleado.addActionListener(this);
         //this.v.btnRegistrarMesa.addActionListener(this);
         //this.v.btnRegistrarProducto.addActionListener(this);
         //this.v.btnAgregarPedido.addActionListener(this);
@@ -74,7 +74,7 @@ public class Controlador implements ActionListener {
         //this.v.btnregister.addActionListener(this);
         //this.cargarCategorias();
         //this.cargarinvactual();
-        //this.mostrarRoles();
+        this.mostrarRoles();
         //this.mostrarTiposPago();
         //this.mostrarRolesMeseros();
         //this.mostrarProductosAsociados();
@@ -105,13 +105,13 @@ public class Controlador implements ActionListener {
         }
     }
 
-    /*private void registrarCliente() {
+    private void registrarCliente() {
 
-        String nombre = v.txt.getText();
-        String apellido = v.txt2.getText();
-        String cedula = v.txt3.getText();
-        String direccion = v.txt4.getText();
-        String telefono = v.txt5.getText();
+        String nombre = v.txtNombreC.getText();
+        String apellido = v.txtApellidoC.getText();
+        String cedula = v.txtCedulaC.getText();
+        String direccion = v.txtDireccionC.getText();
+        String telefono = v.txtTelefonoC.getText();
 
         Reg_Cliente newClie = new Reg_Cliente(nombre, apellido, cedula, direccion, telefono);
 
@@ -119,12 +119,12 @@ public class Controlador implements ActionListener {
     }
 
     private void registrarEmpleado() {
-        String nombre = v.jtxtNombreEmpleado.getText();
-        String apellido = v.jtxtApellidoEmpleado.getText();
-        String cedula = v.jtxtCedulaEmpleado.getText();
-        String telefono = v.jtxtTelefonoEmpleado.getText();
-        String usuario = v.jtxtUsuario.getText();
-        String contraseña = v.jtxtContraseña.getText();
+        String nombre = v.txtNombreEmpleadoE.getText();
+        String apellido = v.txtApellidoEmpleadoE.getText();
+        String cedula = v.txtCedulaEmpleadoE.getText();
+        String telefono = v.txtTelefonoEmpleadoE.getText();
+        String usuario = v.txtUsuarioE.getText();
+        String contraseña = v.txtContraseñaE.getText();
         int rol = v.comboRoles.getSelectedIndex();
 
         Reg_Empleados newEmple = new Reg_Empleados(nombre, apellido, cedula, telefono, usuario, contraseña, rol);
@@ -132,7 +132,7 @@ public class Controlador implements ActionListener {
         modeloEmple.registrarEmpleados(newEmple);
     }
 
-    private void registrarProducto() {
+    /*private void registrarProducto() {
         try {
             int id_producto = Integer.parseInt(v.txtcodigo.getText());
             String nombre = v.txtnombre.getText();
@@ -306,7 +306,7 @@ public class Controlador implements ActionListener {
         int idIngrediente = Ingredientesencontrado.getId();
 
         ingrediente.asociarProductoConIngrediente(idProducto, idIngrediente);
-    }
+    }*/
 
     private void mostrarRoles() {
         ArrayList<Emple_rol> listaR = modeloRol.obtenerRolesP();
@@ -316,7 +316,7 @@ public class Controlador implements ActionListener {
         }
     }
 
-    private void mostrarRolesMeseros() {
+    /*private void mostrarRolesMeseros() {
         ArrayList<Reg_Empleados> listaR = modeloEmple.obtenerEmpleados();
         v.comboMesero.removeAllItems();
         v.comboMesero.addItem("Seleccionar");
@@ -347,7 +347,7 @@ public class Controlador implements ActionListener {
         for (int i = 0; i < listaT.size(); i++) {
             v.comboTipoP.addItem(listaT.get(i).getNom_tipoP());
         }
-    }
+    }*/
 
     private void limpiar(JTextField... campos) {
         for (JTextField campo : campos) {
@@ -356,7 +356,7 @@ public class Controlador implements ActionListener {
         campos[0].requestFocus();
     }
 
-    private void mostrarProductosAsociados() {
+    /*private void mostrarProductosAsociados() {
         DefaultTableModel model = modeloPro.getProductosAsociados();
         v.jTblasociados.setModel(model);
     }*/
@@ -378,28 +378,23 @@ public class Controlador implements ActionListener {
             if (!categoriaSeleccionada.equals("Seleccionar")) {
                 cargarProductosPorCategoria(categoriaSeleccionada);
             }
-        } else if (e.getSource() == v.btnRegistrarCliente) {
-            if (camposVacios(v.txt, v.txt2, v.txt3, v.txt4, v.txt5)) {
-                JOptionPane.showMessageDialog(v, "Por favor, llena todos los campos");
-            } else {
-                registrarCliente();
-                limpiar(v.txt, v.txt2, v.txt3, v.txt4, v.txt5);
-            }
-        } else if (e.getSource() == v.btnregister) {
+        }*/ else if (e.getSource() == v.btnRegistrarCliente) {
+            registrarCliente();
+        }/* else if (e.getSource() == v.btnregister) {
             if (camposVacios(v.txtcodigo, v.txtnombre, v.txtprecio, v.txtcantidad)) {
                 JOptionPane.showMessageDialog(v, "Por favor, llena todos los campos");
             } else {
                 registrarProducto();
                 limpiar(v.txtcodigo, v.txtnombre, v.txtprecio, v.txtcantidad);
             }
-        } else if (e.getSource() == v.btnRegistrarEmpleado) {
-            if (camposVacios(v.jtxtNombreEmpleado, v.jtxtApellidoEmpleado, v.jtxtCedulaEmpleado, v.jtxtTelefonoEmpleado, v.jtxtUsuario, v.jtxtContraseña)) {
+        }*/ else if (e.getSource() == v.btnRegistrarEmpleado) {
+            if (camposVacios(v.txtNombreEmpleadoE, v.txtApellidoEmpleadoE, v.txtCedulaEmpleadoE, v.txtTelefonoEmpleadoE, v.txtUsuarioE, v.txtContraseñaE)) {
                 JOptionPane.showMessageDialog(v, "Por favor, llena todos los campos");
             } else {
                 registrarEmpleado();
-                limpiar(v.jtxtNombreEmpleado, v.jtxtApellidoEmpleado, v.jtxtCedulaEmpleado, v.jtxtTelefonoEmpleado, v.jtxtUsuario, v.jtxtContraseña);
+                limpiar(v.txtNombreEmpleadoE, v.txtApellidoEmpleadoE, v.txtCedulaEmpleadoE, v.txtTelefonoEmpleadoE, v.txtUsuarioE, v.txtContraseñaE);
             }
-        } else if (e.getSource() == v.btnGenerarFactura) {
+        }/* else if (e.getSource() == v.btnGenerarFactura) {
             generarFactura(); // Esta parte está comentada, asegúrate de implementarla correctamente
         }*/
     }

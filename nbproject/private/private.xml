@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Administrador/Desktop/github/casinocodecraft/src/Vista/Vista.java</file>
-            <file>file:/C:/Users/Administrador/Desktop/github/casinocodecraft/src/Modelo/Reg_EmpleadosDAO.java</file>
-            <file>file:/C:/Users/Administrador/Desktop/github/casinocodecraft/src/proyecto/Proyecto.java</file>
-            <file>file:/C:/Users/Administrador/Desktop/github/casinocodecraft/src/Controlador/Controlador.java</file>
+            <file>file:/C:/Users/Administrador/Desktop/GitHub/casinocodecraft/src/proyecto/Proyecto.java</file>
+            <file>file:/C:/Users/Administrador/Desktop/GitHub/casinocodecraft/src/Vista/Vista.java</file>
+            <file>file:/C:/Users/Administrador/Desktop/GitHub/casinocodecraft/src/Controlador/Controlador.java</file>
+            <file>file:/C:/Users/Administrador/Desktop/GitHub/casinocodecraft/src/Modelo/Reg_ClienteDAO.java</file>
         </group>
     </open-files>
 </project-private>
