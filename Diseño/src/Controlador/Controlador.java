@@ -52,7 +52,6 @@ public class Controlador implements ActionListener {
             V.AGREGARPRODUCTO.setVisible(false);
             V.INGRESARPEDIDOS.setVisible(true);
             V.GENERARFACTURA.setVisible(true);
-            V.REALIZARINFORME.setVisible(false);
             V.ELEGIRMESA.setVisible(true);
             V.REGISTRARCLIENTE.setVisible(true);
             V.CONSULTARINVENTARIO.setVisible(false);
