@@ -14,6 +14,15 @@ public class Mesa extends Pedidos{
     public Mesa() {
     }
 
+    public Mesa(int id_mesa, int cant_sillas, String estado, String tipo) {
+        this.id_mesa = id_mesa;
+        this.cant_sillas = cant_sillas;
+        this.estado = estado;
+        this.tipo = tipo;
+    }
+    
+    
+
     public Mesa(int id_mesa, int cant_sillas, String estado, String tipo, 
             int id, int num_mesa, int mesero, String producto, String cantidad, 
             String estado_m, Date fecha) {

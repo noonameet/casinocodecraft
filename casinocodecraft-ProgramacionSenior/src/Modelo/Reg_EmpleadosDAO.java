@@ -17,7 +17,7 @@ public class Reg_EmpleadosDAO {
     Connection conex = con.getConnection();
     PreparedStatement ps = null;
     ResultSet rs = null;
-    
+    PreparedStatement pst = null;
     private void registrarEmpleado(Reg_Empleados emple) {
         try {
             // Tu lógica para insertar el cliente en la base de datos
@@ -141,6 +141,8 @@ public class Reg_EmpleadosDAO {
         return false;
     }
     
+    
+    
     public int registrarEmpleados(Reg_Empleados emple) {
         if (verificarEmpleado(emple)) {
             System.out.println("Empleado ya registrado, favor intentar de nuevo!");
@@ -150,4 +152,7 @@ public class Reg_EmpleadosDAO {
             return 0;
         }
     }
+    
+    
 }
+    

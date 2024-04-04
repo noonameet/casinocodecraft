@@ -23,6 +23,7 @@ import javax.swing.text.Highlighter;
 import javax.swing.text.JTextComponent;
 import java.sql.Time;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -38,7 +39,7 @@ public class Controlador implements ActionListener {
     Gen_Factura factura = new Gen_Factura();
     Ingredientes invent = new Ingredientes();
     Log_in log = new Log_in();
-    
+
     IngredientesDAO ingrediente = new IngredientesDAO();
     Reg_ClienteDAO modeloCli = new Reg_ClienteDAO();
     Emple_rolDAO modeloRol = new Emple_rolDAO();
@@ -48,6 +49,7 @@ public class Controlador implements ActionListener {
     ProductoDAO modeloPro = new ProductoDAO();
     CategoriasDAO modeloCat = new CategoriasDAO();
     Gen_FacturaDAO modeloFac = new Gen_FacturaDAO();
+    Inven_ingrediente_DAO modeloinv = new Inven_ingrediente_DAO();
 
     Vista v = new Vista();
 
@@ -62,6 +64,7 @@ public class Controlador implements ActionListener {
         this.log.ingresar.addActionListener(this);
         this.v.btnRegistrarCliente.addActionListener(this);
         this.v.btnRegistrarEmpleado.addActionListener(this);
+        this.v.btconsultarinventario.addActionListener(this);
         //this.v.btnRegistrarMesa.addActionListener(this);
         //this.v.btnRegistrarProducto.addActionListener(this);
         //this.v.btnAgregarPedido.addActionListener(this);
@@ -81,25 +84,29 @@ public class Controlador implements ActionListener {
         //this.v.ivcategoria.addActionListener(this);
         //this.mostrarRoles(ROL_MESERO, v.comboMesero);
         //this.mostrarRoles(ROL_CAJERO, v.comboCajero);
+        mostrarProductos(modeloinv.obtenerTodosLosProductos());
+        mostrarMesas(modeloMesa.Buscar_mesas());
+        
 
     }
-    
+
     private void autenticarUsuarios() {
 
         String usuario = log.Usuario.getText();
         String clave = new String(log.Pass.getPassword());
-        if(modeloEmple.autenticarUsuarios(usuario,clave,1)){
-            JOptionPane.showMessageDialog(null, "Bienvenido/a al sistema "+usuario);
+        if (modeloEmple.autenticarUsuarios(usuario, clave, 1)) {
+            JOptionPane.showMessageDialog(null, "Bienvenido/a al sistema " + usuario);
             log.setVisible(false);
             v.setVisible(true);
-        }else if(modeloEmple.autenticarUsuarios(usuario,clave,2)){
-            JOptionPane.showMessageDialog(null, "Bienvenido/a al sistema "+usuario);
+        } else if (modeloEmple.autenticarUsuarios(usuario, clave, 2)) {
+            JOptionPane.showMessageDialog(null, "Bienvenido/a al sistema " + usuario);
+            //V.bienvenida.setText("Bienvenidos Usuario Adminitrador "+usuario);
             log.setVisible(false);
             v.setVisible(true);
             v.opc6.setVisible(false);
             v.opc7.setVisible(false);
             v.opc8.setVisible(false);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Error, intente de nuevo");
             log.Usuario.requestFocus();
         }
@@ -307,7 +314,6 @@ public class Controlador implements ActionListener {
 
         ingrediente.asociarProductoConIngrediente(idProducto, idIngrediente);
     }*/
-
     private void mostrarRoles() {
         ArrayList<Emple_rol> listaR = modeloRol.obtenerRolesP();
         v.comboRoles.addItem("Seleccionar");
@@ -348,7 +354,6 @@ public class Controlador implements ActionListener {
             v.comboTipoP.addItem(listaT.get(i).getNom_tipoP());
         }
     }*/
-
     private void limpiar(JTextField... campos) {
         for (JTextField campo : campos) {
             campo.setText(null);
@@ -360,11 +365,55 @@ public class Controlador implements ActionListener {
         DefaultTableModel model = modeloPro.getProductosAsociados();
         v.jTblasociados.setModel(model);
     }*/
+    private void consultarInventario() {
+        try {
+            String inicio = v.jtffechainicio.getText();
+            String fin = v.jtffechafinal.getText();
+            String nombre = v.jtfingredienteaconsulta.getText();
+            if (nombre != null && nombre.isEmpty()) {
+                nombre = null; // Si el nombre está vacío, lo establecemos a null
+            }
+            ArrayList<Inven_ingrediente> productos = modeloinv.buscarProductos(inicio, fin, nombre);
+            mostrarProductos(productos);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+        }
+    }
+
+    private void mostrarProductos(ArrayList<Inven_ingrediente> productos) {
+        DefaultTableModel tm = (DefaultTableModel) v.jtblsalidainvetario.getModel();
+        tm.setRowCount(0); // Limpia la tabla
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        for (Inven_ingrediente producto : productos) {
+            String fechaFormateada = format.format(producto.getFecha());
+            tm.addRow(new Object[]{producto.getId(), producto.getNombre(), producto.getCantidad(), fechaFormateada});
+        }
+    }
+    
+        private void mostrarMesas(ArrayList<Mesa> productos) {
+        DefaultTableModel tm = (DefaultTableModel) v.jtblmesa.getModel();
+        tm.setRowCount(0); // Limpia la tabla
+        for (Mesa producto : productos) {
+            tm.addRow(new Object[]{producto.getId_mesa(), producto.getCant_sillas(), producto.getEstado(), producto.getTipo()});
+        }
+    }
+    private void ocupado(){
+        modeloMesa.Ocupado(1);
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == log.ingresar) {
             autenticarUsuarios();
+        }
+        if (e.getSource() == v.btconsultarinventario) {
+            consultarInventario();
+        }
+        if (e.getSource() == v.Btnmesaocupada) {
+            ocupado();
+        }
+        if (e.getSource() == v.Btnmesadisponible) {
+            modeloMesa.Disponible(1);
         }
         /*if (e.getSource() == v.btnrefresh){
             mostrarProductosAsociados();
@@ -372,14 +421,20 @@ public class Controlador implements ActionListener {
         if (e.getSource() == v.btnAsociarProducto) {
             guardarRelacionProductoIngrediente();
         }
-
+        
         if (e.getSource() == v.ivcategoria) {
             String categoriaSeleccionada = (String) v.ivcategoria.getSelectedItem();
             if (!categoriaSeleccionada.equals("Seleccionar")) {
                 cargarProductosPorCategoria(categoriaSeleccionada);
             }
         }*/ else if (e.getSource() == v.btnRegistrarCliente) {
-            registrarCliente();
+            if (camposVacios(v.txtNombreEmpleadoE, v.txtApellidoEmpleadoE, v.txtCedulaEmpleadoE, v.txtTelefonoEmpleadoE, v.txtUsuarioE, v.txtContraseñaE)) {
+                JOptionPane.showMessageDialog(v, "Por favor, llena todos los campos");
+            } else {
+                registrarCliente();
+                JOptionPane.showMessageDialog(null, "Cliente registrado con exito");
+                limpiar(v.txtNombreEmpleadoE, v.txtApellidoEmpleadoE, v.txtCedulaEmpleadoE, v.txtTelefonoEmpleadoE, v.txtUsuarioE, v.txtContraseñaE);
+            }
         }/* else if (e.getSource() == v.btnregister) {
             if (camposVacios(v.txtcodigo, v.txtnombre, v.txtprecio, v.txtcantidad)) {
                 JOptionPane.showMessageDialog(v, "Por favor, llena todos los campos");
@@ -388,11 +443,12 @@ public class Controlador implements ActionListener {
                 limpiar(v.txtcodigo, v.txtnombre, v.txtprecio, v.txtcantidad);
             }
         }*/ else if (e.getSource() == v.btnRegistrarEmpleado) {
-            if (camposVacios(v.txtNombreEmpleadoE, v.txtApellidoEmpleadoE, v.txtCedulaEmpleadoE, v.txtTelefonoEmpleadoE, v.txtUsuarioE, v.txtContraseñaE)) {
+            if (camposVacios(v.txtNombreC, v.txtApellidoC, v.txtCedulaC, v.txtTelefonoC, v.txtDireccionC)) {
                 JOptionPane.showMessageDialog(v, "Por favor, llena todos los campos");
             } else {
                 registrarEmpleado();
-                limpiar(v.txtNombreEmpleadoE, v.txtApellidoEmpleadoE, v.txtCedulaEmpleadoE, v.txtTelefonoEmpleadoE, v.txtUsuarioE, v.txtContraseñaE);
+                JOptionPane.showMessageDialog(null, "Empleado registrado con exito");
+                limpiar(v.txtNombreC, v.txtApellidoC, v.txtCedulaC, v.txtTelefonoC, v.txtDireccionC);
             }
         }/* else if (e.getSource() == v.btnGenerarFactura) {
             generarFactura(); // Esta parte está comentada, asegúrate de implementarla correctamente
