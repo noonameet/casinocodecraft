@@ -61,7 +61,7 @@ public class Controlador implements ActionListener {
     public Controlador(Vista v, Log_in log) {
         this.v = v;
         this.log = log;
-        this.log.ingresar.addActionListener(this);
+        //this.log.ingresar.addActionListener(this);
         this.v.btnRegistrarCliente.addActionListener(this);
         this.v.btnRegistrarEmpleado.addActionListener(this);
         this.v.btconsultarinventario.addActionListener(this);
@@ -71,7 +71,7 @@ public class Controlador implements ActionListener {
         //this.v.btnEliminarPedido.addActionListener(this);
         //this.v.btnModificarPedido.addActionListener(this);
         //this.v.btnListarPedido.addActionListener(this);
-        //this.v.btnGenerarFactura.addActionListener(this);
+        this.v.btnGenerarFactura.addActionListener(this);
         //this.v.btnAsociarProducto.addActionListener(this);
         //this.v.btnrefresh.addActionListener(this);
         //this.v.btnregister.addActionListener(this);
@@ -84,10 +84,222 @@ public class Controlador implements ActionListener {
         //this.v.ivcategoria.addActionListener(this);
         //this.mostrarRoles(ROL_MESERO, v.comboMesero);
         //this.mostrarRoles(ROL_CAJERO, v.comboCajero);
+        
+        this.mostrarRoles();
+        this.mostrarTiposPago();
+        this.mostrarRolesMeseros();
+        this.mostrarRoles(ROL_MESERO, v.comboMeseros);
+        this.mostrarRoles(ROL_CAJERO, v.comboCajeros);
+        
+        
         mostrarProductos(modeloinv.obtenerTodosLosProductos());
         mostrarMesas(modeloMesa.Buscar_mesas());
-        
+        v.opc1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //ocultar menus
+                v.AGREGARPRODUCTO.setVisible(false);
+                v.INGRESARPEDIDOS.setVisible(false);
+                v.GENERARFACTURA.setVisible(false);
+                v.ELEGIRMESA.setVisible(false);
+                v.REGISTRARCLIENTE.setVisible(false);
+                v.CONSULTARINVENTARIO.setVisible(false);
+                v.INICIO.setVisible(true);
+                v.CREARUSUARIO.setVisible(false);
 
+                //color al seleccionar X boton
+                v.opc1.setBackground(Color.CYAN);
+                v.opc2.setBackground(new Color(0,0,0));
+                v.opc3.setBackground(new Color(0,0,0));
+                v.opc4.setBackground(new Color(0,0,0));
+                v.opc5.setBackground(new Color(0,0,0));
+                v.opc6.setBackground(new Color(0,0,0));
+                v.opc7.setBackground(new Color(0,0,0));
+                v.opc8.setBackground(new Color(0,0,0));
+            }
+        });
+        v.opc2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //ocultar menus
+                v.AGREGARPRODUCTO.setVisible(false);
+                v.INGRESARPEDIDOS.setVisible(false);
+                v.GENERARFACTURA.setVisible(false);
+                v.ELEGIRMESA.setVisible(true);
+                v.REGISTRARCLIENTE.setVisible(false);
+                v.CONSULTARINVENTARIO.setVisible(false);
+                v.INICIO.setVisible(false);
+                v.CREARUSUARIO.setVisible(false);
+
+                //color al seleccionar X boton
+                v.opc1.setBackground(new Color(0,0,0));
+                v.opc2.setBackground(Color.CYAN);
+                v.opc3.setBackground(new Color(0,0,0));
+                v.opc4.setBackground(new Color(0,0,0));
+                v.opc5.setBackground(new Color(0,0,0));
+                v.opc6.setBackground(new Color(0,0,0));
+                v.opc7.setBackground(new Color(0,0,0));
+                v.opc8.setBackground(new Color(0,0,0));
+            }
+        });
+        v.opc3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //ocultar menus
+                v.AGREGARPRODUCTO.setVisible(false);
+                v.INGRESARPEDIDOS.setVisible(true);
+                v.GENERARFACTURA.setVisible(false);
+                v.ELEGIRMESA.setVisible(false);
+                v.REGISTRARCLIENTE.setVisible(false);
+                v.CONSULTARINVENTARIO.setVisible(false);
+                v.INICIO.setVisible(false);
+                v.CREARUSUARIO.setVisible(false);
+
+                //color al seleccionar X boton
+                v.opc1.setBackground(new Color(0,0,0));
+                v.opc2.setBackground(new Color(0,0,0));
+                v.opc3.setBackground(Color.CYAN);
+                v.opc4.setBackground(new Color(0,0,0));
+                v.opc5.setBackground(new Color(0,0,0));
+                v.opc6.setBackground(new Color(0,0,0));
+                v.opc7.setBackground(new Color(0,0,0));
+                v.opc8.setBackground(new Color(0,0,0));
+            }
+        });
+        v.opc4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //ocultar menus
+                v.AGREGARPRODUCTO.setVisible(false);
+                v.INGRESARPEDIDOS.setVisible(false);
+                v.GENERARFACTURA.setVisible(false);
+                v.ELEGIRMESA.setVisible(false);
+                v.REGISTRARCLIENTE.setVisible(true);
+                v.CONSULTARINVENTARIO.setVisible(false);
+                v.INICIO.setVisible(false);
+                v.CREARUSUARIO.setVisible(false);
+
+                //color al seleccionar X boton
+                v.opc1.setBackground(new Color(0,0,0));
+                v.opc2.setBackground(new Color(0,0,0));
+                v.opc3.setBackground(new Color(0,0,0));
+                v.opc4.setBackground(Color.CYAN);
+                v.opc5.setBackground(new Color(0,0,0));
+                v.opc6.setBackground(new Color(0,0,0));
+                v.opc7.setBackground(new Color(0,0,0));
+                v.opc8.setBackground(new Color(0,0,0));
+            }
+        });
+        v.opc5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //ocultar menus
+                v.AGREGARPRODUCTO.setVisible(false);
+                v.INGRESARPEDIDOS.setVisible(false);
+                v.GENERARFACTURA.setVisible(true);
+                v.ELEGIRMESA.setVisible(false);
+                v.REGISTRARCLIENTE.setVisible(false);
+                v.CONSULTARINVENTARIO.setVisible(false);
+                v.INICIO.setVisible(false);
+                v.CREARUSUARIO.setVisible(false);
+
+                //color al seleccionar X boton
+                v.opc1.setBackground(new Color(0,0,0));
+                v.opc2.setBackground(new Color(0,0,0));
+                v.opc3.setBackground(new Color(0,0,0));
+                v.opc4.setBackground(new Color(0,0,0));
+                v.opc5.setBackground(Color.CYAN);
+                v.opc6.setBackground(new Color(0,0,0));
+                v.opc7.setBackground(new Color(0,0,0));
+                v.opc8.setBackground(new Color(0,0,0));
+            }
+        });
+        v.opc6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //ocultar menus
+                v.AGREGARPRODUCTO.setVisible(true);
+                v.INGRESARPEDIDOS.setVisible(false);
+                v.GENERARFACTURA.setVisible(false);
+                v.ELEGIRMESA.setVisible(false);
+                v.REGISTRARCLIENTE.setVisible(false);
+                v.CONSULTARINVENTARIO.setVisible(false);
+                v.INICIO.setVisible(false);
+                v.CREARUSUARIO.setVisible(false);
+
+                //color al seleccionar X boton
+                v.opc1.setBackground(new Color(0,0,0));
+                v.opc2.setBackground(new Color(0,0,0));
+                v.opc3.setBackground(new Color(0,0,0));
+                v.opc4.setBackground(new Color(0,0,0));
+                v.opc5.setBackground(new Color(0,0,0));
+                v.opc6.setBackground(Color.CYAN);
+                v.opc7.setBackground(new Color(0,0,0));
+                v.opc8.setBackground(new Color(0,0,0));
+            }
+        });
+        v.opc7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //ocultar menus
+                v.AGREGARPRODUCTO.setVisible(false);
+                v.INGRESARPEDIDOS.setVisible(false);
+                v.GENERARFACTURA.setVisible(false);
+                v.ELEGIRMESA.setVisible(false);
+                v.REGISTRARCLIENTE.setVisible(false);
+                v.CONSULTARINVENTARIO.setVisible(true);
+                v.INICIO.setVisible(false);
+                v.CREARUSUARIO.setVisible(false);
+
+                //color al seleccionar X boton
+                v.opc1.setBackground(new Color(0,0,0));
+                v.opc2.setBackground(new Color(0,0,0));
+                v.opc3.setBackground(new Color(0,0,0));
+                v.opc4.setBackground(new Color(0,0,0));
+                v.opc5.setBackground(new Color(0,0,0));
+                v.opc6.setBackground(new Color(0,0,0));
+                v.opc7.setBackground(Color.CYAN);
+                v.opc8.setBackground(new Color(0,0,0));
+            }
+        });
+        v.opc8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //ocultar menus
+                v.AGREGARPRODUCTO.setVisible(false);
+                v.INGRESARPEDIDOS.setVisible(false);
+                v.GENERARFACTURA.setVisible(false);
+                v.ELEGIRMESA.setVisible(false);
+                v.REGISTRARCLIENTE.setVisible(false);
+                v.CONSULTARINVENTARIO.setVisible(false);
+                v.INICIO.setVisible(false);
+                v.CREARUSUARIO.setVisible(true);
+
+                //color al seleccionar X boton
+                v.opc1.setBackground(new Color(0,0,0));
+                v.opc2.setBackground(new Color(0,0,0));
+                v.opc3.setBackground(new Color(0,0,0));
+                v.opc4.setBackground(new Color(0,0,0));
+                v.opc5.setBackground(new Color(0,0,0));
+                v.opc6.setBackground(new Color(0,0,0));
+                v.opc7.setBackground(new Color(0,0,0));
+                v.opc8.setBackground(Color.CYAN);
+            }
+        });
+        v.opc9.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                v.setVisible(false);
+                log.setVisible(true);   
+            }
+        });
+        log.iniciodesesion.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                autenticarUsuarios();
+                limpiar(log.Usuario,log.Pass);
+            }
+        });
     }
 
     private void autenticarUsuarios() {
@@ -96,11 +308,30 @@ public class Controlador implements ActionListener {
         String clave = new String(log.Pass.getPassword());
         if (modeloEmple.autenticarUsuarios(usuario, clave, 1)) {
             JOptionPane.showMessageDialog(null, "Bienvenido/a al sistema " + usuario);
+            v.jLabel23.setText("Bienvenidos Usuario Adminitrador "+usuario);
+            v.jLabel4.setText("Bienvenidos Usuario Adminitrador "+usuario);
+            v.jLabel8.setText("Bienvenidos Usuario Adminitrador "+usuario);
+            v.jLabel34.setText("Bienvenidos Usuario Adminitrador "+usuario);
+            v.jLabel37.setText("Bienvenidos Usuario Adminitrador "+usuario);
+            v.jLabel48.setText("Bienvenidos Usuario Adminitrador "+usuario);
+            v.jLabel50.setText("Bienvenidos Usuario Adminitrador "+usuario);
+            v.jLabel52.setText("Bienvenidos Usuario Adminitrador "+usuario);
             log.setVisible(false);
             v.setVisible(true);
+            v.opc6.setVisible(true);
+            v.opc7.setVisible(true);
+            v.opc8.setVisible(true);
         } else if (modeloEmple.autenticarUsuarios(usuario, clave, 2)) {
             JOptionPane.showMessageDialog(null, "Bienvenido/a al sistema " + usuario);
             //V.bienvenida.setText("Bienvenidos Usuario Adminitrador "+usuario);
+            v.jLabel23.setText("Bienvenidos Usuario Cajero "+usuario);
+            v.jLabel4.setText("Bienvenidos Usuario Cajero "+usuario);
+            v.jLabel8.setText("Bienvenidos Usuario Cajero "+usuario);
+            v.jLabel34.setText("Bienvenidos Usuario Cajero "+usuario);
+            v.jLabel37.setText("Bienvenidos Usuario Cajero "+usuario);
+            v.jLabel48.setText("Bienvenidos Usuario Cajero "+usuario);
+            v.jLabel50.setText("Bienvenidos Usuario Cajero "+usuario);
+            v.jLabel52.setText("Bienvenidos Usuario Cajero "+usuario);
             log.setVisible(false);
             v.setVisible(true);
             v.opc6.setVisible(false);
@@ -137,6 +368,102 @@ public class Controlador implements ActionListener {
         Reg_Empleados newEmple = new Reg_Empleados(nombre, apellido, cedula, telefono, usuario, contraseña, rol);
 
         modeloEmple.registrarEmpleados(newEmple);
+    }
+    private void generarFactura(){
+        try {
+            
+            String tpS = (String) v.comboTipoP.getSelectedItem();
+            String rEmpleado = (String) v.comboCajeros.getSelectedItem();
+            String rEmpleado2 = (String) v.comboMeseros.getSelectedItem();
+            Reg_Empleados emple;
+            
+            int id_cliente = Integer.parseInt(v.txtCliente.getText());
+            Tipo_pago tpE = obtenerID(tpS);
+            int tipoP = tpE.getId_tipoP();
+            
+            emple = obtenerIDEmpleados(rEmpleado2);
+            int id_mesero = emple.getId_emple();
+            emple = obtenerIDEmpleados(rEmpleado);
+            int id_cajero = emple.getId_emple();
+            String num_fact = "1";
+            double descuento = Double.parseDouble(v.txtDesc.getText());
+            double IVA = 0.19;
+            double total = 2000;
+            Time time = new Time(System.currentTimeMillis());
+            System.out.println(time);
+            Date currentDate = new Date(System.currentTimeMillis());
+            System.out.println(currentDate);
+            
+            Gen_Factura factura = new Gen_Factura(id_cliente, id_mesero, tipoP, id_cajero, descuento, IVA, total, num_fact, time, currentDate);
+            modeloFac.getGenerarFact(factura);
+            
+        }catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(v, "Por favor, ingrese datos válidos");
+        }
+    }
+    private void mostrarRolesMeseros() {
+        ArrayList<Reg_Empleados> listaR = modeloEmple.obtenerEmpleados();
+        v.comboMeseros.removeAllItems();
+        v.comboMeseros.addItem("Seleccionar");
+        for (int i = 0; i < listaR.size(); i++) {
+            Reg_Empleados rol = listaR.get(i);
+            if (rol.getRol() == 3) {
+                v.comboMeseros.addItem(rol.getNom_emple());
+            }
+        }
+    }
+
+    private void mostrarRoles(int rol, JComboBox combo) {
+        ArrayList<Reg_Empleados> listaR = modeloEmple.obtenerEmpleados();
+        combo.removeAllItems();
+        combo.addItem("Seleccionar");
+        for (int i = 0; i < listaR.size(); i++) {
+            Reg_Empleados empleado = listaR.get(i);
+            if (empleado.getRol() == rol) {
+                combo.addItem(empleado.getNom_emple());
+            }
+        }
+    }
+
+    private void mostrarTiposPago() {
+        ArrayList<Tipo_pago> listaT = modeloTipoP.obtenerTiposPP();
+        v.comboTipoP.removeAllItems();
+        v.comboTipoP.addItem("Seleccionar");
+        for (int i = 0; i < listaT.size(); i++) {
+            v.comboTipoP.addItem(listaT.get(i).getNom_tipoP());
+        }
+    }
+    
+    private Reg_Empleados obtenerIDEmpleados(String nombreEmpleado) {
+        Reg_Empleados tipoEmple = null;
+        ArrayList<Reg_Empleados> ArrayEmpleados = modeloEmple.getEmpleados();
+        for (Reg_Empleados rEm : ArrayEmpleados) {
+            if (rEm.getNom_emple().equals(nombreEmpleado)) {
+                tipoEmple = rEm;
+                break;
+            }
+        }
+        if (tipoEmple == null) {
+            JOptionPane.showMessageDialog(null, "No se encontró el ID del tipo de pago.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return tipoEmple;
+    }
+    
+    private Tipo_pago obtenerID(String nombreTipoP) {
+        Tipo_pago tipoPE = null;
+        ArrayList<Tipo_pago> tp = modeloTipoP.obtenerTiposPP();
+        for (Tipo_pago tpa : tp) {
+            if (tpa.getNom_tipoP().equals(nombreTipoP)) {
+                tipoPE = tpa;
+                break;
+            }
+        }
+        if (tipoPE == null) {
+            JOptionPane.showMessageDialog(null, "No se encontró el ID del tipo de pago.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return tipoPE;
     }
 
     /*private void registrarProducto() {
@@ -400,14 +727,16 @@ public class Controlador implements ActionListener {
     private void ocupado(){
         modeloMesa.Ocupado(1);
     }
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == log.ingresar) {
+        /*if (e.getSource() == log.ingresar) {
             autenticarUsuarios();
-        }
+        }*/
         if (e.getSource() == v.btconsultarinventario) {
             consultarInventario();
+            limpiar(v.jtfingredienteaconsulta);
         }
         if (e.getSource() == v.Btnmesaocupada) {
             ocupado();
@@ -428,12 +757,12 @@ public class Controlador implements ActionListener {
                 cargarProductosPorCategoria(categoriaSeleccionada);
             }
         }*/ else if (e.getSource() == v.btnRegistrarCliente) {
-            if (camposVacios(v.txtNombreEmpleadoE, v.txtApellidoEmpleadoE, v.txtCedulaEmpleadoE, v.txtTelefonoEmpleadoE, v.txtUsuarioE, v.txtContraseñaE)) {
+            if (camposVacios(v.txtNombreC, v.txtApellidoC, v.txtCedulaC, v.txtTelefonoC, v.txtDireccionC)) {
                 JOptionPane.showMessageDialog(v, "Por favor, llena todos los campos");
             } else {
-                registrarCliente();
-                JOptionPane.showMessageDialog(null, "Cliente registrado con exito");
-                limpiar(v.txtNombreEmpleadoE, v.txtApellidoEmpleadoE, v.txtCedulaEmpleadoE, v.txtTelefonoEmpleadoE, v.txtUsuarioE, v.txtContraseñaE);
+                registrarEmpleado();
+                JOptionPane.showMessageDialog(null, "cliente registrado con exito");
+                limpiar(v.txtNombreC, v.txtApellidoC, v.txtCedulaC, v.txtTelefonoC, v.txtDireccionC);
             }
         }/* else if (e.getSource() == v.btnregister) {
             if (camposVacios(v.txtcodigo, v.txtnombre, v.txtprecio, v.txtcantidad)) {
@@ -443,12 +772,12 @@ public class Controlador implements ActionListener {
                 limpiar(v.txtcodigo, v.txtnombre, v.txtprecio, v.txtcantidad);
             }
         }*/ else if (e.getSource() == v.btnRegistrarEmpleado) {
-            if (camposVacios(v.txtNombreC, v.txtApellidoC, v.txtCedulaC, v.txtTelefonoC, v.txtDireccionC)) {
+            if (camposVacios(v.txtNombreEmpleadoE, v.txtApellidoEmpleadoE, v.txtCedulaEmpleadoE, v.txtTelefonoEmpleadoE, v.txtUsuarioE, v.txtContraseñaE)) {
                 JOptionPane.showMessageDialog(v, "Por favor, llena todos los campos");
             } else {
-                registrarEmpleado();
+                registrarCliente();
                 JOptionPane.showMessageDialog(null, "Empleado registrado con exito");
-                limpiar(v.txtNombreC, v.txtApellidoC, v.txtCedulaC, v.txtTelefonoC, v.txtDireccionC);
+                limpiar(v.txtNombreEmpleadoE, v.txtApellidoEmpleadoE, v.txtCedulaEmpleadoE, v.txtTelefonoEmpleadoE, v.txtUsuarioE, v.txtContraseñaE);
             }
         }/* else if (e.getSource() == v.btnGenerarFactura) {
             generarFactura(); // Esta parte está comentada, asegúrate de implementarla correctamente
