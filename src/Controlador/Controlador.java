@@ -94,7 +94,7 @@ public class Controlador implements ActionListener {
         });
         this.vn.btnCrearMesa.addActionListener(this);
         this.vn.btconsultarinventario.addActionListener(this);
-        mostrarProductos(modelo.obtenerTodosLosProductos());
+        mostrarProductos(modeloInv.obtenerTodosLosProductos());
         //this.v.btnRegistrarProducto.addActionListener(this);
         //this.v.btnAgregarPedido.addActionListener(this);
         //this.v.btnEliminarPedido.addActionListener(this);
@@ -352,9 +352,9 @@ public class Controlador implements ActionListener {
     
     private void consultarInventario() {
         try {
-            String inicio = vista.jtffechainicio.getText();
-            String fin = vista.jtffechafinal.getText();
-            String nombre = vista.jtfingredienteaconsulta.getText();
+            String inicio = vn.jtffechainicio.getText();
+            String fin = vn.jtffechafinal.getText();
+            String nombre = vn.jtfingredienteaconsulta.getText();
             if (nombre != null && nombre.isEmpty()) {
                 nombre = null; // Si el nombre está vacío, lo establecemos a null
             }
@@ -366,7 +366,7 @@ public class Controlador implements ActionListener {
     }
     
     private void mostrarProductos(ArrayList<Inventario> productos) {
-        DefaultTableModel tm = (DefaultTableModel) vista.jtblsalidainvetario.getModel();
+        DefaultTableModel tm = (DefaultTableModel) vn.jtblsalidainvetario.getModel();
         tm.setRowCount(0); // Limpia la tabla
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         for (Inventario producto : productos) {
@@ -580,7 +580,7 @@ public class Controlador implements ActionListener {
             cuartoBoton();
         } else if (e.getSource() == vn.btnGenerarFactura) {
             generarFactura();
-        }else if(e.getSource() == vista.btconsultarinventario) {
+        }else if(e.getSource() == vn.btconsultarinventario) {
             consultarInventario();
         }
     }

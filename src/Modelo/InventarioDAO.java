@@ -14,7 +14,7 @@ public class InventarioDAO {
 
     public InventarioDAO() {
         Conexion con = new Conexion();
-        Connection conex = con.getConnection();
+        conn = con.getConnection();
     }
 
     public ArrayList<Inventario> buscarProductos(String inicio, String fin, String nombre) {
