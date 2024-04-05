@@ -141,6 +141,25 @@ public class Reg_EmpleadosDAO {
         return false;
     }
     
+    public int obtenerRol(String nombreUsuario) {
+        int rol = 0;
+
+        try {
+            String sql = "SELECT rol FROM reg_empleados WHERE usuario=?";
+            ps = conex.prepareStatement(sql);
+            ps.setString(1, nombreUsuario);
+
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                rol = rs.getInt("rol");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rol;
+    }
+    
     public int registrarEmpleados(Reg_Empleados emple) {
         if (verificarEmpleado(emple)) {
             System.out.println("Empleado ya registrado, favor intentar de nuevo!");

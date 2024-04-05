@@ -16,13 +16,11 @@ public class MesaDAO {
 
     private void registrar_mesa(Mesa mesa) {
         try {
-            // Tu lógica para insertar el cliente en la base de datos
-            String sql = "INSERT INTO reg_mesa VALUES(?, ?, ?, ?)";
+            String sql = "INSERT INTO reg_mesa(cant_sillas, tipo, estado) VALUES(?, ?, ?)";
             try (PreparedStatement st = conex.prepareStatement(sql)) {
-                st.setInt(1, mesa.getId_mesa());
-                st.setInt(2, mesa.getCant_sillas());
-                st.setString(3, mesa.getTipo());
-                st.setString(4, mesa.getEstado());
+                st.setInt(1, mesa.getCant_sillas());
+                st.setString(2, mesa.getTipo());
+                st.setString(3, mesa.getEstado());
                 int rows = st.executeUpdate();
                 if (rows > 0) {
                     System.out.println("Mesa registrado en la base de datos: "
@@ -76,7 +74,7 @@ public class MesaDAO {
         return ultimoId();
     }
     
-    public int registrarMesa(int a){
-        return a;
+    public void registrarMesa(Mesa mesa){
+        registrar_mesa(mesa);
     }
 }

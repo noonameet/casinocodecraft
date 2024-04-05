@@ -6,7 +6,7 @@ import java.util.Date;
  *
  * @author Laderson Leon
  */
-public class Mesa extends Pedidos{
+public class Mesa{
 
     private int id_mesa, cant_sillas;
     private String estado, tipo;
@@ -14,17 +14,11 @@ public class Mesa extends Pedidos{
     public Mesa() {
     }
 
-    public Mesa(int id_mesa, int cant_sillas, String estado, String tipo, 
-            int id, int num_mesa, int mesero, String producto, String cantidad, 
-            String estado_m, Date fecha) {
-        super(id, num_mesa, mesero, producto, cantidad, estado, fecha);
-        this.id_mesa = id_mesa;
+    public Mesa(int cant_sillas, String estado, String tipo) {
         this.cant_sillas = cant_sillas;
         this.estado = estado;
         this.tipo = tipo;
     }
-
-    
 
     public int getId_mesa() {
         return id_mesa;

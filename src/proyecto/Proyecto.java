@@ -10,10 +10,11 @@ public class Proyecto {
         Reg_Cliente cliente = new Reg_Cliente();
         Vista vs = new Vista();
         Log_in log = new Log_in();
+        Ventanas vn = new Ventanas();
         
-        Controlador ct = new Controlador(vs, log);
+        Controlador ct = new Controlador(vs, log, vn);
         log.setResizable(false); 
         //log.setVisible(true);
-        vs.setVisible(true);
+        log.setVisible(true);
     }
 }
