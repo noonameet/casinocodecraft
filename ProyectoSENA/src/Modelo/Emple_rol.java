@@ -11,7 +11,7 @@ import java.sql.Time;
  *
  * @author Administrador
  */
-public class Emple_rol{
+public class Emple_rol {
 
     private int id_rol;
     private String nom_rol;
@@ -22,6 +22,11 @@ public class Emple_rol{
     public Emple_rol(int id_rol, String nom_rol) {
         this.id_rol = id_rol;
         this.nom_rol = nom_rol;
+    }
+
+    @Override
+    public String toString() {
+        return nom_rol;
     }
 
     public int getId_rol() {

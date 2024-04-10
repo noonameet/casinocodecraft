@@ -16,6 +16,24 @@ public class MesaDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
+    private void registrar_mesa(Mesa mesa) {
+        String sql = "INSERT INTO reg_mesa(cant_sillas, tipo, estado) VALUES(?, ?, ?)";
+
+        try (Connection conex = con.getConnection();
+                PreparedStatement ps = conex.prepareStatement(sql)) {
+
+            ps.setInt(1, mesa.getCant_sillas());
+            ps.setString(2, mesa.getTipo());
+            ps.setString(3, mesa.getEstado());
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /*
     private void registrar_mesa(Mesa mesa) throws SQLException {
         try {
             conex = con.getConnection();
@@ -32,9 +50,8 @@ public class MesaDAO {
             conex.close();
             ps.close();
         }
-    }
-    
-    public void registrarMesa(Mesa mesa) throws SQLException{
+    }*/
+    public void registrarMesa(Mesa mesa) {
         registrar_mesa(mesa);
     }
 }

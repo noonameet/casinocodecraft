@@ -8,13 +8,9 @@ import java.util.Date;
 
 public class InventarioDAO {
 
-    private Connection conn = null;
-    private PreparedStatement pst = null;
-    private ResultSet rs = null;
+    private Conexion con = new Conexion();
 
     public InventarioDAO() {
-        Conexion con = new Conexion();
-        conn = con.getConnection();
     }
 
     public ArrayList<Inventario> buscarProductos(String inicio, String fin, String nombre) {
@@ -25,23 +21,21 @@ public class InventarioDAO {
         }
     }
 
-    public ArrayList<Inventario> buscarPorFechaYNombre(String inicio, String fin, String nombre) {
+    private ArrayList<Inventario> buscarPorFechaYNombre(String inicio, String fin, String nombre) {
         ArrayList<Inventario> productos = new ArrayList<>();
         String sql = "SELECT * FROM iv_prod_ent WHERE date(fecha) BETWEEN ? AND ? AND nombre LIKE ?";
-        try {
-            pst = conn.prepareStatement(sql);
+        try (Connection conn = con.getConnection();
+                PreparedStatement pst = conn.prepareStatement(sql)) {
+
             pst.setString(1, inicio);
             pst.setString(2, fin);
             pst.setString(3, "%" + nombre + "%");
-            rs = pst.executeQuery();
-            while (rs.next()) {
-                String fechaString = rs.getString("fecha");
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                Date fecha = format.parse(fechaString);
-                Inventario producto = new Inventario(rs.getInt("id_prod_ent"), rs.getString("nombre"), rs.getInt("cantent"), fecha);
-                productos.add(producto);
+
+            try (ResultSet rs = pst.executeQuery()) {
+                productos = procesarResultSet(rs);
             }
         } catch (SQLException | ParseException e) {
+            e.printStackTrace();
         }
         return productos;
     }
@@ -49,20 +43,17 @@ public class InventarioDAO {
     private ArrayList<Inventario> buscarPorFecha(String inicio, String fin) {
         ArrayList<Inventario> productos = new ArrayList<>();
         String sql = "SELECT * FROM iv_prod_ent WHERE date(fecha) BETWEEN ? AND ?";
-        try {
-            pst = conn.prepareStatement(sql);
+        try (Connection conn = con.getConnection();
+                PreparedStatement pst = conn.prepareStatement(sql)) {
+
             pst.setString(1, inicio);
             pst.setString(2, fin);
-            rs = pst.executeQuery();
-            while (rs.next()) {
-                String fechaString = rs.getString("fecha");
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                Date fecha = format.parse(fechaString);
-                Inventario producto = new Inventario(rs.getInt("id_prod_ent"), rs.getString("nombre"), rs.getInt("cantent"), fecha);
-                productos.add(producto);
+
+            try (ResultSet rs = pst.executeQuery()) {
+                productos = procesarResultSet(rs);
             }
         } catch (SQLException | ParseException e) {
-            // Manejar excepciones
+            e.printStackTrace();
         }
         return productos;
     }
@@ -70,19 +61,26 @@ public class InventarioDAO {
     public ArrayList<Inventario> obtenerTodosLosProductos() {
         ArrayList<Inventario> productos = new ArrayList<>();
         String sql = "SELECT * FROM iv_prod_ent";
-        try {
-            pst = conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-            while (rs.next()) {
-                String fechaString = rs.getString("fecha");
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                Date fecha = format.parse(fechaString);
-                Inventario producto = new Inventario(rs.getInt("id_prod_ent"), rs.getString("nombre"), rs.getInt("cantent"), fecha);
-                productos.add(producto);
-            }
+        try (Connection conn = con.getConnection();
+                PreparedStatement pst = conn.prepareStatement(sql);
+                ResultSet rs = pst.executeQuery()) {
+
+            productos = procesarResultSet(rs);
         } catch (SQLException | ParseException e) {
+            e.printStackTrace();
         }
         return productos;
     }
 
+    private ArrayList<Inventario> procesarResultSet(ResultSet rs) throws SQLException, ParseException {
+        ArrayList<Inventario> productos = new ArrayList<>();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        while (rs.next()) {
+            String fechaString = rs.getString("fecha");
+            Date fecha = format.parse(fechaString);
+            Inventario producto = new Inventario(rs.getInt("id_prod_ent"), rs.getString("nombre"), rs.getInt("cantent"), fecha);
+            productos.add(producto);
+        }
+        return productos;
+    }
 }
