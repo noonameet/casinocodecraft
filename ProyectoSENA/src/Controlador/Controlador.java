@@ -41,6 +41,7 @@ public class Controlador implements ActionListener {
         this.v.btnRegistrarMesa.addActionListener(this);
         this.v.btconsultarinventario.addActionListener(this);
         this.v.btnAsociarProducto.addActionListener(this);
+        this.v.btnAgregarCarrito.addActionListener(this);
         this.v.btnregisterproducto.addActionListener(this);
         this.cargarCategorias();
         this.cargarinvactual();
@@ -123,7 +124,30 @@ public class Controlador implements ActionListener {
             JOptionPane.showMessageDialog(v, "Por favor, ingrese datos válidos");
         }
     }
-
+    
+    private void ingresarCarrito(){
+        v.comboMesa.setEnabled(false);
+        v.comboMesero.setEnabled(false);
+        int suma = Integer.parseInt(v.total.getText());
+        
+        String mesero = (String) v.comboMesero.getSelectedItem();
+        String mesa = (String) v.comboMesa.getSelectedItem();
+        int cant = Integer.parseInt(v.txtCantP.getText());
+        int ind = v.tablaP.getSelectedRow();
+        String producto = (String) v.tablaP.getValueAt(ind, 0);
+        int precio = (Integer) v.tablaP.getValueAt(ind, 2);
+        int totalM = precio * cant;
+        int totalAP = suma + totalM;
+        
+        String valor = String.valueOf(totalAP);
+        
+        v.total.setText(valor);
+        
+        DefaultTableModel tabla = (DefaultTableModel) v.tablaPedidos.getModel();
+        Object[] fila = {mesero, mesa, producto, precio, cant};
+        tabla.addRow(fila);
+    }
+    
     private void mostrarProductos(ArrayList<Inventario> productos) {
         DefaultTableModel tm = (DefaultTableModel) v.jtblsalidainvetario.getModel();
         tm.setRowCount(0); // Limpia la tabla
@@ -312,7 +336,10 @@ public class Controlador implements ActionListener {
                 registrarProducto();
                 limpiar(v.txtcodigo, v.txtnombre, v.txtprecio, v.txtcantidad);
             }
-
+        }
+        
+        if (e.getSource() == v.btnAgregarCarrito){
+            ingresarCarrito();
         }
     }
 

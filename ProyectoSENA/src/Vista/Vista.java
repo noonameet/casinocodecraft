@@ -84,13 +84,13 @@ public class Vista extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAgregarCarrito = new javax.swing.JButton();
+        btnEliminarCarrito = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaPedidos = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaP = new javax.swing.JTable();
         comboMesa = new javax.swing.JComboBox<>();
         comboMesero = new javax.swing.JComboBox<>();
         txtCantP = new javax.swing.JTextField();
@@ -533,41 +533,54 @@ public class Vista extends javax.swing.JFrame {
 
         Principal.addTab("Consultar Inventario", ConsultarInventario);
 
-        jButton1.setText("Agregar a Carrito");
+        btnAgregarCarrito.setText("Agregar a Carrito");
 
-        jButton2.setText("Eliminar Pedido");
+        btnEliminarCarrito.setText("Eliminar de Carrito");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Mesa", "Mesero", "Producto", "Precio", "Cantidad"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tablaPedidos);
 
         jButton4.setText("Agregar Pedido");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {"Nose", "abc",  new Integer(2222)},
+                {"john", "ccc",  new Integer(10000)}
             },
             new String [] {
                 "Producto", "Tipo Producto", "Precio"
             }
-        ));
-        jScrollPane4.setViewportView(jTable2);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
 
-        comboMesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tablaP);
 
-        comboMesero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboMesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laderson" }));
+
+        comboMesero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "John", "Jairo", "Familiar" }));
+
+        total.setText("0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -598,9 +611,9 @@ public class Vista extends javax.swing.JFrame {
                                 .addComponent(total))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregarCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEliminarCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4)))
                 .addGap(312, 312, 312))
@@ -626,8 +639,8 @@ public class Vista extends javax.swing.JFrame {
                         .addComponent(txtCantP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))))
+                            .addComponent(btnAgregarCarrito)
+                            .addComponent(btnEliminarCarrito))))
                 .addContainerGap(120, Short.MAX_VALUE))
         );
 
@@ -721,15 +734,17 @@ public class Vista extends javax.swing.JFrame {
     public javax.swing.JPanel RegistrarEmpleado;
     public javax.swing.JPanel RegistrarMesa;
     public javax.swing.JButton btconsultarinventario;
+    public javax.swing.JButton btnAgregarCarrito;
     public javax.swing.JButton btnAsociarProducto;
+    public javax.swing.JButton btnEliminarCarrito;
     private javax.swing.JButton btnGenerarFactura;
     public javax.swing.JButton btnRegistrarCliente;
     public javax.swing.JButton btnRegistrarEmpleado;
     public javax.swing.JButton btnRegistrarMesa;
     public javax.swing.JButton btnregisterproducto;
     private javax.swing.JComboBox<String> comboCajero;
-    private javax.swing.JComboBox<String> comboMesa;
-    private javax.swing.JComboBox<String> comboMesero;
+    public javax.swing.JComboBox<String> comboMesa;
+    public javax.swing.JComboBox<String> comboMesero;
     private javax.swing.JComboBox<String> comboPedidos;
     public javax.swing.JComboBox<String> comboRoles;
     private javax.swing.JComboBox<String> comboTipoP;
@@ -738,8 +753,6 @@ public class Vista extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> ivcategoria;
     public javax.swing.JComboBox<String> ivingrediente;
     public javax.swing.JComboBox<String> ivproducto;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     public javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
@@ -760,17 +773,17 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     public javax.swing.JTable jTblasociados;
     public javax.swing.JTable jtblsalidainvetario;
     public javax.swing.JTextField jtffechafinal;
     public javax.swing.JTextField jtffechainicio;
     public javax.swing.JTextField jtfingredienteaconsulta;
-    private javax.swing.JTextField total;
+    public javax.swing.JTable tablaP;
+    public javax.swing.JTable tablaPedidos;
+    public javax.swing.JTextField total;
     public javax.swing.JTextField txtApellidoC;
     public javax.swing.JTextField txtApellidoE;
-    private javax.swing.JTextField txtCantP;
+    public javax.swing.JTextField txtCantP;
     public javax.swing.JTextField txtCantS;
     private javax.swing.JTextField txtCedC;
     public javax.swing.JTextField txtCedulaC;
