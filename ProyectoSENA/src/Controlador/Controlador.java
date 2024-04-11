@@ -50,7 +50,7 @@ public class Controlador implements ActionListener {
         mostrarProductos(modeloInv.obtenerTodosLosProductos());
     }
 
-    private boolean auth() throws SQLException {
+    private boolean auth() {
         String usuario = l.txtUsuario.getText();
         String pass = l.txtContraseña.getText();
         boolean aux = false;
@@ -60,7 +60,7 @@ public class Controlador implements ActionListener {
         return aux;
     }
 
-    private int rolAuth() throws SQLException {
+    private int rolAuth() {
         String usuario = l.txtUsuario.getText();
         String pass = l.txtContraseña.getText();
         int aux = 0;
@@ -70,7 +70,7 @@ public class Controlador implements ActionListener {
         return aux;
     }
 
-    private void registrarC() throws SQLException {
+    private void registrarC() {
         String nomC = v.txtNombreC.getText();
         String apeC = v.txtApellidoC.getText();
         String cedC = v.txtCedulaC.getText();
@@ -82,7 +82,7 @@ public class Controlador implements ActionListener {
         DAOC.registrarCliente(cliente);
     }
 
-    private void registrarE() throws SQLException {
+    private void registrarE() {
         String nomE = v.txtNombreE.getText();
         String apeE = v.txtApellidoE.getText();
         String cedE = v.txtCedulaE.getText();
@@ -96,7 +96,7 @@ public class Controlador implements ActionListener {
         DAOE.registrarEmpleados(empleado);
     }
 
-    private void registrarM() throws SQLException {
+    private void registrarM() {
         int cantS = Integer.parseInt(v.txtCantS.getText());
         String tipoM = (String) v.comboTiposM.getSelectedItem();
 
@@ -233,7 +233,7 @@ public class Controlador implements ActionListener {
         mostrarElementos(listaR, v.comboRoles, "Seleccionar");
     }
 
-    private void consultarInventario() throws SQLException {
+    private void consultarInventario() {
         try {
             String inicio = v.jtffechainicio.getText();
             String fin = v.jtffechafinal.getText();
@@ -258,56 +258,36 @@ public class Controlador implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == l.btnIngresar) {
-            try {
-                System.out.println(auth());
-                if (auth()) {
-                    if (rolAuth() == 1) {
-                        l.setVisible(false);
-                        v.setVisible(true);
-                    } else if (rolAuth() == 2) {
-                        l.setVisible(false);
-                        v.setVisible(true);
-                        v.Principal.remove(v.RegistrarMesa);
-                        v.Principal.remove(v.RegistrarEmpleado);
-                    }
-                } else {
-                    System.out.println("Usuario o Contraseña incorrecto");
+            System.out.println(auth());
+            if (auth()) {
+                if (rolAuth() == 1) {
+                    l.setVisible(false);
+                    v.setVisible(true);
+                } else if (rolAuth() == 2) {
+                    l.setVisible(false);
+                    v.setVisible(true);
+                    v.Principal.remove(v.RegistrarMesa);
+                    v.Principal.remove(v.RegistrarEmpleado);
                 }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
+            } else {
+                System.out.println("Usuario o Contraseña incorrecto");
             }
         }
 
         if (e.getSource() == v.btnRegistrarCliente) {
-            try {
-                registrarC();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+            registrarC();
         }
 
         if (e.getSource() == v.btnRegistrarEmpleado) {
-            try {
-                registrarE();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+            registrarE();
         }
 
         if (e.getSource() == v.btnRegistrarMesa) {
-            try {
-                registrarM();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+            registrarM();
         }
 
         if (e.getSource() == v.btconsultarinventario) {
-            try {
-                consultarInventario();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+            consultarInventario();
         }
 
         if (e.getSource() == v.btnAsociarProducto) {

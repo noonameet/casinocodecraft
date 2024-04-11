@@ -32,25 +32,6 @@ public class MesaDAO {
         }
     }
 
-
-    /*
-    private void registrar_mesa(Mesa mesa) throws SQLException {
-        try {
-            conex = con.getConnection();
-            String sql = "INSERT INTO reg_mesa(cant_sillas, tipo, estado) VALUES(?, ?, ?)";
-            ps = conex.prepareStatement(sql);
-
-            ps.setInt(1, mesa.getCant_sillas());
-            ps.setString(2, mesa.getTipo());
-            ps.setString(3, mesa.getEstado());
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            conex.close();
-            ps.close();
-        }
-    }*/
     public void registrarMesa(Mesa mesa) {
         registrar_mesa(mesa);
     }
