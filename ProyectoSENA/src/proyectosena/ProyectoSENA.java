@@ -6,7 +6,6 @@ public class ProyectoSENA {
 
     public static void main(String[] args) {
         Vista vs = new Vista();
-        Login log = new Login();
         
         Controlador ct = new Controlador(vs);
         

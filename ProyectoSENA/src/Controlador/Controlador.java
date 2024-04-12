@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,7 +44,9 @@ public class Controlador implements ActionListener {
         this.v.btnAsociarProducto.addActionListener(this);
         this.v.btnAgregarCarrito.addActionListener(this);
         this.v.btnregisterproducto.addActionListener(this);
+        this.v.btnEliminarCarrito.addActionListener(this);
         this.cargarCategorias();
+
         this.cargarinvactual();
         this.cargarMeseros();
         this.cargarMesas();
@@ -143,7 +146,7 @@ public class Controlador implements ActionListener {
         String producto = String.valueOf(v.tablaP.getValueAt(ind, 0));
         double precio = Double.parseDouble(String.valueOf(v.tablaP.getValueAt(ind, 2)));
         double totalM = precio * cant;
-        int totalAP = suma + (int)totalM;
+        int totalAP = suma + (int) totalM;
 
         // Formatea el total con puntos de mil y el signo de peso
         String valor = String.format("$%,d", totalAP).replace(",", ".");
@@ -153,6 +156,27 @@ public class Controlador implements ActionListener {
         DefaultTableModel tabla = (DefaultTableModel) v.tablaPedidos.getModel();
         Object[] fila = {mesero, mesa, producto, precio, cant};
         tabla.addRow(fila);
+    }
+
+    private void eliminarFilaSeleccionada() {
+        int indiceSeleccionado = v.tablaPedidos.getSelectedRow();
+
+        if (indiceSeleccionado != -1) {
+            DefaultTableModel modeloTabla = (DefaultTableModel) v.tablaPedidos.getModel();
+
+            int cantidad = Integer.parseInt(v.tablaPedidos.getValueAt(indiceSeleccionado, 4).toString());
+            double precio = Double.parseDouble(v.tablaPedidos.getValueAt(indiceSeleccionado, 3).toString());
+
+            String textoSinFormatoTotal = v.total.getText().replace("$", "").replace(".", "");
+            int totalActual = Integer.parseInt(textoSinFormatoTotal) - (int) (precio * cantidad); // Convertir a int
+
+            String nuevoTotal = String.format("$%,d", totalActual).replace(",", "."); // Usar %d para números enteros
+            v.total.setText(nuevoTotal);
+
+            modeloTabla.removeRow(indiceSeleccionado);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void actualizarTablaProductos() {
@@ -349,6 +373,10 @@ public class Controlador implements ActionListener {
 
         if (e.getSource() == v.btnAsociarProducto) {
             guardarRelacionProductoIngrediente();
+        }
+
+        if (e.getSource() == v.btnEliminarCarrito) {
+            eliminarFilaSeleccionada();
         }
 
         if (e.getSource() == v.ivcategoria) {
