@@ -12,18 +12,18 @@ import javax.swing.JOptionPane;
  * @author Laderson Leon
  */
 public class Reg_EmpleadosDAO {
-    
+
     Conexion con = new Conexion();
     Connection conex = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
-    
+
     private void registrarEmpleado(Reg_Empleados emple) {
         String sql = "INSERT INTO reg_empleados(nom_empleados, ape_empleados, "
-                    + "ced_empleados, tel_empleados, usuario, clave, rol) VALUES(?, ?, ?, ?, ?, ?, ?)";
-        try(Connection conex = con.getConnection(); PreparedStatement ps = 
-                conex.prepareStatement(sql)) {
-            
+                + "ced_empleados, tel_empleados, usuario, clave, rol) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        try (Connection conex = con.getConnection(); PreparedStatement ps
+                = conex.prepareStatement(sql)) {
+
             ps.setString(1, emple.getNom_emple());
             ps.setString(2, emple.getApe_emple());
             ps.setString(3, emple.getCed_emple());
@@ -36,11 +36,11 @@ public class Reg_EmpleadosDAO {
             e.printStackTrace();
         }
     }
-    
+
     private boolean verificarEmpleado(Reg_Empleados emple) {
         String sql = "SELECT * FROM reg_empleados WHERE id_empleados = ?";
-        try(Connection conex = con.getConnection(); PreparedStatement ps = 
-                conex.prepareStatement(sql)) {
+        try (Connection conex = con.getConnection(); PreparedStatement ps
+                = conex.prepareStatement(sql)) {
 
             ps.setString(1, emple.getCed_emple());
             try (ResultSet rs = ps.executeQuery()) {
@@ -51,7 +51,7 @@ public class Reg_EmpleadosDAO {
             return false;
         }
     }
-    
+
     public int registrarEmpleados(Reg_Empleados emple) {
         if (verificarEmpleado(emple)) {
             System.out.println("Empleado ya registrado, favor intentar de nuevo!");
@@ -61,4 +61,37 @@ public class Reg_EmpleadosDAO {
             return 0;
         }
     }
+
+    private ArrayList<Reg_Empleados> ObtenerMeseros() {
+        ArrayList<Reg_Empleados> listame = new ArrayList<>();
+
+        String sql = "SELECT id_empleados, nom_empleados FROM reg_empleados WHERE rol = 3";
+
+        try (Connection cn = con.getConnection(); PreparedStatement pst = cn.prepareStatement(sql); ResultSet rs = pst.executeQuery()) {
+
+            while (rs.next()) {
+                Reg_Empleados me = new Reg_Empleados();
+                me.setId_emple(rs.getInt("id_empleados"));
+                me.setNom_emple(rs.getString("nom_empleados"));
+                listame.add(me);
+                System.out.println("Meseros encontrados");
+            }
+
+            System.out.println("Meseros listados");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listame;
+    }
+
+    public ArrayList<Reg_Empleados> getObtenerMeseros() {
+        try {
+            return ObtenerMeseros();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
 }

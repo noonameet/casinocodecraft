@@ -15,6 +15,13 @@ public class Reg_Empleados {
     public Reg_Empleados() {
     }
 
+    public Reg_Empleados(int id_emple, String nom_emple) {
+        this.id_emple = id_emple;
+        this.nom_emple = nom_emple;
+    }
+    
+    
+
     public Reg_Empleados(String nom_emple, String ape_emple, String ced_emple, String tel_emple, String usuario, String clave, int rol) {
         this.rol = rol;
         this.nom_emple = nom_emple;
@@ -88,5 +95,12 @@ public class Reg_Empleados {
     public void setClave(String clave) {
         this.clave = clave;
     }
+
+    @Override
+    public String toString() {
+        return nom_emple;
+    }
+    
+    
 
 }

@@ -136,4 +136,40 @@ public class ProductoDAO {
             return new ArrayList<>();
         }
     }
+
+    private DefaultTableModel obtenerProductos() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Producto");
+        model.addColumn("Categoria");
+        model.addColumn("Precio");
+
+        try (Connection conn = con.getConnection()) {
+            String sql = "SELECT p.nombre AS Producto, c.cat_prod_nom AS Categoria, "
+                    + "p.precio AS Precio FROM productos "
+                    + "p JOIN prod_categoria c ON p.id_cat_prod = c.id_cat_prod;";
+
+            try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+                while (rs.next()) {
+                    String Producto = rs.getString("Producto");
+                    String Categoria = rs.getString("Categoria");
+                    String Precio = rs.getString("Precio");
+                    model.addRow(new Object[]{Producto, Categoria, Precio});
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            // Manejo de excepciones
+        }
+
+        return model;
+    }
+
+    public DefaultTableModel getProductos() {
+        try {
+            return obtenerProductos();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new DefaultTableModel();
+        }
+    }
 }

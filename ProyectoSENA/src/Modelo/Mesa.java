@@ -14,6 +14,13 @@ public class Mesa{
     public Mesa() {
     }
 
+
+    @Override
+    public String toString() {
+        return tipo + " " +cant_sillas;
+    }
+    
+
     public Mesa(int cant_sillas, String estado, String tipo) {
         this.cant_sillas = cant_sillas;
         this.estado = estado;

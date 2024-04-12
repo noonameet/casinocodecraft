@@ -33,7 +33,7 @@ public class Controlador implements ActionListener {
     ProductoDAO modeloPro = new ProductoDAO();
     CategoriasDAO modeloCat = new CategoriasDAO();
 
-    public Controlador(Vista v) throws SQLException {
+    public Controlador(Vista v) {
         this.v = v;
         this.l.btnIngresar.addActionListener(this);
         this.v.btnRegistrarCliente.addActionListener(this);
@@ -45,9 +45,12 @@ public class Controlador implements ActionListener {
         this.v.btnregisterproducto.addActionListener(this);
         this.cargarCategorias();
         this.cargarinvactual();
+        this.cargarMeseros();
+        this.cargarMesas();
         this.mostrarProductosAsociados();
         this.v.ivcategoria.addActionListener(this);
         this.rolesE();
+        this.actualizarTablaProductos();
         mostrarProductos(modeloInv.obtenerTodosLosProductos());
     }
 
@@ -124,30 +127,50 @@ public class Controlador implements ActionListener {
             JOptionPane.showMessageDialog(v, "Por favor, ingrese datos válidos");
         }
     }
-    
-    private void ingresarCarrito(){
+
+    private void IngresarCarrito() {
         v.comboMesa.setEnabled(false);
         v.comboMesero.setEnabled(false);
-        int suma = Integer.parseInt(v.total.getText());
-        
-        String mesero = (String) v.comboMesero.getSelectedItem();
-        String mesa = (String) v.comboMesa.getSelectedItem();
+
+        // Elimina el signo de peso y los separadores de miles antes de convertir a entero
+        String textoSinFormato = v.total.getText().replace("$", "").replace(".", "");
+        int suma = Integer.parseInt(textoSinFormato);
+
+        String mesero = v.comboMesero.getSelectedItem().toString();
+        String mesa = v.comboMesa.getSelectedItem().toString();
         int cant = Integer.parseInt(v.txtCantP.getText());
         int ind = v.tablaP.getSelectedRow();
-        String producto = (String) v.tablaP.getValueAt(ind, 0);
-        int precio = (Integer) v.tablaP.getValueAt(ind, 2);
-        int totalM = precio * cant;
-        int totalAP = suma + totalM;
-        
-        String valor = String.valueOf(totalAP);
-        
-        v.total.setText(valor);
-        
+        String producto = String.valueOf(v.tablaP.getValueAt(ind, 0));
+        double precio = Double.parseDouble(String.valueOf(v.tablaP.getValueAt(ind, 2)));
+        double totalM = precio * cant;
+        int totalAP = suma + (int)totalM;
+
+        // Formatea el total con puntos de mil y el signo de peso
+        String valor = String.format("$%,d", totalAP).replace(",", ".");
+
+        v.total.setText(valor); // Establece el texto con el signo de peso y puntos de mil
+
         DefaultTableModel tabla = (DefaultTableModel) v.tablaPedidos.getModel();
         Object[] fila = {mesero, mesa, producto, precio, cant};
         tabla.addRow(fila);
     }
-    
+
+    private void actualizarTablaProductos() {
+        // Obtener el modelo de la tabla
+        DefaultTableModel tm = (DefaultTableModel) v.tablaP.getModel();
+        tm.setRowCount(0);
+
+        // Obtener los productos y agregarlos a la tabla
+        DefaultTableModel modelProductos = modeloPro.getProductos();
+        for (int i = 0; i < modelProductos.getRowCount(); i++) {
+            Object[] row = new Object[modelProductos.getColumnCount()];
+            for (int j = 0; j < row.length; j++) {
+                row[j] = modelProductos.getValueAt(i, j);
+            }
+            tm.addRow(row);
+        }
+    }
+
     private void mostrarProductos(ArrayList<Inventario> productos) {
         DefaultTableModel tm = (DefaultTableModel) v.jtblsalidainvetario.getModel();
         tm.setRowCount(0); // Limpia la tabla
@@ -170,6 +193,16 @@ public class Controlador implements ActionListener {
         ArrayList<Categorias> categorias = modeloCat.getObtenerCategorias();
         cargarItems(categorias, v.combocategorias);
         cargarItems(categorias, v.ivcategoria);
+    }
+
+    private void cargarMeseros() {
+        ArrayList<Reg_Empleados> meseros = modeloEmple.getObtenerMeseros();
+        cargarItems(meseros, v.comboMesero);
+    }
+
+    private void cargarMesas() {
+        ArrayList<Mesa> mesas = modeloMesa.getObtenerMesas();
+        cargarItems(mesas, v.comboMesa);
     }
 
     private void cargarinvactual() {
@@ -252,7 +285,7 @@ public class Controlador implements ActionListener {
         combo.repaint();
     }
 
-    private void rolesE() throws SQLException {
+    private void rolesE() {
         ArrayList<Emple_rol> listaR = DAOR.obtenerRolesP();
         mostrarElementos(listaR, v.comboRoles, "Seleccionar");
     }
@@ -337,9 +370,9 @@ public class Controlador implements ActionListener {
                 limpiar(v.txtcodigo, v.txtnombre, v.txtprecio, v.txtcantidad);
             }
         }
-        
-        if (e.getSource() == v.btnAgregarCarrito){
-            ingresarCarrito();
+
+        if (e.getSource() == v.btnAgregarCarrito) {
+            IngresarCarrito();
         }
     }
 
