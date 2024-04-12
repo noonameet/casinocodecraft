@@ -4,14 +4,13 @@ import Vista.*;
 import Modelo.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,6 +32,8 @@ public class Controlador implements ActionListener {
     Reg_EmpleadosDAO modeloEmple = new Reg_EmpleadosDAO();
     ProductoDAO modeloPro = new ProductoDAO();
     CategoriasDAO modeloCat = new CategoriasDAO();
+    clsExportarExcel excel = new clsExportarExcel();
+    
 
     public Controlador(Vista v) {
         this.v = v;
@@ -45,8 +46,8 @@ public class Controlador implements ActionListener {
         this.v.btnAgregarCarrito.addActionListener(this);
         this.v.btnregisterproducto.addActionListener(this);
         this.v.btnEliminarCarrito.addActionListener(this);
+        this.v.btnexportarexcel.addActionListener(this);
         this.cargarCategorias();
-
         this.cargarinvactual();
         this.cargarMeseros();
         this.cargarMesas();
@@ -335,6 +336,7 @@ public class Controlador implements ActionListener {
         }
         campos[0].requestFocus();
     }
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -401,6 +403,14 @@ public class Controlador implements ActionListener {
 
         if (e.getSource() == v.btnAgregarCarrito) {
             IngresarCarrito();
+        }
+        
+        if (e.getSource() == v.btnexportarexcel){
+            try {
+                excel.exportarExcel(v.jtblsalidainvetario);
+            } catch (IOException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
