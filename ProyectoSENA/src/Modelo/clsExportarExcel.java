@@ -4,13 +4,11 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import com.formdev.flatlaf.FlatDarkLaf; // Importa FlatLaf
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -20,17 +18,11 @@ import org.apache.poi.ss.usermodel.Workbook;
 public class clsExportarExcel {
 
     public void exportarExcel(JTable t) throws IOException {
-
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // Establecer el aspecto del sistema
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(clsExportarExcel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(clsExportarExcel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(clsExportarExcel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(clsExportarExcel.class.getName()).log(Level.SEVERE, null, ex);
+            // Configurar el aspecto "Windows 10"
+            com.formdev.flatlaf.FlatDarkLaf.install();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
         JFileChooser chooser = new JFileChooser();
