@@ -5,8 +5,12 @@ import Modelo.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -32,8 +36,9 @@ public class Controlador implements ActionListener {
     Reg_EmpleadosDAO modeloEmple = new Reg_EmpleadosDAO();
     ProductoDAO modeloPro = new ProductoDAO();
     CategoriasDAO modeloCat = new CategoriasDAO();
+    PedidosDAO DAOP = new PedidosDAO();
+    CarritoDAO DAOCa = new CarritoDAO();
     clsExportarExcel excel = new clsExportarExcel();
-    
 
     public Controlador(Vista v) {
         this.v = v;
@@ -41,12 +46,13 @@ public class Controlador implements ActionListener {
         this.v.btnRegistrarCliente.addActionListener(this);
         this.v.btnRegistrarEmpleado.addActionListener(this);
         this.v.btnRegistrarMesa.addActionListener(this);
+        this.v.btnexportarexcel.addActionListener(this);
         this.v.btconsultarinventario.addActionListener(this);
         this.v.btnAsociarProducto.addActionListener(this);
+        this.v.btnEliminarCarrito.addActionListener(this);
         this.v.btnAgregarCarrito.addActionListener(this);
         this.v.btnregisterproducto.addActionListener(this);
-        this.v.btnEliminarCarrito.addActionListener(this);
-        this.v.btnexportarexcel.addActionListener(this);
+        this.v.btnAgregarPedido.addActionListener(this);
         this.cargarCategorias();
         this.cargarinvactual();
         this.cargarMeseros();
@@ -131,10 +137,53 @@ public class Controlador implements ActionListener {
             JOptionPane.showMessageDialog(v, "Por favor, ingrese datos válidos");
         }
     }
+    
+    private void agregarPedido(){
+        try{
+            Time time = new Time(System.currentTimeMillis());
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            String horaFormateada = sdf.format(time);
+            int id_p = Integer.parseInt(v.pedidoID.getText());
+            int filas = v.tablaPedidos.getRowCount();
+            System.out.println(filas);
+            int mesa = 2;
+            int mesero = 3;
+            String estado = "Pendiente";
+            for(int i = 0; i < filas; i++){
+                //String mesa = String.valueOf(v.tablaPedidos.getValueAt(i, 0));
+                //String mesero = String.valueOf(v.tablaPedidos.getValueAt(i, 1));
+                
+                String producto = String.valueOf(v.tablaPedidos.getValueAt(i, 2));
+                System.out.println(producto+"Producto");
+                Object objCant = v.tablaPedidos.getValueAt(i, 4);
+                String strCant = String.valueOf(objCant);
+                int cant = Integer.parseInt(strCant);
+                System.out.println(cant+"Cantidad");
+                Object objPrecio = v.tablaPedidos.getValueAt(i, 3);
+                String strPrecio = String.valueOf(objPrecio);
+                double precio = Double.parseDouble(strPrecio);
+                
+                double total = precio * cant;
+                System.out.println(total+"total");
+                
+                Carrito car = new Carrito(id_p, producto, cant,(int) total);
+                System.out.println(car);
+                DAOCa.registrarCarritoP(car);
+            }
+            
+            Pedidos ped = new Pedidos(id_p, mesa, mesero, estado, horaFormateada);
+            DAOP.registrarPedidoP(ped);
+            
+        }catch (NumberFormatException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(v, "Por favor, ingrese datos válidos");
+        }
+    }
 
     private void IngresarCarrito() {
         v.comboMesa.setEnabled(false);
         v.comboMesero.setEnabled(false);
+        v.pedidoID.setEnabled(false);
 
         // Elimina el signo de peso y los separadores de miles antes de convertir a entero
         String textoSinFormato = v.total.getText().replace("$", "").replace(".", "");
@@ -147,7 +196,7 @@ public class Controlador implements ActionListener {
         String producto = String.valueOf(v.tablaP.getValueAt(ind, 0));
         double precio = Double.parseDouble(String.valueOf(v.tablaP.getValueAt(ind, 2)));
         double totalM = precio * cant;
-        int totalAP = suma + (int) totalM;
+        int totalAP = suma + (int)totalM;
 
         // Formatea el total con puntos de mil y el signo de peso
         String valor = String.format("$%,d", totalAP).replace(",", ".");
@@ -158,7 +207,7 @@ public class Controlador implements ActionListener {
         Object[] fila = {mesero, mesa, producto, precio, cant};
         tabla.addRow(fila);
     }
-
+    
     private void eliminarFilaSeleccionada() {
         int indiceSeleccionado = v.tablaPedidos.getSelectedRow();
 
@@ -336,7 +385,6 @@ public class Controlador implements ActionListener {
         }
         campos[0].requestFocus();
     }
-    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -360,6 +408,18 @@ public class Controlador implements ActionListener {
         if (e.getSource() == v.btnRegistrarCliente) {
             registrarC();
         }
+        
+        if (e.getSource() == v.btnEliminarCarrito) {
+            eliminarFilaSeleccionada();
+        }
+        
+        if (e.getSource() == v.btnexportarexcel){
+            try {
+                excel.exportarExcel(v.jtblsalidainvetario);
+            } catch (IOException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
         if (e.getSource() == v.btnRegistrarEmpleado) {
             registrarE();
@@ -375,10 +435,6 @@ public class Controlador implements ActionListener {
 
         if (e.getSource() == v.btnAsociarProducto) {
             guardarRelacionProductoIngrediente();
-        }
-
-        if (e.getSource() == v.btnEliminarCarrito) {
-            eliminarFilaSeleccionada();
         }
 
         if (e.getSource() == v.ivcategoria) {
@@ -405,13 +461,10 @@ public class Controlador implements ActionListener {
             IngresarCarrito();
         }
         
-        if (e.getSource() == v.btnexportarexcel){
-            try {
-                excel.exportarExcel(v.jtblsalidainvetario);
-            } catch (IOException ex) {
-                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        if (e.getSource() == v.btnAgregarPedido){
+            agregarPedido();
         }
+        
     }
 
     private boolean camposVacios(JTextField... campos) {

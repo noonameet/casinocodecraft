@@ -20,19 +20,22 @@ public class PedidosDAO {
     Mesa mesa = new Mesa();
     Reg_Empleados emp = new Reg_Empleados();
 
-    private void registrarPedido(Pedidos ped) {
-        String sql = "INSERT INTO tmp_pedidos(?, ?, ?, ?, ?, ?)";
+    private int registrarPedido(Pedidos ped) {
+        String sql = "INSERT INTO tmp_pedidos(id_pedidos, mesa, mesero, estado, hora) "
+                + "VALUES(?, ?, ?, ?, ?)";
         try(Connection conex = con.getConnection(); PreparedStatement ps = 
                 conex.prepareStatement(sql)) {
-            ps.setInt(1, mesa.getId_mesa());
-            ps.setInt(2, emp.getId_emple());
-            ps.setString(3, ped.getProducto());
-            ps.setString(4, ped.getCantidad());
-            ps.setString(5, ped.getEstado());
-            ps.setTime(6, (Time) ped.getFecha());
-            ps.execute();
+            ps.setInt(1, ped.getId());
+            ps.setInt(2, ped.getNum_mesa());
+            ps.setInt(3, ped.getMesero());
+            ps.setString(4, ped.getEstado());
+            ps.setString(5,  ped.getHora());
+            ps.executeUpdate();
+            System.out.println(ps+"otro");
+            return 1;
         } catch (SQLException e) {
             e.printStackTrace();
+            return 0;
         }
     }
 
@@ -51,19 +54,7 @@ public class PedidosDAO {
         return estado;
     }
     
-
-    private void eliminarPedido(int id) {
-        String sql = "DELETE FROM tmp_pedidos WHERE id_pedidos=?";
-        try(Connection conex = con.getConnection(); PreparedStatement ps = 
-                conex.prepareStatement(sql); ResultSet rs = ps.executeQuery();) {
-            ps.setInt(1, id);
-            if (rs.next()) {
-                System.out.println("Pedido eliminado correctamente!");
-            } else {
-                System.out.println("ERROR!");
-            }
-        } catch (SQLException e) {
-            System.out.println(e.toString());
-        }
+    public int registrarPedidoP(Pedidos ped){
+        return registrarPedido(ped);
     }
 }

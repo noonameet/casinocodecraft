@@ -1,7 +1,7 @@
 package Modelo;
 
 import java.time.*;
-import java.util.Date;
+import java.sql.Time;
 
 /**
  *
@@ -10,19 +10,17 @@ import java.util.Date;
 public class Pedidos{
 
     private int id, num_mesa, mesero;
-    private String producto, cantidad, estado;
-    private Date fecha;
+    private String estado;
+    private String hora;
 
     public Pedidos() {
     }
 
-    public Pedidos(int num_mesa, int mesero, String producto, String cantidad, String estado, Date fecha) {
+    public Pedidos(int id, int num_mesa, int mesero, String estado, String hora) {
         this.num_mesa = num_mesa;
         this.mesero = mesero;
-        this.producto = producto;
-        this.cantidad = cantidad;
         this.estado = estado;
-        this.fecha = fecha;
+        this.hora = hora;
     }
 
     public int getId() {
@@ -49,22 +47,6 @@ public class Pedidos{
         this.mesero = mesero;
     }
 
-    public String getProducto() {
-        return producto;
-    }
-
-    public void setProducto(String producto) {
-        this.producto = producto;
-    }
-
-    public String getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(String cantidad) {
-        this.cantidad = cantidad;
-    }
-
     public String getEstado() {
         return estado;
     }
@@ -73,12 +55,14 @@ public class Pedidos{
         this.estado = estado;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public String getHora() {
+        return hora;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setHora(String hora) {
+        this.hora = hora;
     }
+    
+    
 
 }

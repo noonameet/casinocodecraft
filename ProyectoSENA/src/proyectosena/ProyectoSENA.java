@@ -11,5 +11,4 @@ public class ProyectoSENA {
         
         ct.l.setVisible(true);
     }
-    
 }
