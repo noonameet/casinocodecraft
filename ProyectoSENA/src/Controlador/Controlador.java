@@ -161,6 +161,7 @@ public class Controlador implements ActionListener {
             Gen_Factura factura = new Gen_Factura(id_cabe, id_cliente, mesero, tipoP, idCaj, descuento, IVA, total, num_fac, horaFormateada, fecha);
             DAOGF.getGenerarFact(factura);
             DAOP.getActualizarIdFactura(codigopedido, id_cabe);
+            DAOP.getActualizarpedido(codigopedido);
 
         } catch (NumberFormatException e) {
             e.printStackTrace();
@@ -168,7 +169,6 @@ public class Controlador implements ActionListener {
     }
 
     private void generarFactTXT() {
-        
         try (PrintWriter writer = new PrintWriter(new FileWriter("Factura_genrado.txt"))) {
             ArrayList<Gen_Factura> facDet = DAOGF.getFacturaTXT();
             for (Gen_Factura factura : facDet) {
@@ -190,16 +190,16 @@ public class Controlador implements ActionListener {
                 writer.println("----------------------------------------------------------------");
 
                 List<Carrito> prod = DAOCa.obtenerCarritoPorFactura(factura.getId_cabe());
-        
+
                 for (Carrito car : prod) {
-                    writer.printf("%-30s%10.2f%15d%15.2f%n", car.getProd(), car.getPrecio(), car.getCantidad(), car.getTotal());
+                    writer.printf("%-30s%10s%15d%15s%n", car.getProd(), String.format("$%,d", (int) car.getPrecio()), car.getCantidad(), String.format("$%,d", (int) car.getTotal()));
                 }
 
                 writer.println("------------------------------------------------------");
                 writer.println();
-                writer.println("Descuento: " + factura.getDescuento());
+                writer.println("Descuento: " + String.format("%.2f%%", factura.getDescuento() * 100));
                 writer.println("Impuesto (%): " + factura.getIVA());
-                writer.println("Total a pagar: " + factura.getTotal());
+                writer.println("Total a pagar: " + String.format("$%,d", (int) factura.getTotal()));
                 writer.println();
                 writer.println("====================");
                 writer.println("   Gracias por su compra   ");
@@ -301,7 +301,7 @@ public class Controlador implements ActionListener {
         v.comboMesero.setSelectedIndex(0);
         v.pedidoID.setText("");
         v.txtCantP.setText("");
-        v.total.setText("");
+        v.total.setText("0");
 
         v.comboMesa.setEnabled(true);
         v.comboMesero.setEnabled(true);
@@ -610,6 +610,7 @@ public class Controlador implements ActionListener {
 
         if (e.getSource() == v.btnRegistrarMesa) {
             registrarM();
+            this.cargarMesas();
         }
 
         if (e.getSource() == v.btconsultarinventario) {

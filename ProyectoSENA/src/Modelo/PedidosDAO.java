@@ -125,4 +125,18 @@ public class PedidosDAO {
         actualizarIdFactura(idPedido, idFactura);
     }
 
+    private void updatestadodepedido(int idPedido) {
+        String sql = "UPDATE tmp_pedidos SET estado = 'Preparado' WHERE id_pedidos = ?";
+        try (Connection cn = con.getConnection(); PreparedStatement ps = cn.prepareStatement(sql)) {
+            ps.setInt(1, idPedido);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void getActualizarpedido(int codigoPedido) {
+        updatestadodepedido(codigoPedido);
+    }
+
 }

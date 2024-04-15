@@ -3,24 +3,27 @@
 ====================
 
 Fecha: 15/04/24
-Hora: 12:27:36
-Número de Factura: 583531794
-Cédula Cliente: 200346773
-ID Cajero: 5
-ID Mesero: 4
+Hora: 16:32:48
+Número de Factura: 204015700
+Cédula Cliente: 7754209
+ID Cajero: 2
+ID Mesero: 1
 Tipo Pago: efectivo
 
 ------------------------------------------------------
 
 Producto             Precio unitario     Cantidad      Total
 ----------------------------------------------------------------
-Sushi Variado                      12,50             50         625,00
-Hamburguesa                     15000,00              2       30000,00
+Sushi Variado                        $12              6            $75
+Pepinillos con queso              $1.000              9         $9.000
+Tostadas de Atun                      $6              8            $50
+Hamburguesa                      $15.000              3        $45.000
+Tacos                                 $7             24           $191
 ------------------------------------------------------
 
-Descuento: 0.23
+Descuento: 33,00%
 Impuesto (%): 0.19
-Total a pagar: 23581.25
+Total a pagar: $36.391
 
 ====================
    Gracias por su compra   
