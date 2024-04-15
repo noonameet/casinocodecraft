@@ -4,10 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author Laderson Leon
- */
 public class Conexion {
 
     Connection con;
@@ -21,7 +17,7 @@ public class Conexion {
 
     public Connection getConnection() {
         try {
-            String myBD = "jdbc:sqlite:C:\\SQLITE3\\BD";
+            String myBD = "jdbc:sqlite:C:\\SQLite\\BD";
             con = DriverManager.getConnection(myBD);
             return con;
         } catch (SQLException e) {

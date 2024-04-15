@@ -7,7 +7,7 @@ import java.sql.Time;
  *
  * @author Laderson Leon
  */
-public class Pedidos{
+public class Pedidos {
 
     private int id, num_mesa, mesero;
     private String estado;
@@ -66,8 +66,7 @@ public class Pedidos{
 
     @Override
     public String toString() {
-        String id = String.valueOf(this.id);
-        return id;
+        return "" + id;
     }
-    
+
 }

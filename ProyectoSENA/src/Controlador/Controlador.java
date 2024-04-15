@@ -66,6 +66,9 @@ public class Controlador implements ActionListener {
         this.rolesE();
         this.actualizarTablaProductos();
         mostrarProductos(modeloInv.obtenerTodosLosProductos());
+        v.comboPedidos.addActionListener((ActionEvent e) -> {
+            actualizarTotal();
+        });
     }
 
     private boolean auth() {
@@ -141,9 +144,9 @@ public class Controlador implements ActionListener {
             JOptionPane.showMessageDialog(v, "Por favor, ingrese datos válidos");
         }
     }
-    
-    private void agregarPedido(){
-        try{
+
+    private void agregarPedido() {
+        try {
             Time time = new Time(System.currentTimeMillis());
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
             String horaFormateada = sdf.format(time);
@@ -155,8 +158,8 @@ public class Controlador implements ActionListener {
             int filas = v.tablaPedidos.getRowCount();
             System.out.println(filas);
             String estado = "Pendiente";
-            for(int i = 0; i < filas; i++){
-                
+            for (int i = 0; i < filas; i++) {
+
                 String producto = String.valueOf(v.tablaPedidos.getValueAt(i, 2));
                 Object objCant = v.tablaPedidos.getValueAt(i, 4);
                 String strCant = String.valueOf(objCant);
@@ -164,53 +167,53 @@ public class Controlador implements ActionListener {
                 Object objPrecio = v.tablaPedidos.getValueAt(i, 3);
                 String strPrecio = String.valueOf(objPrecio);
                 double precio = Double.parseDouble(strPrecio);
-                
+
                 double total = precio * cant;
-                
-                Carrito car = new Carrito(id_p, producto, cant,(int) total);
+
+                Carrito car = new Carrito(id_p, producto, cant, (int) total);
                 System.out.println(car);
                 DAOCa.registrarCarritoP(car);
             }
-            
+
             Pedidos ped = new Pedidos(id_p, idMesa, idMesero, estado, horaFormateada);
             DAOP.registrarPedidoP(ped);
-            
+
             DAOM.ocuparMesaP(idMesa);
-            
+
             this.cargarMesas();
-        }catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(v, "Por favor, ingrese datos válidos");
         }
     }
-    
-    private void limpiarPedidos(){
+
+    private void limpiarPedidos() {
         v.comboMesa.setSelectedIndex(0);
         v.comboMesero.setSelectedIndex(0);
         v.pedidoID.setText("");
         v.txtCantP.setText("");
-        
+
         v.comboMesa.setEnabled(true);
         v.comboMesero.setEnabled(true);
         v.pedidoID.setEnabled(true);
         DefaultTableModel modeloTabla = (DefaultTableModel) v.tablaPedidos.getModel();
-            
-        while(modeloTabla.getRowCount() > 0){
+
+        while (modeloTabla.getRowCount() > 0) {
             modeloTabla.removeRow(0);
         }
     }
-    
-    private boolean verificarCampos(){
-        if(v.pedidoID.getText().isEmpty()){
+
+    private boolean verificarCampos() {
+        if (v.pedidoID.getText().isEmpty()) {
             v.pedidoID.requestFocus();
             return false;
-        }else if(v.comboMesa.getSelectedIndex() == 0){
+        } else if (v.comboMesa.getSelectedIndex() == 0) {
             v.comboMesa.setPopupVisible(true);
             return false;
-        }else if(v.comboMesero.getSelectedIndex() == 0){
+        } else if (v.comboMesero.getSelectedIndex() == 0) {
             v.comboMesero.setPopupVisible(true);
             return false;
-        }else if(v.txtCantP.getText().isEmpty()){
+        } else if (v.txtCantP.getText().isEmpty()) {
             v.txtCantP.requestFocus();
             return false;
         }
@@ -218,12 +221,11 @@ public class Controlador implements ActionListener {
     }
 
     private void IngresarCarrito() {
-        if(verificarCampos()){
+        if (verificarCampos()) {
             v.comboMesa.setEnabled(false);
             v.comboMesero.setEnabled(false);
             v.pedidoID.setEnabled(false);
-            
-            
+
             // Elimina el signo de peso y los separadores de miles antes de convertir a entero
             String textoSinFormato = v.total.getText().replace("$", "").replace(".", "");
             int suma = Integer.parseInt(textoSinFormato);
@@ -235,7 +237,7 @@ public class Controlador implements ActionListener {
             String producto = String.valueOf(v.tablaP.getValueAt(ind, 0));
             double precio = Double.parseDouble(String.valueOf(v.tablaP.getValueAt(ind, 2)));
             double totalM = precio * cant;
-            int totalAP = suma + (int)totalM;
+            int totalAP = suma + (int) totalM;
 
             // Formatea el total con puntos de mil y el signo de peso
             String valor = String.format("$%,d", totalAP).replace(",", ".");
@@ -243,15 +245,15 @@ public class Controlador implements ActionListener {
             v.total.setText(valor); // Establece el texto con el signo de peso y puntos de mil
 
             DefaultTableModel tabla = (DefaultTableModel) v.tablaPedidos.getModel();
-            Object[] fila = {mesa, mesero , producto, precio, cant};
+            Object[] fila = {mesa, mesero, producto, precio, cant};
             tabla.addRow(fila);
-            
+
             v.txtCantP.setText("");
-        }else{
+        } else {
             System.out.println("Favor llenar los campos");
         }
     }
-    
+
     private void eliminarFilaSeleccionada() {
         int indiceSeleccionado = v.tablaPedidos.getSelectedRow();
 
@@ -317,18 +319,18 @@ public class Controlador implements ActionListener {
         ArrayList<Reg_Empleados> meseros = modeloEmple.getObtenerEmpleados(3);
         cargarItems(meseros, v.comboMesero);
     }
-    
-    private void cargarCajeros(){
+
+    private void cargarCajeros() {
         ArrayList<Reg_Empleados> cajeros = modeloEmple.getObtenerEmpleados(2);
         cargarItems(cajeros, v.comboCajero);
     }
-    
-    private void cargarTipoP(){
+
+    private void cargarTipoP() {
         ArrayList<Tipo_pago> pago = DAOTP.obtenerTiposPP();
         cargarItems(pago, v.comboTipoP);
     }
-    
-    private void cargarPedidos(){
+
+    private void cargarPedidos() {
         ArrayList<Pedidos> pedidos = DAOP.getObtenerPedidos();
         cargarItems(pedidos, v.comboPedidos);
     }
@@ -438,6 +440,13 @@ public class Controlador implements ActionListener {
         }
     }
 
+    private void actualizarTotal() {
+        Pedidos pedidoSeleccionado = (Pedidos) v.comboPedidos.getSelectedItem();
+        int idPedido = pedidoSeleccionado.getId(); 
+        double total = DAOP.getTotalPedido(idPedido);
+        v.totalpagofactura.setText(String.valueOf(total));
+    }
+
     private void limpiar(JTextField... campos) {
         for (JTextField campo : campos) {
             campo.setText(null);
@@ -467,12 +476,12 @@ public class Controlador implements ActionListener {
         if (e.getSource() == v.btnRegistrarCliente) {
             registrarC();
         }
-        
+
         if (e.getSource() == v.btnEliminarCarrito) {
             eliminarFilaSeleccionada();
         }
-        
-        if (e.getSource() == v.btnexportarexcel){
+
+        if (e.getSource() == v.btnexportarexcel) {
             try {
                 excel.exportarExcel(v.jtblsalidainvetario);
             } catch (IOException ex) {
@@ -519,12 +528,12 @@ public class Controlador implements ActionListener {
         if (e.getSource() == v.btnAgregarCarrito) {
             IngresarCarrito();
         }
-        
-        if (e.getSource() == v.btnAgregarPedido){
+
+        if (e.getSource() == v.btnAgregarPedido) {
             agregarPedido();
             limpiarPedidos();
         }
-        
+
     }
 
     private boolean camposVacios(JTextField... campos) {

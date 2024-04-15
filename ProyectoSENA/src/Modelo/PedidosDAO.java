@@ -16,22 +16,23 @@ import java.util.List;
 public class PedidosDAO {
 
     Conexion con = new Conexion();
-    Pedidos ped = new Pedidos() {};
+    Pedidos ped = new Pedidos() {
+    };
     Mesa mesa = new Mesa();
     Reg_Empleados emp = new Reg_Empleados();
 
     private int registrarPedido(Pedidos ped) {
         String sql = "INSERT INTO tmp_pedidos(id_pedidos, mesa, mesero, estado, hora) "
                 + "VALUES(?, ?, ?, ?, ?)";
-        try(Connection conex = con.getConnection(); PreparedStatement ps = 
-                conex.prepareStatement(sql)) {
+        try (Connection conex = con.getConnection(); PreparedStatement ps
+                = conex.prepareStatement(sql)) {
             ps.setInt(1, ped.getId());
             ps.setInt(2, ped.getNum_mesa());
             ps.setInt(3, ped.getMesero());
             ps.setString(4, ped.getEstado());
-            ps.setString(5,  ped.getHora());
+            ps.setString(5, ped.getHora());
             ps.executeUpdate();
-            System.out.println(ps+"otro");
+            System.out.println(ps + "otro");
             return 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -42,8 +43,8 @@ public class PedidosDAO {
     private boolean verificarEstado(Pedidos ped) {
         String sql = "SELECT estado FROM tmp_pedidos WHERE id_pedidos=?";
         boolean estado = false;
-        try(Connection conex = con.getConnection(); PreparedStatement ps = 
-                conex.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+        try (Connection conex = con.getConnection(); PreparedStatement ps
+                = conex.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
             ps.setInt(1, ped.getId());
             if (rs.next()) {
                 estado = rs.getBoolean("estado");
@@ -53,14 +54,13 @@ public class PedidosDAO {
         }
         return estado;
     }
-    
+
     private ArrayList<Pedidos> obtenerPedido() {
         ArrayList<Pedidos> listame = new ArrayList<>();
 
         String sql = "SELECT id_pedidos FROM tmp_pedidos WHERE estado = 'Pendiente'";
 
-        try (Connection cn = con.getConnection(); PreparedStatement ps = cn.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery()) {
+        try (Connection cn = con.getConnection(); PreparedStatement ps = cn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 Pedidos pe = new Pedidos();
@@ -74,7 +74,7 @@ public class PedidosDAO {
         }
         return listame;
     }
-    
+
     public ArrayList<Pedidos> getObtenerPedidos() {
         try {
             return obtenerPedido();
@@ -83,8 +83,30 @@ public class PedidosDAO {
             return new ArrayList<>();
         }
     }
-    
-    public int registrarPedidoP(Pedidos ped){
+
+    public int registrarPedidoP(Pedidos ped) {
         return registrarPedido(ped);
     }
+
+    private double obtenerTotalPedido(int idPedido) {
+        double total = 0.0;
+        String sql = "SELECT SUM(total) FROM carritoProductos WHERE id_pedido = ?";
+        try (Connection cn = con.getConnection(); PreparedStatement ps = cn.prepareStatement(sql);) {
+            ps.setInt(1, idPedido);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    total = rs.getDouble(1);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            total = -1;
+        }
+        return total;
+    }
+
+    public double getTotalPedido(int idPedido) {
+        return obtenerTotalPedido(idPedido);
+    }
+
 }
