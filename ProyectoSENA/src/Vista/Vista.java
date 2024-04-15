@@ -791,7 +791,7 @@ public class Vista extends javax.swing.JFrame {
     public javax.swing.JButton btnAgregarPedido;
     public javax.swing.JButton btnAsociarProducto;
     public javax.swing.JButton btnEliminarCarrito;
-    private javax.swing.JButton btnGenerarFactura;
+    public javax.swing.JButton btnGenerarFactura;
     public javax.swing.JButton btnRegistrarCliente;
     public javax.swing.JButton btnRegistrarEmpleado;
     public javax.swing.JButton btnRegistrarMesa;

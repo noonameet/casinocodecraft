@@ -1288,6 +1288,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="GenerarFactura"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JComboBox" name="comboCajero">
               <Properties>

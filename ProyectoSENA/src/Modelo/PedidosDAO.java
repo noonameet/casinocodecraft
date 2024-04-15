@@ -58,13 +58,14 @@ public class PedidosDAO {
     private ArrayList<Pedidos> obtenerPedido() {
         ArrayList<Pedidos> listame = new ArrayList<>();
 
-        String sql = "SELECT id_pedidos FROM tmp_pedidos WHERE estado = 'Pendiente'";
+        String sql = "SELECT id_pedidos, mesero FROM tmp_pedidos WHERE estado = 'Pendiente'";
 
         try (Connection cn = con.getConnection(); PreparedStatement ps = cn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 Pedidos pe = new Pedidos();
                 pe.setId(rs.getInt("id_pedidos"));
+                pe.setMesero(rs.getInt("mesero"));
                 listame.add(pe);
                 System.out.println(listame);
                 System.out.println("Meseros encontrados");

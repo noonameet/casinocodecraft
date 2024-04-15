@@ -3,7 +3,9 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,19 +22,56 @@ public class Gen_FacturaDAO {
         try(Connection conex = con.getConnection(); PreparedStatement ps = 
                 conex.prepareStatement(sql)) {
             ps.setInt(1, factura.getId_cli());
-            ps.setInt(2, factura.getId_tipoP());
+            ps.setString(2, factura.getId_tipoP());
             ps.setInt(3, factura.getId_mesero());
             ps.setInt(4, factura.getId_cajero());
-            ps.setString(5, factura.getNum_fact());
+            ps.setInt(5, factura.getNum_fact());
             ps.setDouble(6, factura.getDescuento());
             ps.setDouble(7, factura.getIva());
             ps.setDouble(8, factura.getTotal());
-            ps.setTime(9, factura.getHora_fact());
-            ps.setDate(10, factura.getFecha_fact());
+            ps.setString(9, factura.getHora_fact());
+            ps.setString(10, factura.getFecha_fact());
             ps.executeUpdate();
             System.out.println("Registrado!");
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+    
+    private ArrayList<Gen_Factura> generarFacturaTXT() {
+        ArrayList<Gen_Factura> listame = new ArrayList<>();
+        
+        String sql = "SELECT * FROM fact_cabe";
+        
+        try(Connection conex = con.getConnection(); PreparedStatement ps = 
+                conex.prepareStatement(sql)){
+            try(ResultSet rs = ps.executeQuery()){
+                Gen_Factura fac = new Gen_Factura();
+                fac.setId_cab(rs.getInt("Id_cab_fac"));
+                fac.setId_cli(rs.getInt("id_clie"));
+                fac.setId_tipoP(rs.getString("id_tipo_pago"));
+                fac.setId_mesero(rs.getInt("id_mesero"));
+                fac.setId_cajero(rs.getInt("id_cajero"));
+                fac.setNum_fact(rs.getInt("num_fact"));
+                fac.setDescuento(rs.getDouble("descuento"));
+                fac.setIva(rs.getDouble("iva"));
+                fac.setTotal(rs.getDouble("total"));
+                fac.setHora_fact(rs.getString("hora_fact"));
+                fac.setFecha_fact(rs.getString("fecha_fac"));
+                listame.add(fac);
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listame;
+    }
+    
+    public ArrayList<Gen_Factura> getFacturaTXT() {
+        try {
+            return generarFacturaTXT();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
         }
     }
     

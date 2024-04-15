@@ -4,10 +4,13 @@ import Vista.*;
 import Modelo.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.sql.Time;
+import java.util.Random;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
@@ -29,6 +32,7 @@ public class Controlador implements ActionListener {
     Emple_rolDAO DAOR = new Emple_rolDAO();
     MesaDAO DAOM = new MesaDAO();
     Tipo_pagoDAO DAOTP = new Tipo_pagoDAO();
+    Gen_FacturaDAO DAOGF = new Gen_FacturaDAO();
     InventarioDAO modeloInv = new InventarioDAO();
     IngredientesDAO ingrediente = new IngredientesDAO();
     Reg_ClienteDAO modeloCli = new Reg_ClienteDAO();
@@ -54,6 +58,7 @@ public class Controlador implements ActionListener {
         this.v.btnAgregarCarrito.addActionListener(this);
         this.v.btnregisterproducto.addActionListener(this);
         this.v.btnAgregarPedido.addActionListener(this);
+        this.v.btnGenerarFactura.addActionListener(this);
         this.cargarCategorias();
         this.cargarinvactual();
         this.cargarMeseros();
@@ -101,6 +106,83 @@ public class Controlador implements ActionListener {
         Reg_Cliente cliente = new Reg_Cliente(nomC, apeC, cedC, dirC, telC);
         System.out.println(cliente);
         DAOC.registrarCliente(cliente);
+    }
+    
+    private void generarFactura(){
+        try {
+            Random random = new Random();
+            Time time = new Time(System.currentTimeMillis());
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            String horaFormateada = sdf.format(time);
+            
+            Tipo_pago tpS = (Tipo_pago) v.comboTipoP.getSelectedItem();
+            String tipoP = tpS.getNom_tipoP();
+            
+            Reg_Empleados cajero = (Reg_Empleados) v.comboCajero.getSelectedItem();
+            int idCaj = cajero.getId_emple();
+            
+            Pedidos pd = (Pedidos) v.comboPedidos.getSelectedItem();
+            int mesero = pd.getMesero();
+            
+            int id_cliente = Integer.parseInt(v.txtCedC.getText());
+            int num_fac = random.nextInt(999999999);
+            double descuento = Double.parseDouble(v.txtDesc.getText());
+            double IVA = 0.19;
+            double aux = descuento * Double.parseDouble(v.totalpagofactura.getText());
+            double total = Double.parseDouble(v.totalpagofactura.getText()) - aux;
+            Date currentDate = new Date(System.currentTimeMillis());
+            SimpleDateFormat amd = new SimpleDateFormat("dd/MM/yy");
+            String fecha = amd.format(currentDate);
+            
+            Gen_Factura factura = new Gen_Factura(id_cliente, mesero, tipoP, idCaj, descuento, IVA, total, num_fac, horaFormateada, fecha);
+            DAOGF.getGenerarFact(factura);
+            
+        }catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void generarFactTXT(){
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Factura"))) {
+            ArrayList<Gen_Factura> facDet = DAOGF.getFacturaTXT();
+            
+            writer.println("====================");
+            writer.println("      FACTURA      ");
+            writer.println("====================");
+            writer.println();
+            writer.println("Fecha: " + facDet.get(10));
+            writer.println("Hora: " + facDet.get(9));
+            writer.println("Número de Factura: " + facDet.get(5));
+            writer.println("Cédula Cliente: " + facDet.get(1));
+            writer.println("ID Cajero: " + facDet.get(4));
+            writer.println("ID Mesero: " + facDet.get(3));
+            writer.println("Tipo Pago: " + facDet.get(2));
+            writer.println();
+            writer.println("------------------------------------------------------");
+            writer.println();
+            writer.println("Producto             Precio unitario     Cantidad      Total");
+            writer.println("----------------------------------------------------------------");
+
+            // Escribir los detalles de los productos
+            for (int i = 0; i < productos.length; i++) {
+                writer.printf("%-30s%10.2f%15d%15.2f%n", productos[i], preciosUnitarios[i], cantidades[i],
+                        preciosUnitarios[i] * cantidades[i]);
+            }
+
+            writer.println("------------------------------------------------------");
+            writer.println();
+            writer.println("Descuento: " + facDet.get(6));
+            writer.println("Impuesto (%): " + facDet.get(7));
+            writer.println("Total a pagar: " + facDet.get(8));
+            writer.println();
+            writer.println("====================");
+            writer.println("   Gracias por su compra   ");
+            writer.println("====================");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        
+        
     }
 
     private void registrarE() {
@@ -475,6 +557,10 @@ public class Controlador implements ActionListener {
 
         if (e.getSource() == v.btnRegistrarCliente) {
             registrarC();
+        }
+        
+        if (e.getSource() == v.btnGenerarFactura) {
+            generarFactura();
         }
 
         if (e.getSource() == v.btnEliminarCarrito) {

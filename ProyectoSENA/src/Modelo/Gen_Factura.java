@@ -9,16 +9,14 @@ import java.sql.Date;
  */
 public class Gen_Factura {
 
-    private int id_cab, id_cli, id_mesero, id_tipoP, id_cajero;
+    private int id_cab, id_cli, id_mesero, id_cajero, num_fact;
     private double descuento, iva, total;
-    private String num_fact;
-    private Time hora_fact;
-    private Date fecha_fact;
+    private String id_tipoP, hora_fact, fecha_fact;
 
     public Gen_Factura() {
     }
 
-    public Gen_Factura(int id_cli, int id_mesero, int id_tipoP, int id_cajero, double descuento, double iva, double total, String num_fact, Time hora_fact, Date fecha_fact) {
+    public Gen_Factura(int id_cli, int id_mesero, String id_tipoP, int id_cajero, double descuento, double iva, double total, int num_fact, String hora_fact, String fecha_fact) {
         this.id_cli = id_cli;
         this.id_mesero = id_mesero;
         this.id_tipoP = id_tipoP;
@@ -55,11 +53,11 @@ public class Gen_Factura {
         this.id_mesero = id_mesero;
     }
 
-    public int getId_tipoP() {
+    public String getId_tipoP() {
         return id_tipoP;
     }
 
-    public void setId_tipoP(int id_tipoP) {
+    public void setId_tipoP(String id_tipoP) {
         this.id_tipoP = id_tipoP;
     }
 
@@ -95,33 +93,28 @@ public class Gen_Factura {
         this.total = total;
     }
 
-    public String getNum_fact() {
+    public int getNum_fact() {
         return num_fact;
     }
 
-    public void setNum_fact(String num_fact) {
+    public void setNum_fact(int num_fact) {
         this.num_fact = num_fact;
     }
 
-    public Time getHora_fact() {
+    public String getHora_fact() {
         return hora_fact;
     }
 
-    public void setHora_fact(Time hora_fact) {
+    public void setHora_fact(String hora_fact) {
         this.hora_fact = hora_fact;
     }
 
-    public Date getFecha_fact() {
+    public String getFecha_fact() {
         return fecha_fact;
     }
 
-    public void setFecha_fact(Date fecha_fact) {
+    public void setFecha_fact(String fecha_fact) {
         this.fecha_fact = fecha_fact;
     }
-
-    
-    
-    
-    
 }
     
