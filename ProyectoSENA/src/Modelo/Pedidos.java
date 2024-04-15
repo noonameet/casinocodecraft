@@ -17,6 +17,7 @@ public class Pedidos{
     }
 
     public Pedidos(int id, int num_mesa, int mesero, String estado, String hora) {
+        this.id = id;
         this.num_mesa = num_mesa;
         this.mesero = mesero;
         this.estado = estado;

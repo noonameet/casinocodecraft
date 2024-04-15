@@ -143,69 +143,109 @@ public class Controlador implements ActionListener {
             Time time = new Time(System.currentTimeMillis());
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
             String horaFormateada = sdf.format(time);
+            Mesa SeleccID = (Mesa) v.comboMesa.getSelectedItem();
+            int idMesa = SeleccID.getId_mesa();
+            Reg_Empleados SeleccIDMesero = (Reg_Empleados) v.comboMesero.getSelectedItem();
+            int idMesero = SeleccIDMesero.getId_emple();
             int id_p = Integer.parseInt(v.pedidoID.getText());
             int filas = v.tablaPedidos.getRowCount();
             System.out.println(filas);
-            int mesa = 2;
-            int mesero = 3;
             String estado = "Pendiente";
             for(int i = 0; i < filas; i++){
-                //String mesa = String.valueOf(v.tablaPedidos.getValueAt(i, 0));
-                //String mesero = String.valueOf(v.tablaPedidos.getValueAt(i, 1));
                 
                 String producto = String.valueOf(v.tablaPedidos.getValueAt(i, 2));
-                System.out.println(producto+"Producto");
                 Object objCant = v.tablaPedidos.getValueAt(i, 4);
                 String strCant = String.valueOf(objCant);
                 int cant = Integer.parseInt(strCant);
-                System.out.println(cant+"Cantidad");
                 Object objPrecio = v.tablaPedidos.getValueAt(i, 3);
                 String strPrecio = String.valueOf(objPrecio);
                 double precio = Double.parseDouble(strPrecio);
                 
                 double total = precio * cant;
-                System.out.println(total+"total");
                 
                 Carrito car = new Carrito(id_p, producto, cant,(int) total);
                 System.out.println(car);
                 DAOCa.registrarCarritoP(car);
             }
             
-            Pedidos ped = new Pedidos(id_p, mesa, mesero, estado, horaFormateada);
+            Pedidos ped = new Pedidos(id_p, idMesa, idMesero, estado, horaFormateada);
             DAOP.registrarPedidoP(ped);
             
+            DAOM.ocuparMesaP(idMesa);
+            
+            this.cargarMesas();
         }catch (NumberFormatException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(v, "Por favor, ingrese datos válidos");
         }
     }
+    
+    private void limpiarPedidos(){
+        v.comboMesa.setSelectedIndex(0);
+        v.comboMesero.setSelectedIndex(0);
+        v.pedidoID.setText("");
+        v.txtCantP.setText("");
+        
+        v.comboMesa.setEnabled(true);
+        v.comboMesero.setEnabled(true);
+        v.pedidoID.setEnabled(true);
+        DefaultTableModel modeloTabla = (DefaultTableModel) v.tablaPedidos.getModel();
+            
+        while(modeloTabla.getRowCount() > 0){
+            modeloTabla.removeRow(0);
+        }
+    }
+    
+    private boolean verificarCampos(){
+        if(v.pedidoID.getText().isEmpty()){
+            v.pedidoID.requestFocus();
+            return false;
+        }else if(v.comboMesa.getSelectedIndex() == 0){
+            v.comboMesa.setPopupVisible(true);
+            return false;
+        }else if(v.comboMesero.getSelectedIndex() == 0){
+            v.comboMesero.setPopupVisible(true);
+            return false;
+        }else if(v.txtCantP.getText().isEmpty()){
+            v.txtCantP.requestFocus();
+            return false;
+        }
+        return true;
+    }
 
     private void IngresarCarrito() {
-        v.comboMesa.setEnabled(false);
-        v.comboMesero.setEnabled(false);
-        v.pedidoID.setEnabled(false);
+        if(verificarCampos()){
+            v.comboMesa.setEnabled(false);
+            v.comboMesero.setEnabled(false);
+            v.pedidoID.setEnabled(false);
+            
+            
+            // Elimina el signo de peso y los separadores de miles antes de convertir a entero
+            String textoSinFormato = v.total.getText().replace("$", "").replace(".", "");
+            int suma = Integer.parseInt(textoSinFormato);
 
-        // Elimina el signo de peso y los separadores de miles antes de convertir a entero
-        String textoSinFormato = v.total.getText().replace("$", "").replace(".", "");
-        int suma = Integer.parseInt(textoSinFormato);
+            String mesero = v.comboMesero.getSelectedItem().toString();
+            String mesa = v.comboMesa.getSelectedItem().toString();
+            int cant = Integer.parseInt(v.txtCantP.getText());
+            int ind = v.tablaP.getSelectedRow();
+            String producto = String.valueOf(v.tablaP.getValueAt(ind, 0));
+            double precio = Double.parseDouble(String.valueOf(v.tablaP.getValueAt(ind, 2)));
+            double totalM = precio * cant;
+            int totalAP = suma + (int)totalM;
 
-        String mesero = v.comboMesero.getSelectedItem().toString();
-        String mesa = v.comboMesa.getSelectedItem().toString();
-        int cant = Integer.parseInt(v.txtCantP.getText());
-        int ind = v.tablaP.getSelectedRow();
-        String producto = String.valueOf(v.tablaP.getValueAt(ind, 0));
-        double precio = Double.parseDouble(String.valueOf(v.tablaP.getValueAt(ind, 2)));
-        double totalM = precio * cant;
-        int totalAP = suma + (int)totalM;
+            // Formatea el total con puntos de mil y el signo de peso
+            String valor = String.format("$%,d", totalAP).replace(",", ".");
 
-        // Formatea el total con puntos de mil y el signo de peso
-        String valor = String.format("$%,d", totalAP).replace(",", ".");
+            v.total.setText(valor); // Establece el texto con el signo de peso y puntos de mil
 
-        v.total.setText(valor); // Establece el texto con el signo de peso y puntos de mil
-
-        DefaultTableModel tabla = (DefaultTableModel) v.tablaPedidos.getModel();
-        Object[] fila = {mesero, mesa, producto, precio, cant};
-        tabla.addRow(fila);
+            DefaultTableModel tabla = (DefaultTableModel) v.tablaPedidos.getModel();
+            Object[] fila = {mesa, mesero , producto, precio, cant};
+            tabla.addRow(fila);
+            
+            v.txtCantP.setText("");
+        }else{
+            System.out.println("Favor llenar los campos");
+        }
     }
     
     private void eliminarFilaSeleccionada() {
@@ -463,6 +503,7 @@ public class Controlador implements ActionListener {
         
         if (e.getSource() == v.btnAgregarPedido){
             agregarPedido();
+            limpiarPedidos();
         }
         
     }

@@ -20,7 +20,10 @@ public class Mesa{
         return tipo + " " +cant_sillas;
     }
     
-
+    public int ID(){
+        return id_mesa;
+    }
+    
     public Mesa(int cant_sillas, String estado, String tipo) {
         this.cant_sillas = cant_sillas;
         this.estado = estado;

@@ -26,6 +26,21 @@ public class MesaDAO {
             e.printStackTrace();
         }
     }
+    
+    private int ocuparMesa(int id){
+        String sql = "UPDATE reg_mesa SET estado = 'Ocupado' WHERE id_mesa = ?";
+        try (Connection conex = con.getConnection(); PreparedStatement ps = conex.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            return ps.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
+    public int ocuparMesaP(int id){
+        return ocuparMesa(id);
+    }
 
     public void registrarMesa(Mesa mesa) {
         registrar_mesa(mesa);
