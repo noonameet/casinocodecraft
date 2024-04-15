@@ -21,11 +21,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 public class Controlador implements ActionListener {
@@ -169,44 +171,60 @@ public class Controlador implements ActionListener {
     }
 
     private void generarFactTXT() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("Factura_genrado.txt"))) {
-            ArrayList<Gen_Factura> facDet = DAOGF.getFacturaTXT();
-            for (Gen_Factura factura : facDet) {
-                writer.println("====================");
-                writer.println("      FACTURA      ");
-                writer.println("====================");
-                writer.println();
-                writer.println("Fecha: " + factura.getFecha());
-                writer.println("Hora: " + factura.getHoraFormateada());
-                writer.println("Número de Factura: " + factura.getNum_fac());
-                writer.println("Cédula Cliente: " + factura.getId_cliente());
-                writer.println("ID Cajero: " + factura.getIdCaj());
-                writer.println("ID Mesero: " + factura.getMesero());
-                writer.println("Tipo Pago: " + factura.getTipoP());
-                writer.println();
-                writer.println("------------------------------------------------------");
-                writer.println();
-                writer.println("Producto             Precio unitario     Cantidad      Total");
-                writer.println("----------------------------------------------------------------");
+        try {
+            // Configurar el aspecto "Windows 10"
+            com.formdev.flatlaf.FlatDarkLaf.install();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
-                List<Carrito> prod = DAOCa.obtenerCarritoPorFactura(factura.getId_cabe());
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Guardar archivo");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto", "txt");
+        chooser.setFileFilter(filter);
 
-                for (Carrito car : prod) {
-                    writer.printf("%-30s%10s%15d%15s%n", car.getProd(), String.format("$%,d", (int) car.getPrecio()), car.getCantidad(), String.format("$%,d", (int) car.getTotal()));
+        if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+            String ruta = chooser.getSelectedFile().toString().concat(".txt");
+
+            try (PrintWriter writer = new PrintWriter(new FileWriter(ruta))) {
+                ArrayList<Gen_Factura> facDet = DAOGF.getFacturaTXT();
+                for (Gen_Factura factura : facDet) {
+                    writer.println("====================");
+                    writer.println("      FACTURA      ");
+                    writer.println("====================");
+                    writer.println();
+                    writer.println("Fecha: " + factura.getFecha());
+                    writer.println("Hora: " + factura.getHoraFormateada());
+                    writer.println("Número de Factura: " + factura.getNum_fac());
+                    writer.println("Cédula Cliente: " + factura.getId_cliente());
+                    writer.println("ID Cajero: " + factura.getIdCaj());
+                    writer.println("ID Mesero: " + factura.getMesero());
+                    writer.println("Tipo Pago: " + factura.getTipoP());
+                    writer.println();
+                    writer.println("------------------------------------------------------");
+                    writer.println();
+                    writer.println("Producto             Precio unitario     Cantidad      Total");
+                    writer.println("----------------------------------------------------------------");
+
+                    List<Carrito> prod = DAOCa.obtenerCarritoPorFactura(factura.getId_cabe());
+
+                    for (Carrito car : prod) {
+                        writer.printf("%-30s%10s%15d%15s%n", car.getProd(), String.format("$%,d", (int) car.getPrecio()), car.getCantidad(), String.format("$%,d", (int) car.getTotal()));
+                    }
+
+                    writer.println("------------------------------------------------------");
+                    writer.println();
+                    writer.println("Descuento: " + String.format("%.2f%%", factura.getDescuento() * 100));
+                    writer.println("Impuesto (%): " + factura.getIVA());
+                    writer.println("Total a pagar: " + String.format("$%,d", (int) factura.getTotal()));
+                    writer.println();
+                    writer.println("====================");
+                    writer.println("   Gracias por su compra   ");
+                    writer.println("====================");
                 }
-
-                writer.println("------------------------------------------------------");
-                writer.println();
-                writer.println("Descuento: " + String.format("%.2f%%", factura.getDescuento() * 100));
-                writer.println("Impuesto (%): " + factura.getIVA());
-                writer.println("Total a pagar: " + String.format("$%,d", (int) factura.getTotal()));
-                writer.println();
-                writer.println("====================");
-                writer.println("   Gracias por su compra   ");
-                writer.println("====================");
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
