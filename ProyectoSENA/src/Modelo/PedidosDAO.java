@@ -110,4 +110,19 @@ public class PedidosDAO {
         return obtenerTotalPedido(idPedido);
     }
 
+    private void actualizarIdFactura(int idPedido, int idFactura) {
+        String sql = "UPDATE carritoProductos SET id_factura = ? WHERE id_pedido = ?";
+        try (Connection cn = con.getConnection(); PreparedStatement ps = cn.prepareStatement(sql)) {
+            ps.setInt(1, idFactura);
+            ps.setInt(2, idPedido);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getActualizarIdFactura(int idPedido, int idFactura) {
+        actualizarIdFactura(idPedido, idFactura);
+    }
+
 }

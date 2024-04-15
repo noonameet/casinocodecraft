@@ -1,72 +1,74 @@
 package Modelo;
 
-import java.sql.Time;
-import java.sql.Date;
-
-/**
- *
- * @author Laderson Leon
- */
 public class Gen_Factura {
 
-    private int id_cab, id_cli, id_mesero, id_cajero, num_fact;
-    private double descuento, iva, total;
-    private String id_tipoP, hora_fact, fecha_fact;
+    private int id_cabe;
+    private int id_cliente;
+    private int mesero;
+    private String tipoP;
+    private int idCaj;
+    private double descuento;
+    private double IVA;
+    private double total;
+    private int num_fac;
+    private String horaFormateada;
+    private String fecha;
+
+    public Gen_Factura(int id_cabe, int id_cliente, int mesero, String tipoP, int idCaj, double descuento, double IVA, double total, int num_fac, String horaFormateada, String fecha) {
+        this.id_cabe = id_cabe;
+        this.id_cliente = id_cliente;
+        this.mesero = mesero;
+        this.tipoP = tipoP;
+        this.idCaj = idCaj;
+        this.descuento = descuento;
+        this.IVA = IVA;
+        this.total = total;
+        this.num_fac = num_fac;
+        this.horaFormateada = horaFormateada;
+        this.fecha = fecha;
+    }
 
     public Gen_Factura() {
     }
 
-    public Gen_Factura(int id_cli, int id_mesero, String id_tipoP, int id_cajero, double descuento, double iva, double total, int num_fact, String hora_fact, String fecha_fact) {
-        this.id_cli = id_cli;
-        this.id_mesero = id_mesero;
-        this.id_tipoP = id_tipoP;
-        this.id_cajero = id_cajero;
-        this.descuento = descuento;
-        this.iva = iva;
-        this.total = total;
-        this.num_fact = num_fact;
-        this.hora_fact = hora_fact;
-        this.fecha_fact = fecha_fact;
+    public int getId_cabe() {
+        return id_cabe;
     }
 
-    public int getId_cab() {
-        return id_cab;
+    public void setId_cabe(int id_cabe) {
+        this.id_cabe = id_cabe;
     }
 
-    public void setId_cab(int id_cab) {
-        this.id_cab = id_cab;
+    public int getId_cliente() {
+        return id_cliente;
     }
 
-    public int getId_cli() {
-        return id_cli;
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
 
-    public void setId_cli(int id_cli) {
-        this.id_cli = id_cli;
+    public int getMesero() {
+        return mesero;
     }
 
-    public int getId_mesero() {
-        return id_mesero;
+    public void setMesero(int mesero) {
+        this.mesero = mesero;
     }
 
-    public void setId_mesero(int id_mesero) {
-        this.id_mesero = id_mesero;
+    public String getTipoP() {
+        return tipoP;
     }
 
-    public String getId_tipoP() {
-        return id_tipoP;
+    public void setTipoP(String tipoP) {
+        this.tipoP = tipoP;
     }
 
-    public void setId_tipoP(String id_tipoP) {
-        this.id_tipoP = id_tipoP;
+    public int getIdCaj() {
+        return idCaj;
     }
 
-    public int getId_cajero() {
-        return id_cajero;
-    }
-
-    public void setId_cajero(int id_cajero) {
-        this.id_cajero = id_cajero;
+    public void setIdCaj(int idCaj) {
+        this.idCaj = idCaj;
     }
 
     public double getDescuento() {
@@ -77,12 +79,12 @@ public class Gen_Factura {
         this.descuento = descuento;
     }
 
-    public double getIva() {
-        return iva;
+    public double getIVA() {
+        return IVA;
     }
 
-    public void setIva(double iva) {
-        this.iva = iva;
+    public void setIVA(double IVA) {
+        this.IVA = IVA;
     }
 
     public double getTotal() {
@@ -93,28 +95,36 @@ public class Gen_Factura {
         this.total = total;
     }
 
-    public int getNum_fact() {
-        return num_fact;
+    public int getNum_fac() {
+        return num_fac;
     }
 
-    public void setNum_fact(int num_fact) {
-        this.num_fact = num_fact;
+    public void setNum_fac(int num_fac) {
+        this.num_fac = num_fac;
     }
 
-    public String getHora_fact() {
-        return hora_fact;
+    public String getHoraFormateada() {
+        return horaFormateada;
     }
 
-    public void setHora_fact(String hora_fact) {
-        this.hora_fact = hora_fact;
+    public void setHoraFormateada(String horaFormateada) {
+        this.horaFormateada = horaFormateada;
     }
 
-    public String getFecha_fact() {
-        return fecha_fact;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setFecha_fact(String fecha_fact) {
-        this.fecha_fact = fecha_fact;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
-}
+
+    @Override
+    public String toString() {
+        return "Gen_Factura{" + "id_cabe=" + id_cabe + ", id_cliente=" + id_cliente + ", mesero=" + mesero + ", tipoP=" + tipoP + ", idCaj=" + idCaj + ", descuento=" + descuento + ", IVA=" + IVA + ", total=" + total + ", num_fac=" + num_fac + ", horaFormateada=" + horaFormateada + ", fecha=" + fecha + '}';
+    }
     
+    
+
+    
+}

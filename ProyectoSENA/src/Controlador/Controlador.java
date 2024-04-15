@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.Gen_Factura;
 import Vista.*;
 import Modelo.*;
 import java.awt.event.ActionEvent;
@@ -123,7 +124,8 @@ public class Controlador implements ActionListener {
             
             Pedidos pd = (Pedidos) v.comboPedidos.getSelectedItem();
             int mesero = pd.getMesero();
-            
+            int codigopedido = pd.getId();
+            int id_cabe = random.nextInt(59999);
             int id_cliente = Integer.parseInt(v.txtCedC.getText());
             int num_fac = random.nextInt(999999999);
             double descuento = Double.parseDouble(v.txtDesc.getText());
@@ -134,56 +136,58 @@ public class Controlador implements ActionListener {
             SimpleDateFormat amd = new SimpleDateFormat("dd/MM/yy");
             String fecha = amd.format(currentDate);
             
-            Gen_Factura factura = new Gen_Factura(id_cliente, mesero, tipoP, idCaj, descuento, IVA, total, num_fac, horaFormateada, fecha);
+            Gen_Factura factura = new Gen_Factura(id_cabe,id_cliente, mesero, tipoP, idCaj, descuento, IVA, total, num_fac, horaFormateada, fecha);
             DAOGF.getGenerarFact(factura);
+            DAOP.getActualizarIdFactura(codigopedido, id_cabe);
             
         }catch (NumberFormatException e) {
             e.printStackTrace();
         }
     }
     
+    
     private void generarFactTXT(){
-        try (PrintWriter writer = new PrintWriter(new FileWriter("Factura"))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Factura.txt"))) {
             ArrayList<Gen_Factura> facDet = DAOGF.getFacturaTXT();
-            
-            writer.println("====================");
-            writer.println("      FACTURA      ");
-            writer.println("====================");
-            writer.println();
-            writer.println("Fecha: " + facDet.get(10));
-            writer.println("Hora: " + facDet.get(9));
-            writer.println("Número de Factura: " + facDet.get(5));
-            writer.println("Cédula Cliente: " + facDet.get(1));
-            writer.println("ID Cajero: " + facDet.get(4));
-            writer.println("ID Mesero: " + facDet.get(3));
-            writer.println("Tipo Pago: " + facDet.get(2));
-            writer.println();
-            writer.println("------------------------------------------------------");
-            writer.println();
-            writer.println("Producto             Precio unitario     Cantidad      Total");
-            writer.println("----------------------------------------------------------------");
+            for (Gen_Factura factura : facDet) {
+                writer.println("====================");
+                writer.println("      FACTURA      ");
+                writer.println("====================");
+                writer.println();
+                writer.println("Fecha: " + factura.getFecha());
+                writer.println("Hora: " + factura.getHoraFormateada());
+                writer.println("Número de Factura: " + factura.getNum_fac());
+                writer.println("Cédula Cliente: " + factura.getId_cliente());
+                writer.println("ID Cajero: " + factura.getIdCaj());
+                writer.println("ID Mesero: " + factura.getMesero());
+                writer.println("Tipo Pago: " + factura.getTipoP());
+                writer.println();
+                writer.println("------------------------------------------------------");
+                writer.println();
+                writer.println("Producto             Precio unitario     Cantidad      Total");
+                writer.println("----------------------------------------------------------------");
 
-            // Escribir los detalles de los productos
-            for (int i = 0; i < productos.length; i++) {
-                writer.printf("%-30s%10.2f%15d%15.2f%n", productos[i], preciosUnitarios[i], cantidades[i],
-                        preciosUnitarios[i] * cantidades[i]);
+                            // Escribir los detalles de los productos
+  // for (int i = 0; i < productos.length; i++) {
+      //          writer.printf("%-30s%10.2f%15d%15.2f%n", productos[i], preciosUnitarios[i], cantidades[i],
+       //                 preciosUnitarios[i] * cantidades[i]);
+       //     }
+
+                writer.println("------------------------------------------------------");
+                writer.println();
+                writer.println("Descuento: " + factura.getDescuento());
+                writer.println("Impuesto (%): " + factura.getIVA());
+                writer.println("Total a pagar: " + factura.getTotal());
+                writer.println();
+                writer.println("====================");
+                writer.println("   Gracias por su compra   ");
+                writer.println("====================");
             }
-
-            writer.println("------------------------------------------------------");
-            writer.println();
-            writer.println("Descuento: " + facDet.get(6));
-            writer.println("Impuesto (%): " + facDet.get(7));
-            writer.println("Total a pagar: " + facDet.get(8));
-            writer.println();
-            writer.println("====================");
-            writer.println("   Gracias por su compra   ");
-            writer.println("====================");
         }catch (IOException e){
             e.printStackTrace();
-        }
-        
-        
+        } 
     }
+    
 
     private void registrarE() {
         String nomE = v.txtNombreE.getText();
@@ -561,6 +565,7 @@ public class Controlador implements ActionListener {
         
         if (e.getSource() == v.btnGenerarFactura) {
             generarFactura();
+            generarFactTXT();
         }
 
         if (e.getSource() == v.btnEliminarCarrito) {

@@ -17,7 +17,7 @@ public class Conexion {
 
     public Connection getConnection() {
         try {
-            String myBD = "jdbc:sqlite:C:\\SQLITE3\\BD";
+            String myBD = "jdbc:sqlite:C:\\SQLite\\BD";
             con = DriverManager.getConnection(myBD);
             return con;
         } catch (SQLException e) {

@@ -16,21 +16,22 @@ public class Gen_FacturaDAO {
     Conexion con = new Conexion();
     
     private void generarFactura(Gen_Factura factura) {
-        String sql = "INSERT INTO fact_cabe(id_clie, id_tipo_pago, id_mesero, "
+        String sql = "INSERT INTO fact_cabe(id_cab_fact, id_clie, id_tipo_pago, id_mesero, "
                 + "id_cajero, num_fact, descuento, iva, total, hora_fact, fecha_fact) "
-                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try(Connection conex = con.getConnection(); PreparedStatement ps = 
                 conex.prepareStatement(sql)) {
-            ps.setInt(1, factura.getId_cli());
-            ps.setString(2, factura.getId_tipoP());
-            ps.setInt(3, factura.getId_mesero());
-            ps.setInt(4, factura.getId_cajero());
-            ps.setInt(5, factura.getNum_fact());
-            ps.setDouble(6, factura.getDescuento());
-            ps.setDouble(7, factura.getIva());
-            ps.setDouble(8, factura.getTotal());
-            ps.setString(9, factura.getHora_fact());
-            ps.setString(10, factura.getFecha_fact());
+            ps.setInt(1, factura.getId_cabe());
+            ps.setInt(2, factura.getId_cliente());
+            ps.setString(3, factura.getTipoP());
+            ps.setInt(4, factura.getMesero());
+            ps.setInt(5, factura.getIdCaj());
+            ps.setInt(6, factura.getNum_fac());
+            ps.setDouble(7, factura.getDescuento());
+            ps.setDouble(8, factura.getIVA());
+            ps.setDouble(9, factura.getTotal());
+            ps.setString(10, factura.getHoraFormateada());
+            ps.setString(11, factura.getFecha());
             ps.executeUpdate();
             System.out.println("Registrado!");
         } catch (SQLException e) {
@@ -41,24 +42,26 @@ public class Gen_FacturaDAO {
     private ArrayList<Gen_Factura> generarFacturaTXT() {
         ArrayList<Gen_Factura> listame = new ArrayList<>();
         
-        String sql = "SELECT * FROM fact_cabe";
+        String sql = "SELECT * FROM fact_cabe ORDER BY id_cab_fact DESC LIMIT 1";
         
         try(Connection conex = con.getConnection(); PreparedStatement ps = 
                 conex.prepareStatement(sql)){
             try(ResultSet rs = ps.executeQuery()){
                 Gen_Factura fac = new Gen_Factura();
-                fac.setId_cab(rs.getInt("Id_cab_fac"));
-                fac.setId_cli(rs.getInt("id_clie"));
-                fac.setId_tipoP(rs.getString("id_tipo_pago"));
-                fac.setId_mesero(rs.getInt("id_mesero"));
-                fac.setId_cajero(rs.getInt("id_cajero"));
-                fac.setNum_fact(rs.getInt("num_fact"));
+                fac.setId_cabe(rs.getInt("id_cab_fact"));
+                fac.setId_cliente(rs.getInt("id_clie"));
+                fac.setTipoP(rs.getString("id_tipo_pago"));
+                fac.setMesero(rs.getInt("id_mesero"));
+                fac.setIdCaj(rs.getInt("id_cajero"));
+                fac.setNum_fac(rs.getInt("num_fact"));
                 fac.setDescuento(rs.getDouble("descuento"));
-                fac.setIva(rs.getDouble("iva"));
+                fac.setIVA(rs.getDouble("iva"));
                 fac.setTotal(rs.getDouble("total"));
-                fac.setHora_fact(rs.getString("hora_fact"));
-                fac.setFecha_fact(rs.getString("fecha_fac"));
+                fac.setHoraFormateada(rs.getString("hora_fact"));
+                fac.setFecha(rs.getString("fecha_fact"));
                 listame.add(fac);
+                System.out.println(fac.toString());
+
             }
         }catch (SQLException e) {
             e.printStackTrace();
