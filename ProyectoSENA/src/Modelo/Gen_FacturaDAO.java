@@ -42,7 +42,7 @@ public class Gen_FacturaDAO {
     private ArrayList<Gen_Factura> generarFacturaTXT() {
         ArrayList<Gen_Factura> listame = new ArrayList<>();
         
-        String sql = "SELECT * FROM fact_cabe ORDER BY id_cab_fact DESC LIMIT 1";
+        String sql = "SELECT * FROM fact_cabe";
         
         try(Connection conex = con.getConnection(); PreparedStatement ps = 
                 conex.prepareStatement(sql)){

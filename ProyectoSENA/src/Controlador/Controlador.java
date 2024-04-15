@@ -5,6 +5,8 @@ import Vista.*;
 import Modelo.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -72,8 +74,10 @@ public class Controlador implements ActionListener {
         this.rolesE();
         this.actualizarTablaProductos();
         mostrarProductos(modeloInv.obtenerTodosLosProductos());
-        v.comboPedidos.addActionListener((ActionEvent e) -> {
-            actualizarTotal();
+        this.v.comboPedidos.addItemListener((ItemEvent e) -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                actualizarTotal();
+            }
         });
     }
 
@@ -108,20 +112,20 @@ public class Controlador implements ActionListener {
         System.out.println(cliente);
         DAOC.registrarCliente(cliente);
     }
-    
-    private void generarFactura(){
+
+    private void generarFactura() {
         try {
             Random random = new Random();
             Time time = new Time(System.currentTimeMillis());
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
             String horaFormateada = sdf.format(time);
-            
+
             Tipo_pago tpS = (Tipo_pago) v.comboTipoP.getSelectedItem();
             String tipoP = tpS.getNom_tipoP();
-            
+
             Reg_Empleados cajero = (Reg_Empleados) v.comboCajero.getSelectedItem();
             int idCaj = cajero.getId_emple();
-            
+
             Pedidos pd = (Pedidos) v.comboPedidos.getSelectedItem();
             int mesero = pd.getMesero();
             int codigopedido = pd.getId();
@@ -135,19 +139,18 @@ public class Controlador implements ActionListener {
             Date currentDate = new Date(System.currentTimeMillis());
             SimpleDateFormat amd = new SimpleDateFormat("dd/MM/yy");
             String fecha = amd.format(currentDate);
-            
-            Gen_Factura factura = new Gen_Factura(id_cabe,id_cliente, mesero, tipoP, idCaj, descuento, IVA, total, num_fac, horaFormateada, fecha);
+
+            Gen_Factura factura = new Gen_Factura(id_cabe, id_cliente, mesero, tipoP, idCaj, descuento, IVA, total, num_fac, horaFormateada, fecha);
             DAOGF.getGenerarFact(factura);
             DAOP.getActualizarIdFactura(codigopedido, id_cabe);
-            
-        }catch (NumberFormatException e) {
+
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
     }
-    
-    
-    private void generarFactTXT(){
-        try (PrintWriter writer = new PrintWriter(new FileWriter("Factura.txt"))) {
+
+    private void generarFactTXT() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Facturax.txt"))) {
             ArrayList<Gen_Factura> facDet = DAOGF.getFacturaTXT();
             for (Gen_Factura factura : facDet) {
                 writer.println("====================");
@@ -167,11 +170,11 @@ public class Controlador implements ActionListener {
                 writer.println("Producto             Precio unitario     Cantidad      Total");
                 writer.println("----------------------------------------------------------------");
 
-                            // Escribir los detalles de los productos
-  // for (int i = 0; i < productos.length; i++) {
-      //          writer.printf("%-30s%10.2f%15d%15.2f%n", productos[i], preciosUnitarios[i], cantidades[i],
-       //                 preciosUnitarios[i] * cantidades[i]);
-       //     }
+                ArrayList<Carrito> prod = (ArrayList<Carrito>) DAOCa.obtenerCarritoPorFactura(factura.getId_cabe());
+
+                for (Carrito car : prod) {
+                    writer.printf("%-30s%10.2f%15d%15.2f%n", car.getProd(), car.getPrecio(), car.getCantidad(), car.getTotal());
+                }
 
                 writer.println("------------------------------------------------------");
                 writer.println();
@@ -183,11 +186,10 @@ public class Controlador implements ActionListener {
                 writer.println("   Gracias por su compra   ");
                 writer.println("====================");
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        } 
+        }
     }
-    
 
     private void registrarE() {
         String nomE = v.txtNombreE.getText();
@@ -256,9 +258,10 @@ public class Controlador implements ActionListener {
 
                 double total = precio * cant;
 
-                Carrito car = new Carrito(id_p, producto, cant, (int) total);
+                Carrito car = new Carrito(id_p, producto, precio, cant, (int) total);
                 System.out.println(car);
                 DAOCa.registrarCarritoP(car);
+
             }
 
             Pedidos ped = new Pedidos(id_p, idMesa, idMesero, estado, horaFormateada);
@@ -267,6 +270,7 @@ public class Controlador implements ActionListener {
             DAOM.ocuparMesaP(idMesa);
 
             this.cargarMesas();
+
         } catch (NumberFormatException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(v, "Por favor, ingrese datos válidos");
@@ -528,7 +532,7 @@ public class Controlador implements ActionListener {
 
     private void actualizarTotal() {
         Pedidos pedidoSeleccionado = (Pedidos) v.comboPedidos.getSelectedItem();
-        int idPedido = pedidoSeleccionado.getId(); 
+        int idPedido = pedidoSeleccionado.getId();
         double total = DAOP.getTotalPedido(idPedido);
         v.totalpagofactura.setText(String.valueOf(total));
     }
@@ -562,7 +566,7 @@ public class Controlador implements ActionListener {
         if (e.getSource() == v.btnRegistrarCliente) {
             registrarC();
         }
-        
+
         if (e.getSource() == v.btnGenerarFactura) {
             generarFactura();
             generarFactTXT();

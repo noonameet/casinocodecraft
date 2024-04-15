@@ -3,12 +3,12 @@
 ====================
 
 Fecha: 14/04/24
-Hora: 23:47:26
-Número de Factura: 574053602
+Hora: 23:01:03
+Número de Factura: 169631789
 Cédula Cliente: 932193182
 ID Cajero: 2
 ID Mesero: 3
-Tipo Pago: tarjeta
+Tipo Pago: efectivo
 
 ------------------------------------------------------
 
@@ -16,9 +16,9 @@ Producto             Precio unitario     Cantidad      Total
 ----------------------------------------------------------------
 ------------------------------------------------------
 
-Descuento: 0.24
+Descuento: 0.05
 Impuesto (%): 0.19
-Total a pagar: 1042.72
+Total a pagar: 8443.6
 
 ====================
    Gracias por su compra   

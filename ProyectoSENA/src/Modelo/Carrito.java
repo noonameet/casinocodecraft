@@ -1,18 +1,28 @@
 package Modelo;
 
 public class Carrito {
-    int id_carrito, id_pedido, cantidad, total;
-    String prod;
+    private int id_carrito, id_pedido, cantidad, total, idfactura;
+    private double precio;
+    private String prod;
     
     public Carrito(){
         
     }
 
-    public Carrito(int id_pedido, String prod, int cantidad, int total) {
+    public Carrito(int id_pedido,  String prod, double precio, int cantidad, int total) {
         this.id_pedido = id_pedido;
         this.cantidad = cantidad;
         this.total = total;
+        this.precio = precio;
         this.prod = prod;
+    }
+
+    public int getIdfactura() {
+        return idfactura;
+    }
+
+    public void setIdfactura(int idfactura) {
+        this.idfactura = idfactura;
     }
 
     public int getId_carrito() {
@@ -47,6 +57,14 @@ public class Carrito {
         this.total = total;
     }
 
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
     public String getProd() {
         return prod;
     }
@@ -54,6 +72,7 @@ public class Carrito {
     public void setProd(String prod) {
         this.prod = prod;
     }
+
     
-    
+   
 }
