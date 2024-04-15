@@ -17,17 +17,22 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 public class Controlador implements ActionListener {
 
     public Vista v = new Vista();
     public Login l = new Login();
+    private boolean isJPanelActive = false;
 
     LoginU logU = new LoginU();
     Reg_ClienteDAO DAOC = new Reg_ClienteDAO();
@@ -74,11 +79,24 @@ public class Controlador implements ActionListener {
         this.rolesE();
         this.actualizarTablaProductos();
         mostrarProductos(modeloInv.obtenerTodosLosProductos());
+        this.v.Principal.addChangeListener((ChangeEvent e) -> {
+            JTabbedPane tabbedPane = (JTabbedPane) e.getSource();
+            int selectedIndex = tabbedPane.getSelectedIndex();
+            if (selectedIndex == 8) {
+                setJPanelState(true);
+            } else {
+                setJPanelState(false);
+            }
+        });
         this.v.comboPedidos.addItemListener((ItemEvent e) -> {
-            if (e.getStateChange() == ItemEvent.SELECTED) {
+            if (e.getStateChange() == ItemEvent.SELECTED && isJPanelActive) {
                 actualizarTotal();
             }
         });
+    }
+
+    private void setJPanelState(boolean state) {
+        this.isJPanelActive = state;
     }
 
     private boolean auth() {
@@ -150,7 +168,8 @@ public class Controlador implements ActionListener {
     }
 
     private void generarFactTXT() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("Facturax.txt"))) {
+        
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Factura_genrado.txt"))) {
             ArrayList<Gen_Factura> facDet = DAOGF.getFacturaTXT();
             for (Gen_Factura factura : facDet) {
                 writer.println("====================");
@@ -170,8 +189,8 @@ public class Controlador implements ActionListener {
                 writer.println("Producto             Precio unitario     Cantidad      Total");
                 writer.println("----------------------------------------------------------------");
 
-                ArrayList<Carrito> prod = (ArrayList<Carrito>) DAOCa.obtenerCarritoPorFactura(factura.getId_cabe());
-
+                List<Carrito> prod = DAOCa.obtenerCarritoPorFactura(factura.getId_cabe());
+        
                 for (Carrito car : prod) {
                     writer.printf("%-30s%10.2f%15d%15.2f%n", car.getProd(), car.getPrecio(), car.getCantidad(), car.getTotal());
                 }
@@ -282,6 +301,7 @@ public class Controlador implements ActionListener {
         v.comboMesero.setSelectedIndex(0);
         v.pedidoID.setText("");
         v.txtCantP.setText("");
+        v.total.setText("");
 
         v.comboMesa.setEnabled(true);
         v.comboMesero.setEnabled(true);
@@ -627,6 +647,7 @@ public class Controlador implements ActionListener {
         if (e.getSource() == v.btnAgregarPedido) {
             agregarPedido();
             limpiarPedidos();
+            this.cargarPedidos();
         }
 
     }

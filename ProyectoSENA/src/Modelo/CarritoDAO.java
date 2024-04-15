@@ -18,7 +18,7 @@ public class CarritoDAO {
             ps.setString(2, car.getProd());
             ps.setDouble(3, car.getPrecio());
             ps.setInt(4, car.getCantidad());
-            ps.setInt(5, car.getTotal());
+            ps.setDouble(5, car.getTotal());
             ps.executeUpdate();
             System.out.println(ps);
             return 1;
@@ -33,19 +33,19 @@ public class CarritoDAO {
     }
 
     private List<Carrito> seleccionarCarritoPorFactura(int id_factura) {
-        String sql = "SELECT * FROM carritoProductos WHERE id_factura = ?";
+        String sql = "SELECT producto, precio, cantidad, total FROM carritoProductos WHERE id_factura = ?";
         List<Carrito> carritos = new ArrayList<>();
         try (Connection conex = con.getConnection(); PreparedStatement ps = conex.prepareStatement(sql)) {
             ps.setInt(1, id_factura);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Carrito car = new Carrito();
-                car.setId_pedido(rs.getInt("id_pedido"));
                 car.setProd(rs.getString("producto"));
                 car.setPrecio(rs.getDouble("precio"));
                 car.setCantidad(rs.getInt("cantidad"));
-                car.setTotal(rs.getInt("total"));
+                car.setTotal(rs.getDouble("total"));
                 carritos.add(car);
+                System.out.println(carritos);
             }
             System.out.println(ps);
         } catch (SQLException e) {
