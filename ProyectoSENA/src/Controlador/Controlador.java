@@ -28,6 +28,7 @@ public class Controlador implements ActionListener {
     Reg_EmpleadosDAO DAOE = new Reg_EmpleadosDAO();
     Emple_rolDAO DAOR = new Emple_rolDAO();
     MesaDAO DAOM = new MesaDAO();
+    Tipo_pagoDAO DAOTP = new Tipo_pagoDAO();
     InventarioDAO modeloInv = new InventarioDAO();
     IngredientesDAO ingrediente = new IngredientesDAO();
     Reg_ClienteDAO modeloCli = new Reg_ClienteDAO();
@@ -57,6 +58,9 @@ public class Controlador implements ActionListener {
         this.cargarinvactual();
         this.cargarMeseros();
         this.cargarMesas();
+        this.cargarCajeros();
+        this.cargarTipoP();
+        this.cargarPedidos();
         this.mostrarProductosAsociados();
         this.v.ivcategoria.addActionListener(this);
         this.rolesE();
@@ -310,8 +314,23 @@ public class Controlador implements ActionListener {
     }
 
     private void cargarMeseros() {
-        ArrayList<Reg_Empleados> meseros = modeloEmple.getObtenerMeseros();
+        ArrayList<Reg_Empleados> meseros = modeloEmple.getObtenerEmpleados(3);
         cargarItems(meseros, v.comboMesero);
+    }
+    
+    private void cargarCajeros(){
+        ArrayList<Reg_Empleados> cajeros = modeloEmple.getObtenerEmpleados(2);
+        cargarItems(cajeros, v.comboCajero);
+    }
+    
+    private void cargarTipoP(){
+        ArrayList<Tipo_pago> pago = DAOTP.obtenerTiposPP();
+        cargarItems(pago, v.comboTipoP);
+    }
+    
+    private void cargarPedidos(){
+        ArrayList<Pedidos> pedidos = DAOP.getObtenerPedidos();
+        cargarItems(pedidos, v.comboPedidos);
     }
 
     private void cargarMesas() {

@@ -32,7 +32,8 @@ public class Tipo_pago {
         this.nom_tipoP = nom_tipoP;
     }
     
-    
-    
-    
+    @Override
+    public String toString(){
+        return nom_tipoP;
+    }
 }

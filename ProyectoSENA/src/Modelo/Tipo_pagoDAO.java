@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
 import java.sql.Connection;
@@ -23,9 +19,9 @@ public class Tipo_pagoDAO {
         String sql = "SELECT id_tipoP, nombre FROM tipo_pago";
 
         try (Connection conex = con.getConnection();
-             PreparedStatement ps = conex.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-
+             PreparedStatement ps = conex.prepareStatement(sql)) {
+            
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Tipo_pago tp = new Tipo_pago();
                 tp.setId_tipoP((rs.getInt("id_tipoP")));

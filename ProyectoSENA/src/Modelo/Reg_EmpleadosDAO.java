@@ -14,9 +14,6 @@ import javax.swing.JOptionPane;
 public class Reg_EmpleadosDAO {
 
     Conexion con = new Conexion();
-    Connection conex = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
 
     private void registrarEmpleado(Reg_Empleados emple) {
         String sql = "INSERT INTO reg_empleados(nom_empleados, ape_empleados, "
@@ -62,32 +59,35 @@ public class Reg_EmpleadosDAO {
         }
     }
 
-    private ArrayList<Reg_Empleados> ObtenerMeseros() {
+    private ArrayList<Reg_Empleados> obtenerEmpleados(int rol) {
         ArrayList<Reg_Empleados> listame = new ArrayList<>();
 
-        String sql = "SELECT id_empleados, nom_empleados FROM reg_empleados WHERE rol = 3";
+        String sql = "SELECT id_empleados, nom_empleados FROM reg_empleados WHERE rol = ?";
 
-        try (Connection cn = con.getConnection(); PreparedStatement pst = cn.prepareStatement(sql); ResultSet rs = pst.executeQuery()) {
-
-            while (rs.next()) {
-                Reg_Empleados me = new Reg_Empleados();
-                me.setId_emple(rs.getInt("id_empleados"));
-                me.setNom_emple(rs.getString("nom_empleados"));
-                listame.add(me);
-                System.out.println("Meseros encontrados");
+        try (Connection cn = con.getConnection(); PreparedStatement ps = cn.prepareStatement(sql)) {
+            ps.setInt(1, rol);
+            
+            try(ResultSet rs = ps.executeQuery()){
+                while (rs.next()) {
+                    Reg_Empleados me = new Reg_Empleados();
+                    me.setId_emple(rs.getInt("id_empleados"));
+                    me.setNom_emple(rs.getString("nom_empleados"));
+                    listame.add(me);
+                    System.out.println(listame);
+                    System.out.println("Meseros encontrados");
+                }
+            }catch (SQLException e){
+                
             }
-
-            System.out.println("Meseros listados");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return listame;
     }
 
-    public ArrayList<Reg_Empleados> getObtenerMeseros() {
+    public ArrayList<Reg_Empleados> getObtenerEmpleados(int rol) {
         try {
-            return ObtenerMeseros();
+            return obtenerEmpleados(rol);
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<>();

@@ -63,7 +63,11 @@ public class Pedidos{
     public void setHora(String hora) {
         this.hora = hora;
     }
-    
-    
 
+    @Override
+    public String toString() {
+        String id = String.valueOf(this.id);
+        return id;
+    }
+    
 }

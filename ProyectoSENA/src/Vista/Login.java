@@ -36,6 +36,10 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        txtUsuario.setText("uwu");
+
+        txtContraseña.setText("nya");
+
         btnIngresar.setText("Ingresar");
 
         jLabel1.setText("Username:");
